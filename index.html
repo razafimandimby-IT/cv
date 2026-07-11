@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denis Razafimandimby — CV IT Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a365d;
+      --primary-light: #2b6cb0;
+      --accent: #2b9348;
+      --accent-light: #48bb78;
+      --gray-50: #f7fafc;
+      --gray-100: #edf2f7;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e0;
+      --gray-500: #718096;
+      --gray-700: #4a5568;
+      --gray-900: #1a202c;
+      --white: #ffffff;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-lg: 0 4px 20px rgba(0,0,0,0.1);
+      --radius: 8px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--gray-100);
+      color: var(--gray-900);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: var(--white);
+      padding: 48px 40px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+      position: relative;
+    }
+    header .title {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    header .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      position: relative;
+    }
+    header .contact a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    header .contact a:hover { color: var(--accent-light); }
+
+    /* SECTIONS */
+    .section {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--gray-100);
+    }
+
+    /* ABOUT */
+    .about-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--gray-700);
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .skill-group h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .skill-group p {
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+
+    /* EXPERIENCE */
+    .exp-item {
+      margin-bottom: 24px;
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid var(--gray-200);
+    }
+    .exp-item:last-child { margin-bottom: 0; }
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+    .exp-header h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+    .exp-header .company {
+      font-weight: 500;
+      color: var(--primary-light);
+    }
+    .exp-header .date {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      font-weight: 500;
+    }
+    .exp-subtitle {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .exp-desc {
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+    .exp-desc ul {
+      list-style: none;
+      margin-top: 4px;
+    }
+    .exp-desc ul li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 2px;
+    }
+    .exp-desc ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gray-300);
+    }
+
+    /* ERP SECTION */
+    .erp-modules {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .erp-module {
+      background: var(--gray-50);
+      border-radius: 6px;
+      padding: 12px 16px;
+      border-left: 3px solid var(--accent);
+    }
+    .erp-module h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .erp-module p {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+    }
+
+    /* EDUCATION */
+    .edu-item {
+      margin-bottom: 12px;
+    }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-item h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+    .edu-item .detail {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+
+    /* PROJECTS */
+    .project-item {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .project-item:last-child { border-bottom: none; }
+    .project-item a {
+      font-weight: 600;
+      color: var(--primary-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .project-item a:hover { text-decoration: underline; }
+    .project-item .desc {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      width: 100%;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--gray-500);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 32px 24px; }
+      header h1 { font-size: 1.8rem; }
+      .section { padding: 20px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .erp-modules { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: white; }
+      header { background: var(--primary) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .section { box-shadow: none; border: 1px solid var(--gray-200); break-inside: avoid; }
+      .container { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Denis Razafimandimby</h1>
+      <div class="title">IT Manager · Infrastructure & Cybersecurity · ITSM/ITIL · Automation & ERP</div>
+      <div class="contact">
+        <a href="mailto:l.denis.razafimandimby@gmail.com">&#9993; l.denis.razafimandimby@gmail.com</a>
+        <a href="https://wellfound.com/u/denis-razafimandimby" target="_blank">&#127760; Wellfound</a>
+        <a href="https://www.linkedin.com/in/louis-denis-razafimandimby-488610227/" target="_blank">&#128100; LinkedIn</a>
+        <a href="https://github.com/razafimandimby-IT" target="_blank">&#128187; GitHub</a>
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section class="section">
+      <h2 class="section-title">Profil</h2>
+      <p class="about-text">
+        IT Manager avec une double competence : gouvernance des systemes d'information et developpement d'applications metier.
+        8 ans d'experience a structurer des directions IT, deployer des infrastructures securisees et concevoir des ERP qui digitalisent
+        les processus d'entreprise. Actuellement chez Dessineo, en charge de l'infrastructure, de la cybersecurite et du pilotage
+        de l'ERP interne. Formation continue : ServiceNow ITSM, ITIL 4 Foundation, Azure AZ-900.
+      </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section">
+      <h2 class="section-title">Competences</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Developpement ERP</h3>
+          <p>Laravel, PHP, MySQL/MariaDB, API REST, Git, Docker, EspoCRM</p>
+        </div>
+        <div class="skill-group">
+          <h3>Gouvernance IT</h3>
+          <p>ITSM, ITIL, gestion de projets, management d'equipes, pilotage prestataires</p>
+        </div>
+        <div class="skill-group">
+          <h3>Infrastructure</h3>
+          <p>Windows Server, Linux, Active Directory, Hyper-V, Proxmox, Docker</p>
+        </div>
+        <div class="skill-group">
+          <h3>Cloud & Collaboration</h3>
+          <p>Microsoft 365, Exchange Online, Teams, SharePoint, Google Workspace</p>
+        </div>
+        <div class="skill-group">
+          <h3>Securite</h3>
+          <p>BitLocker, LAPS, MFA, Wazuh, pfSense, Zabbix, Grafana, Prometheus</p>
+        </div>
+        <div class="skill-group">
+          <h3>Automatisation</h3>
+          <p>PowerShell, Python, Bash, SQL</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ERP PROJECT -->
+    <section class="section">
+      <h2 class="section-title">Projet phare : ERP interne multi-domaines</h2>
+      <p class="exp-desc" style="margin-bottom:12px;">
+        Pilotage fonctionnel et developpement d'un ERP interne couvrant 8 domaines, de l'analyse des besoins au deploiement.
+        Transformation des processus papier en workflows numeriques. Tableaux de bord pour la direction, RH, IT, logistique.
+      </p>
+      <div class="erp-modules">
+        <div class="erp-module">
+          <h4>Ressources Humaines</h4>
+          <p>Employes, contrats, conges, pointage biometrique, heures, export paie</p>
+        </div>
+        <div class="erp-module">
+          <h4>Gestion documentaire</h4>
+          <p>Archivage, GED, versionning, circuit de validation</p>
+        </div>
+        <div class="erp-module">
+          <h4>Tickets IT</h4>
+          <p>Helpdesk, incidents, demandes, suivi SLA, base de connaissances</p>
+        </div>
+        <div class="erp-module">
+          <h4>Parc informatique</h4>
+          <p>Inventaire, licences, garanties, affectation, historique</p>
+        </div>
+        <div class="erp-module">
+          <h4>Gestion des stocks</h4>
+          <p>Entrees/sorties, inventaire, mouvements, alertes</p>
+        </div>
+        <div class="erp-module">
+          <h4>Logistique & Achats</h4>
+          <p>Fournisseurs, receptions, consommables, suivi equipements</p>
+        </div>
+        <div class="erp-module">
+          <h4>Signature electronique</h4>
+          <p>Validations, circuit d'approbation, historique, tracabilite</p>
+        </div>
+        <div class="erp-module">
+          <h4>Planning</h4>
+          <p>Equipes, affectation ressources, disponibilites</p>
+        </div>
+      </div>
+      <p class="exp-desc" style="font-size:0.85rem;color:var(--gray-500);">
+        <strong>Technologies :</strong> Laravel, PHP, MySQL/MariaDB, API REST, Docker, Git &nbsp;|&nbsp;
+        <strong>Securite :</strong> Roles, permissions, audit trail, sauvegardes, authentification securisee
+      </p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section">
+      <h2 class="section-title">Experience</h2>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <h3>IT Manager & Logistique</h3>
+          <span class="date">Aout 2025 - Aujourd'hui</span>
+        </div>
+        <div class="exp-subtitle">Dessineo — Antananarivo</div>
+        <div class="exp-desc">
+          Gouvernance SI, infrastructure (Windows/Linux, AD, Hyper-V), cybersecurite (BitLocker, LAPS, MFA),
+          supervision Zabbix/Grafana/Prometheus/Wazuh, pilotage et developpement ERP interne.
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <h3>Datajet — Antananarivo</h3>
+          <span class="date">2018 - 2025</span>
+        </div>
+        <div class="exp-subtitle">Consultant IT Support Automation Lead (2023-2025)</div>
+        <div class="exp-desc">
+          <ul>
+            <li>Encadrement equipe IT, indicateurs SLA (+40% visibilite via Grafana/Prometheus)</li>
+            <li>Automatisation PowerShell/Python (MTTR -35%)</li>
+            <li>Migration Exchange vers Exchange Online/Teams/SharePoint</li>
+            <li>Taux de conformite SLA > 95%</li>
+          </ul>
+        </div>
+        <div class="exp-subtitle" style="margin-top:8px;">Team Lead Support Technique (2022-2023)</div>
+        <div class="exp-desc">
+          Supervision equipements, Exchange On-Premise, sauvegarde hybride Veeam + AWS S3 (-40% downtime).
+        </div>
+        <div class="exp-subtitle" style="margin-top:8px;">Technicien Support & Maintenance (2018-2022)</div>
+        <div class="exp-desc">
+          Support N1/N2, OTRS, maintenance parc, supervision Nagios, inventaire OCS Inventory.
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <h3>Experiences anterieures</h3>
+        </div>
+        <div class="exp-desc">
+          <ul>
+            <li>Stagiaire technicien — Accesbanque</li>
+            <li>Gerant Point Cybercafe (50+ utilisateurs) — Antananarivo</li>
+            <li>Consultant gestion de stocks — DHL International Madagascar (app PHP scan codes-barres)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & CERTIFICATIONS -->
+    <section class="section">
+      <h2 class="section-title">Formation & Certifications</h2>
+      <div class="edu-item">
+        <h3>Licence Informatique de Gestion</h3>
+        <div class="detail">ISPM, Antananarivo — 2009-2012 | Genie logiciel & IA</div>
+      </div>
+      <div class="edu-item">
+        <h3>Baccalaureat</h3>
+        <div class="detail">Lycee Saint Jean Bosco — 2006-2009</div>
+      </div>
+      <div class="edu-item" style="margin-top:16px;">
+        <h3>En cours</h3>
+        <div class="detail">ServiceNow ITSM & Flow Designer · ITIL 4 Foundation · Azure AZ-900</div>
+      </div>
+    </section>
+
+    <!-- GITHUB PROJECTS -->
+    <section class="section">
+      <h2 class="section-title">Projets GitHub</h2>
+      <div class="project-item">
+        <a href="https://github.com/razafimandimby-IT/security-hardening-toolkit">security-hardening-toolkit</a>
+        <div class="desc">Hardening et audit Windows/Linux (CIS benchmarks, reporting HTML)</div>
+      </div>
+      <div class="project-item">
+        <a href="https://github.com/razafimandimby-IT/ansible-infra-automation">ansible-infra-automation</a>
+        <div class="desc">Infrastructure as Code Ansible (AD, serveurs, monitoring, securite)</div>
+      </div>
+      <div class="project-item">
+        <a href="https://github.com/razafimandimby-IT/infra-monitoring">infra-monitoring</a>
+        <div class="desc">Stack Zabbix, Prometheus, Grafana, Wazuh — Docker Compose</div>
+      </div>
+      <div class="project-item">
+        <a href="https://github.com/razafimandimby-IT/powershell-toolkit">powershell-toolkit</a>
+        <div class="desc">Scripts PowerShell : AD, inventaire, reporting, standardisation</div>
+      </div>
+      <div class="project-item">
+        <a href="https://github.com/razafimandimby-IT/dotfiles-linux">dotfiles-linux</a>
+        <div class="desc">Configuration Linux, Bash, scripts d'administration</div>
+      </div>
+    </section>
+
+    <footer>
+      Denis Razafimandimby &mdash; CV mis à jour juillet 2026
+    </footer>
+  </div>
+</body>
+</html>
