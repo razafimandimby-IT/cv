@@ -1,30 +1,56 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Denis Razafimandimby — IT Manager</title>
+  <meta name="description" content="IT Manager specialise en infrastructure, cybersecurite, ITSM/ITIL, automatisation et ERP. 8 ans d'experience.">
+  <meta property="og:title" content="Denis Razafimandimby — IT Manager">
+  <meta property="og:description" content="Infrastructure & Cybersecurity & ITSM/ITIL & Automation & ERP">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://razafimandimby-it.github.io/cv/">
+  <link rel="canonical" href="https://razafimandimby-it.github.io/cv/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #f0f2f5;
-      --surface: #ffffff;
-      --sidebar: #0f172a;
-      --sidebar-hover: #1e293b;
       --accent: #2b9348;
-      --accent-light: #4ade80;
-      --accent-dim: rgba(43, 147, 72, 0.12);
-      --gold: #d4a853;
-      --text: #1a1a2e;
-      --text-light: #64748b;
-      --text-sidebar: rgba(255,255,255,0.7);
-      --border: #e2e8f0;
+      --accent-hover: #34d058;
+      --accent-dim: rgba(43,147,72,0.12);
       --radius: 12px;
-      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-      --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    [data-theme="dark"] {
+      --bg: #0a0a0f;
+      --bg-card: #12121a;
+      --bg-card-hover: #1a1a26;
+      --bg-elevated: #1e1e2a;
+      --border: rgba(255,255,255,0.06);
+      --border-hover: rgba(255,255,255,0.12);
+      --text: #f1f1f5;
+      --text-secondary: #8b8ba0;
+      --text-tertiary: #5c5c72;
+      --glow: rgba(43,147,72,0.08);
+    }
+    [data-theme="light"] {
+      --bg: #f8f9fb;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f4f5f8;
+      --bg-elevated: #eef0f4;
+      --border: rgba(0,0,0,0.06);
+      --border-hover: rgba(0,0,0,0.12);
+      --text: #0f1117;
+      --text-secondary: #5c5c72;
+      --text-tertiary: #9ca3af;
+      --glow: rgba(43,147,72,0.06);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    ::selection { background: var(--accent); color: white; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', -apple-system, sans-serif;
@@ -32,646 +58,642 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
     }
-    .page {
-      max-width: 1060px;
-      margin: 32px auto;
-      background: var(--surface);
-      border-radius: 16px;
-      box-shadow: var(--shadow-lg);
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      min-height: 1000px;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
 
-    /* ===== SIDEBAR ===== */
-    .sidebar {
-      background: var(--sidebar);
-      padding: 40px 28px;
-      color: rgba(255,255,255,0.85);
-      position: relative;
-      overflow: hidden;
-    }
-    .sidebar::before {
-      content: '';
-      position: absolute;
-      top: -60px;
-      right: -60px;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(43,147,72,0.15) 0%, transparent 70%);
-    }
-    .sidebar::after {
-      content: '';
-      position: absolute;
-      bottom: -80px;
-      left: -80px;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(212,168,83,0.08) 0%, transparent 70%);
+    /* Background */
+    .bg-gradient-animated {
+      position: fixed; inset: 0; z-index: -1;
+      background: radial-gradient(ellipse 80% 60% at 50% -20%, var(--glow) 0%, transparent 60%),
+                  radial-gradient(ellipse 50% 40% at 80% 80%, rgba(43,147,72,0.03) 0%, transparent 50%);
     }
 
-    .avatar {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 20px;
-      position: relative;
-      border: 3px solid rgba(255,255,255,0.15);
-      box-shadow: 0 4px 20px rgba(43,147,72,0.3);
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed; top: 20px; right: 20px; z-index: 100;
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-secondary); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all var(--transition); backdrop-filter: blur(12px);
     }
-    .sidebar h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 4px;
-      line-height: 1.2;
-    }
-    .sidebar .role {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--accent-light);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 24px;
-    }
+    .theme-toggle:hover { background: var(--bg-card-hover); color: var(--text); border-color: var(--border-hover); }
 
-    .sidebar-divider {
-      height: 1px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.15), transparent);
-      margin: 20px 0;
+    /* Nav */
+    nav {
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 99;
+      display: flex; gap: 2px; padding: 4px;
+      background: rgba(18,18,26,0.6); backdrop-filter: blur(20px); border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.06);
     }
-
-    .sidebar-section-title {
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 12px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 6px 0;
-      font-size: 0.82rem;
-      color: var(--text-sidebar);
-      transition: color 0.2s;
-    }
-    .contact-item:hover { color: white; }
-    .contact-item .icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background: rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      flex-shrink: 0;
-      color: var(--accent-light);
-    }
-    .contact-item a { color: inherit; text-decoration: none; }
-    .contact-item a:hover { color: var(--accent-light); }
-
-    .skill-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      padding: 4px 12px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.06);
-      color: var(--text-sidebar);
-      margin: 2px 3px;
-      transition: all 0.2s;
-      border: 1px solid transparent;
-    }
-    .skill-tag:hover {
-      background: rgba(255,255,255,0.1);
-      color: white;
-      border-color: rgba(255,255,255,0.1);
-    }
-    .skill-category {
-      margin-bottom: 16px;
-    }
-    .skill-category:last-child { margin-bottom: 0; }
-    .skill-category .label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.5);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 6px;
-    }
-
-    .lang-item {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.82rem;
-      padding: 4px 0;
-      color: var(--text-sidebar);
-    }
-    .lang-item .name { color: white; }
-    .lang-item .level { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
-
-    .interest-item {
-      display: inline-block;
-      font-size: 0.75rem;
-      padding: 4px 14px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.05);
-      color: var(--text-sidebar);
-      margin: 3px 4px;
-    }
-
-    /* ===== MAIN CONTENT ===== */
-    .main {
-      padding: 40px 44px;
-      position: relative;
-    }
-    .main::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--gold), var(--accent));
-    }
-
-    .main-header {
-      margin-bottom: 28px;
-    }
-    .main-header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 4px;
-      color: var(--text);
-    }
-    .main-header .title-line {
-      font-size: 0.95rem;
-      color: var(--text-light);
-      font-weight: 400;
-    }
-    .main-header .title-line strong {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .section {
-      margin-bottom: 28px;
-    }
-    .section:last-child { margin-bottom: 0; }
-    .section-title {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, var(--border), transparent);
-    }
-
-    .profile-text {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--text-light);
-    }
-
-    /* TIMELINE */
-    .timeline {
-      position: relative;
-      padding-left: 20px;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 4px;
-      bottom: 4px;
-      width: 2px;
-      background: var(--border);
-    }
-    .tl-item {
-      position: relative;
-      padding-left: 24px;
-      padding-bottom: 24px;
-    }
-    .tl-item:last-child { padding-bottom: 0; }
-    .tl-item::before {
-      content: '';
-      position: absolute;
-      left: -5px;
-      top: 6px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--surface);
-      box-shadow: 0 0 0 2px var(--accent-dim);
-    }
-    .tl-header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 4px 12px;
-      margin-bottom: 2px;
-    }
-    .tl-header h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .tl-header .date {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--text-light);
+    [data-theme="light"] nav { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.06); }
+    nav a {
+      padding: 8px 16px; border-radius: 10px; font-size: 0.78rem; font-weight: 500;
+      color: var(--text-tertiary); text-decoration: none; transition: all 0.2s;
       white-space: nowrap;
     }
-    .tl-company {
-      font-size: 0.82rem;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 4px;
+    nav a:hover, nav a.active { color: var(--text); background: rgba(255,255,255,0.06); }
+    [data-theme="light"] nav a:hover { background: rgba(0,0,0,0.04); }
+
+    /* Glass card */
+    .glass {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); transition: all var(--transition);
     }
-    .tl-role {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      font-weight: 500;
-      margin-bottom: 4px;
+    .glass:hover {
+      background: var(--bg-card-hover); border-color: var(--border-hover);
+      transform: translateY(-1px);
     }
-    .tl-desc {
-      font-size: 0.85rem;
-      color: var(--text-light);
-      line-height: 1.6;
+
+    /* Section */
+    section { padding: 80px 0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      display: inline-block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px;
     }
+    .section-title {
+      font-size: 1.8rem; font-weight: 700; letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 0.95rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7;
+    }
+
+    /* Hero */
+    .hero { min-height: 100vh; display: flex; align-items: center; position: relative; }
+    .hero-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #4ade80);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 700; color: white; margin-bottom: 24px;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+    .hero h1 {
+      font-size: 3.5rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .hero .typing-wrap {
+      font-size: 1.1rem; color: var(--text-secondary); min-height: 1.8em;
+      margin-bottom: 32px;
+    }
+    .hero .typing-wrap .cursor { display: inline-block; width: 2px; height: 1.2em; background: var(--accent); margin-left: 2px; vertical-align: text-bottom; animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 22px; border-radius: 10px; font-size: 0.88rem; font-weight: 500;
+      text-decoration: none; transition: all 0.2s; cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent); color: white; border: none;
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent; color: var(--text-secondary); border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: var(--bg-card); color: var(--text); border-color: var(--border-hover); }
+
+    /* Skills tags */
+    .skill-tag {
+      display: inline-block; font-size: 0.8rem; padding: 6px 16px; border-radius: 8px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-secondary); transition: all 0.2s; cursor: default;
+      margin: 3px;
+    }
+    .skill-tag:hover {
+      background: var(--accent-dim); border-color: var(--accent); color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .skill-cat-label {
+      font-size: 0.72rem; font-weight: 600; color: var(--text-tertiary);
+      text-transform: uppercase; letter-spacing: 0.06em; margin: 16px 0 8px;
+    }
+    .skill-cat-label:first-child { margin-top: 0; }
+
+    /* Timeline */
+    .tl { position: relative; }
+    .tl::before {
+      content: ''; position: absolute; left: 15px; top: 4px; bottom: 4px;
+      width: 1px; background: var(--border);
+    }
+    .tl-item {
+      position: relative; padding-left: 48px; padding-bottom: 32px;
+      opacity: 0; transform: translateY(20px);
+    }
+    .tl-item.visible { opacity: 1; transform: translateY(0); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    .tl-item::before {
+      content: ''; position: absolute; left: 10px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px var(--accent-dim);
+    }
+    .tl-header { margin-bottom: 4px; }
+    .tl-header h3 { font-size: 1.05rem; font-weight: 600; }
+    .tl-company { font-size: 0.88rem; color: var(--accent); font-weight: 500; }
+    .tl-date { font-size: 0.78rem; color: var(--text-tertiary); margin-bottom: 6px; }
+    .tl-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
     .tl-desc ul { list-style: none; margin-top: 4px; }
-    .tl-desc ul li {
-      padding-left: 14px;
-      position: relative;
-      margin-bottom: 2px;
-    }
-    .tl-desc ul li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 9px;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.4;
-    }
+    .tl-desc ul li { padding-left: 16px; position: relative; margin-bottom: 2px; }
+    .tl-desc ul li::before { content: ''; position: absolute; left: 2px; top: 10px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5; }
 
-    /* ERP modules */
-    .erp-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 8px;
-      margin: 12px 0;
-    }
+    /* ERP grid */
+    .erp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin: 16px 0; }
     .erp-card {
-      background: var(--bg);
-      border-radius: 8px;
-      padding: 10px 14px;
-      border-left: 3px solid var(--accent);
-      transition: transform 0.15s, box-shadow 0.15s;
+      padding: 12px 16px; border-radius: 10px; border-left: 3px solid var(--accent);
+      background: var(--bg-card); border: 1px solid var(--border);
+      transition: all 0.2s;
     }
-    .erp-card:hover { transform: translateX(2px); }
-    .erp-card h4 {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 2px;
-    }
-    .erp-card p {
-      font-size: 0.72rem;
-      color: var(--text-light);
-      line-height: 1.4;
-    }
-
-    .info-row {
-      display: flex;
-      gap: 8px;
-      font-size: 0.82rem;
-      color: var(--text-light);
-      padding: 4px 0;
-    }
-    .info-row strong {
-      color: var(--text);
-      font-weight: 600;
-      min-width: 100px;
-    }
+    .erp-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .erp-card h4 { font-size: 0.82rem; font-weight: 600; margin-bottom: 2px; }
+    .erp-card p { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; }
 
     /* Projects */
     .proj-item {
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 12px;
+      padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border);
+      transition: all 0.2s; margin-bottom: 8px;
+      opacity: 0; transform: translateY(12px);
     }
-    .proj-item:last-child { border-bottom: none; }
-    .proj-item a {
-      font-weight: 600;
-      font-size: 0.85rem;
-      color: var(--text);
-      text-decoration: none;
-    }
+    .proj-item.visible { opacity: 1; transform: translateY(0); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .proj-item:hover { background: var(--bg-card); border-color: var(--border-hover); transform: translateY(-1px); }
+    .proj-item a { font-weight: 600; font-size: 0.9rem; color: var(--text); text-decoration: none; }
     .proj-item a:hover { color: var(--accent); }
-    .proj-item .proj-desc {
-      font-size: 0.8rem;
-      color: var(--text-light);
-      width: 100%;
-    }
+    .proj-desc { font-size: 0.82rem; color: var(--text-secondary); margin-top: 2px; }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 820px) {
-      .page { grid-template-columns: 1fr; margin: 16px; border-radius: 12px; }
-      .sidebar { padding: 28px 24px; }
-      .main { padding: 28px 24px; }
-      .erp-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    /* Certifications / Langues */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+    .cert-item {
+      padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border);
+      transition: all 0.2s;
     }
-    @media (max-width: 480px) {
-      .page { margin: 8px; border-radius: 8px; }
-      .main-header h1 { font-size: 1.7rem; }
+    .cert-item:hover { border-color: var(--border-hover); background: var(--bg-card); }
+    .cert-item h4 { font-size: 0.9rem; font-weight: 600; }
+    .cert-item p { font-size: 0.8rem; color: var(--text-secondary); }
+
+    .lang-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .lang-item:last-child { border-bottom: none; }
+    .lang-item .name { font-weight: 500; font-size: 0.9rem; }
+    .lang-item .level { font-size: 0.82rem; color: var(--text-secondary); }
+    .lang-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 4px; }
+    .lang-dot.full { background: var(--accent); }
+    .lang-dot.half { background: var(--accent); opacity: 0.4; }
+    .lang-dot.empty { background: var(--border); }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .contact-card {
+      padding: 16px; border-radius: 10px; border: 1px solid var(--border);
+      text-align: center; transition: all 0.2s; text-decoration: none; display: block;
+    }
+    .contact-card:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
+    .contact-card .icon { font-size: 1.3rem; margin-bottom: 6px; display: block; }
+    .contact-card .label { font-size: 0.78rem; color: var(--text-secondary); }
+    .contact-card .value { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-top: 2px; }
+
+    /* Footer */
+    footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 40px; }
+    footer p { font-size: 0.8rem; color: var(--text-tertiary); }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2.2rem; }
+      section { padding: 48px 0; }
+      .section-title { font-size: 1.4rem; }
+      nav { display: none; }
+      .theme-toggle { top: 12px; right: 12px; }
       .erp-grid { grid-template-columns: 1fr; }
-      .tl-header { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 768px) and (min-width: 641px) {
+      .hero h1 { font-size: 2.8rem; }
     }
 
-    /* ===== PRINT ===== */
-    @media print {
-      body { background: white; }
-      .page { margin: 0; border-radius: 0; box-shadow: none; grid-template-columns: 280px 1fr; }
-      .sidebar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .erp-card:hover { transform: none; }
+    /* Loading */
+    .loader {
+      position: fixed; inset: 0; z-index: 9999; background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.6s;
     }
+    .loader.hidden { opacity: 0; pointer-events: none; }
+    .loader-bar {
+      width: 120px; height: 3px; border-radius: 4px; background: var(--border); overflow: hidden;
+    }
+    .loader-bar-inner {
+      width: 0%; height: 100%; border-radius: 4px;
+      background: linear-gradient(90deg, var(--accent), #4ade80);
+      animation: load 1.2s ease-in-out forwards;
+    }
+    @keyframes load { to { width: 100%; } }
   </style>
 </head>
 <body>
-  <div class="page">
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="avatar">DR</div>
-      <h1>Denis<br>Razafimandimby</h1>
-      <div class="role">IT Manager</div>
 
-      <div class="sidebar-divider"></div>
+<div class="loader" id="loader" role="status" aria-label="Chargement">
+  <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+</div>
 
-      <!-- Contact -->
-      <div class="sidebar-section-title">Contact</div>
-      <div class="contact-item">
-        <span class="icon">&#9993;</span>
-        <a href="mailto:l.denis.razafimandimby@gmail.com">l.denis.r@gmail.com</a>
+<div class="bg-gradient-animated"></div>
+
+<!-- Theme toggle -->
+<button class="theme-toggle" id="themeToggle" aria-label="Basculer le mode sombre/clair">
+  <svg id="moonIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg id="sunIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<!-- Nav -->
+<nav role="navigation" aria-label="Navigation principale">
+  <a href="#hero">Accueil</a>
+  <a href="#about">Profil</a>
+  <a href="#skills">Competences</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projets</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="container" style="width:100%">
+    <div id="heroContent">
+      <div class="hero-avatar" aria-hidden="true">DR</div>
+      <h1>Denis Razafimandimby</h1>
+      <div class="typing-wrap">
+        <span id="typingText"></span><span class="cursor" aria-hidden="true"></span>
       </div>
-      <div class="contact-item">
-        <span class="icon">&#128279;</span>
-        <a href="https://wellfound.com/u/denis-razafimandimby" target="_blank">Wellfound</a>
+      <div class="btn-group">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Me contacter
+        </a>
+        <a href="https://www.linkedin.com/in/louis-denis-razafimandimby-488610227/" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/razafimandimby-IT" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
       </div>
-      <div class="contact-item">
-        <span class="icon">&#128100;</span>
-        <a href="https://www.linkedin.com/in/louis-denis-razafimandimby-488610227/" target="_blank">LinkedIn</a>
-      </div>
-      <div class="contact-item">
-        <span class="icon">&#128187;</span>
-        <a href="https://github.com/razafimandimby-IT" target="_blank">GitHub</a>
-      </div>
-      <div class="contact-item">
-        <span class="icon">&#127968;</span>
-        <span>Antananarivo, Madagascar</span>
-      </div>
-
-      <div class="sidebar-divider"></div>
-
-      <!-- Skills -->
-      <div class="sidebar-section-title">Expertise</div>
-      <div class="skill-category">
-        <div class="label">Management IT</div>
-        <span class="skill-tag">ITSM</span>
-        <span class="skill-tag">ITIL</span>
-        <span class="skill-tag">Gestion projets</span>
-        <span class="skill-tag">Management equipes</span>
-        <span class="skill-tag">Pilotage prestataires</span>
-      </div>
-      <div class="skill-category">
-        <div class="label">Infrastructure</div>
-        <span class="skill-tag">Windows Server</span>
-        <span class="skill-tag">Linux</span>
-        <span class="skill-tag">Active Directory</span>
-        <span class="skill-tag">Hyper-V</span>
-        <span class="skill-tag">Proxmox</span>
-        <span class="skill-tag">Docker</span>
-      </div>
-      <div class="skill-category">
-        <div class="label">Cloud & Securite</div>
-        <span class="skill-tag">Microsoft 365</span>
-        <span class="skill-tag">Azure</span>
-        <span class="skill-tag">BitLocker</span>
-        <span class="skill-tag">MFA</span>
-        <span class="skill-tag">Wazuh</span>
-        <span class="skill-tag">Zabbix</span>
-        <span class="skill-tag">Grafana</span>
-      </div>
-      <div class="skill-category">
-        <div class="label">Developpement</div>
-        <span class="skill-tag">Laravel</span>
-        <span class="skill-tag">PHP</span>
-        <span class="skill-tag">MySQL</span>
-        <span class="skill-tag">API REST</span>
-        <span class="skill-tag">Git</span>
-      </div>
-      <div class="skill-category">
-        <div class="label">Automatisation</div>
-        <span class="skill-tag">PowerShell</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Bash</span>
-        <span class="skill-tag">Ansible</span>
-      </div>
-
-      <div class="sidebar-divider"></div>
-
-      <!-- Languages -->
-      <div class="sidebar-section-title">Langues</div>
-      <div class="lang-item"><span class="name">Francais</span><span class="level">Courant</span></div>
-      <div class="lang-item"><span class="name">Anglais</span><span class="level">Professionnel</span></div>
-      <div class="lang-item"><span class="name">Malgache</span><span class="level">Langue maternelle</span></div>
-
-      <div class="sidebar-divider"></div>
-
-      <!-- Certifications -->
-      <div class="sidebar-section-title">Certifications</div>
-      <div class="contact-item">
-        <span class="icon">&#9679;</span>
-        <span style="font-size:0.8rem;">ServiceNow ITSM <span style="color:rgba(255,255,255,0.4);">(en cours)</span></span>
-      </div>
-      <div class="contact-item">
-        <span class="icon">&#9679;</span>
-        <span style="font-size:0.8rem;">ITIL 4 Foundation <span style="color:rgba(255,255,255,0.4);">(preparation)</span></span>
-      </div>
-      <div class="contact-item">
-        <span class="icon">&#9679;</span>
-        <span style="font-size:0.8rem;">Azure AZ-900 <span style="color:rgba(255,255,255,0.4);">(preparation)</span></span>
-      </div>
-    </aside>
-
-    <!-- MAIN -->
-    <main class="main">
-      <div class="main-header">
-        <h1>Denis Razafimandimby</h1>
-        <div class="title-line">
-          IT Manager &middot; <strong>Infrastructure</strong> &middot; <strong>Cybersecurity</strong> &middot; <strong>ITSM/ITIL</strong> &middot; <strong>Automation</strong> &middot; <strong>ERP</strong>
-        </div>
-      </div>
-
-      <!-- Profile -->
-      <section class="section">
-        <div class="section-title">Profil</div>
-        <p class="profile-text">
-          IT Manager avec une double competence alliant gouvernance des systemes d'information et developpement d'applications metier.
-          <strong>8 ans d'experience</strong> a structurer des directions IT, deployer des infrastructures securisees et concevoir des ERP
-          complets qui digitalisent les processus d'entreprise. Actuellement en charge de l'infrastructure, de la cybersecurite
-          <strong>et</strong> du pilotage de l'ERP interne chez Dessineo.
-        </p>
-      </section>
-
-      <!-- ERP Project -->
-      <section class="section">
-        <div class="section-title">ERP interne multi-domaines</div>
-        <p class="profile-text" style="margin-bottom:10px;font-size:0.85rem;">
-          Pilotage fonctionnel et developpement d'un ERP couvrant 8 domaines metiers. Architecture Laravel / API REST,
-          base de donnees MySQL, deploiement Docker. Securite : RBAC, audit trail, sauvegardes automatisees.
-        </p>
-        <div class="erp-grid">
-          <div class="erp-card"><h4>Ressources Humaines</h4><p>Employes, contrats, conges, pointage biometrique, heures, export paie</p></div>
-          <div class="erp-card"><h4>Gestion documentaire</h4><p>Archivage, GED, versionning, circuit de validation</p></div>
-          <div class="erp-card"><h4>Tickets IT</h4><p>Helpdesk, incidents, demandes, suivi SLA, base de connaissances</p></div>
-          <div class="erp-card"><h4>Parc informatique</h4><p>Inventaire, licences, garanties, affectation, historique</p></div>
-          <div class="erp-card"><h4>Stocks</h4><p>Entrees/sorties, inventaire, mouvements, alertes de stock</p></div>
-          <div class="erp-card"><h4>Logistique</h4><p>Achats, fournisseurs, receptions, consommables, suivi equipements</p></div>
-          <div class="erp-card"><h4>Signature electronique</h4><p>Validations, circuit d'approbation, historique, tracabilite</p></div>
-          <div class="erp-card"><h4>Planning & Reporting</h4><p>Equipes, ressources, indicateurs direction/RH/IT/logistique</p></div>
-        </div>
-        <div class="info-row" style="padding-top:4px;"><strong>Stack :</strong> Laravel, PHP, MySQL/MariaDB, API REST, Docker, Git</div>
-      </section>
-
-      <!-- Experience -->
-      <section class="section">
-        <div class="section-title">Experience</div>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-header">
-              <h3>IT Manager & Logistique</h3>
-              <span class="date">2025 &mdash; Present</span>
-            </div>
-            <div class="tl-company">Dessineo &mdash; Antananarivo</div>
-            <div class="tl-desc">
-              Gouvernance SI, infrastructure Windows/Linux/Active Directory, cybersecurite (BitLocker, LAPS, MFA),
-              supervision Zabbix/Grafana/Prometheus/Wazuh. Pilotage et developpement de l'ERP interne. Management equipe.
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-header">
-              <h3>Datajet</h3>
-              <span class="date">2018 &mdash; 2025</span>
-            </div>
-            <div class="tl-company">Antananarivo &mdash; Progression interne</div>
-            <div class="tl-role">Consultant IT Support Automation Lead (2023-2025)</div>
-            <div class="tl-desc">
-              <ul>
-                <li>Encadrement equipe IT et indicateurs SLA (+40% visibilite via Grafana/Prometheus)</li>
-                <li>Automatisation PowerShell/Python (MTTR -35%)</li>
-                <li>Migration Exchange On-Premise vers Exchange Online, Teams, SharePoint</li>
-                <li>Taux de conformite SLA superieur a 95%</li>
-              </ul>
-            </div>
-            <div class="tl-role" style="margin-top:8px;">Team Lead Support Technique (2022-2023)</div>
-            <div class="tl-desc">
-              Supervision equipements, Exchange On-Premise, sauvegarde hybride Veeam + AWS S3 (-40% downtime, -30% couts).
-            </div>
-            <div class="tl-role" style="margin-top:8px;">Technicien Support &amp; Maintenance (2018-2022)</div>
-            <div class="tl-desc">
-              Support N1/N2, OTRS, maintenance parc, supervision Nagios, inventaire OCS Inventory.
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-header">
-              <h3>Experiences anterieures</h3>
-            </div>
-            <div class="tl-desc">
-              <ul>
-                <li>Gerant Point Cybercafe (50+ utilisateurs) &mdash; Antananarivo</li>
-                <li>Consultant gestion de stocks &mdash; DHL International Madagascar (application PHP scan codes-barres)</li>
-                <li>Stagiaire support technique &mdash; Ministere des Finances</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Formation -->
-      <section class="section">
-        <div class="section-title">Formation</div>
-        <div class="tl-item" style="padding-bottom:8px;">
-          <div class="tl-header">
-            <h3>Licence Informatique de Gestion</h3>
-            <span class="date">2009 &mdash; 2012</span>
-          </div>
-          <div class="tl-company">ISPM, Antananarivo</div>
-          <div class="tl-desc">Genie logiciel &amp; Intelligence Artificielle</div>
-        </div>
-      </section>
-
-      <!-- GitHub Projects -->
-      <section class="section">
-        <div class="section-title">Projets GitHub</div>
-        <div class="proj-item">
-          <a href="https://github.com/razafimandimby-IT/security-hardening-toolkit">security-hardening-toolkit</a>
-          <div class="proj-desc">Hardening et audit securite Windows/Linux (CIS benchmarks, reporting HTML)</div>
-        </div>
-        <div class="proj-item">
-          <a href="https://github.com/razafimandimby-IT/ansible-infra-automation">ansible-infra-automation</a>
-          <div class="proj-desc">Infrastructure as Code Ansible (AD, serveurs, monitoring, securite) &mdash; 46 fichiers</div>
-        </div>
-        <div class="proj-item">
-          <a href="https://github.com/razafimandimby-IT/infra-monitoring">infra-monitoring</a>
-          <div class="proj-desc">Stack Zabbix, Prometheus, Grafana, Wazuh &mdash; Docker Compose</div>
-        </div>
-        <div class="proj-item">
-          <a href="https://github.com/razafimandimby-IT/powershell-toolkit">powershell-toolkit</a>
-          <div class="proj-desc">Scripts PowerShell : AD, inventaire, reporting, standardisation Windows</div>
-        </div>
-        <div class="proj-item">
-          <a href="https://github.com/razafimandimby-IT/dotfiles-linux">dotfiles-linux</a>
-          <div class="proj-desc">Configuration Linux, Bash, scripts d'administration systeme</div>
-        </div>
-      </section>
-
-      <footer style="text-align:center;padding:16px 0 0;font-size:0.7rem;color:var(--text-light);border-top:1px solid var(--border);margin-top:8px;">
-        Denis Razafimandimby &mdash; CV mis a jour juillet 2026
-      </footer>
-    </main>
+    </div>
   </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <span class="section-label">Profil</span>
+    <h2 class="section-title">IT Manager & Developeur ERP</h2>
+    <p class="section-sub" style="max-width:700px">
+      IT Manager avec une double competence : gouvernance des systemes d'information et developpement d'applications metier.
+      8 ans d'experience a structurer des directions IT, deployer des infrastructures securisees et concevoir des ERP
+      complets. Actuellement en charge de l'infrastructure, de la cybersecurite et du pilotage de l'ERP interne chez Dessineo.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <span class="section-label">Expertise</span>
+    <h2 class="section-title">Competences</h2>
+    <p class="section-sub">Domaines de competence couvrant le management IT, l'infrastructure, la securite et le developpement.</p>
+    <div style="margin-top:28px">
+      <div class="skill-cat-label">Management IT</div>
+      <div><span class="skill-tag">ITSM</span><span class="skill-tag">ITIL</span><span class="skill-tag">Gestion de projets</span><span class="skill-tag">Management d'equipes</span><span class="skill-tag">Pilotage prestataires</span><span class="skill-tag">Conduite du changement</span></div>
+      <div class="skill-cat-label">Infrastructure & Systemes</div>
+      <div><span class="skill-tag">Windows Server</span><span class="skill-tag">Linux (Debian/Ubuntu)</span><span class="skill-tag">Active Directory</span><span class="skill-tag">Hyper-V</span><span class="skill-tag">Proxmox VE</span><span class="skill-tag">Docker</span></div>
+      <div class="skill-cat-label">Cloud & Securite</div>
+      <div><span class="skill-tag">Microsoft 365</span><span class="skill-tag">Exchange Online</span><span class="skill-tag">SharePoint</span><span class="skill-tag">Google Workspace</span><span class="skill-tag">BitLocker</span><span class="skill-tag">LAPS</span><span class="skill-tag">MFA</span><span class="skill-tag">Wazuh</span><span class="skill-tag">pfSense</span></div>
+      <div class="skill-cat-label">Supervision</div>
+      <div><span class="skill-tag">Zabbix</span><span class="skill-tag">Grafana</span><span class="skill-tag">Prometheus</span><span class="skill-tag">Nagios</span></div>
+      <div class="skill-cat-label">Developpement & Automation</div>
+      <div><span class="skill-tag">Laravel</span><span class="skill-tag">PHP</span><span class="skill-tag">MySQL/MariaDB</span><span class="skill-tag">API REST</span><span class="skill-tag">PowerShell</span><span class="skill-tag">Python</span><span class="skill-tag">Bash</span><span class="skill-tag">Git</span><span class="skill-tag">Ansible</span></div>
+      <div class="skill-cat-label">ITSM & ERP</div>
+      <div><span class="skill-tag">GLPI</span><span class="skill-tag">OCS Inventory</span><span class="skill-tag">Jira</span><span class="skill-tag">ServiceNow</span><span class="skill-tag">EspoCRM</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ERP PROJECT -->
+<section id="erp">
+  <div class="container">
+    <span class="section-label">Projet phare</span>
+    <h2 class="section-title">ERP interne multi-domaines</h2>
+    <p class="section-sub" style="margin-bottom:16px">
+      Pilotage fonctionnel et developpement d'un ERP couvrant 8 domaines. Architecture Laravel, API REST, MySQL, Docker.
+      Securite integree : RBAC, audit trail, sauvegardes automatisees.
+    </p>
+    <div class="erp-grid">
+      <div class="erp-card"><h4>Ressources Humaines</h4><p>Employes, contrats, conges, pointage biometrique, heures, export paie</p></div>
+      <div class="erp-card"><h4>Gestion documentaire</h4><p>Archivage, GED, versionning, circuit de validation</p></div>
+      <div class="erp-card"><h4>Tickets IT</h4><p>Helpdesk, incidents, demandes, suivi SLA, base de connaissances</p></div>
+      <div class="erp-card"><h4>Parc informatique</h4><p>Inventaire, licences, garanties, affectation, historique</p></div>
+      <div class="erp-card"><h4>Stocks</h4><p>Entrees/sorties, inventaire, mouvements, alertes</p></div>
+      <div class="erp-card"><h4>Logistique & Achats</h4><p>Fournisseurs, receptions, consommables, suivi equipements</p></div>
+      <div class="erp-card"><h4>Signature electronique</h4><p>Validations, circuit d'approbation, historique</p></div>
+      <div class="erp-card"><h4>Planning & Reporting</h4><p>Equipes, ressources, indicateurs direction/RH/IT/logistique</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <span class="section-label">Parcours</span>
+    <h2 class="section-title">Experience professionnelle</h2>
+    <p class="section-sub">8 annees d'experience en evolution continue, du support technique a la direction IT.</p>
+    <div class="tl" style="margin-top:32px">
+      <div class="tl-item">
+        <div class="tl-header"><h3>IT Manager & Logistique</h3></div>
+        <div class="tl-company">Dessineo — Antananarivo</div>
+        <div class="tl-date">Aout 2025 — Aujourd'hui</div>
+        <div class="tl-desc">
+          Gouvernance SI, infrastructure (Windows/Linux, AD, Hyper-V), cybersecurite (BitLocker, LAPS, MFA),
+          supervision Zabbix/Grafana/Prometheus/Wazuh. Pilotage et developpement ERP interne. Management equipe technique.
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-header"><h3>Datajet</h3></div>
+        <div class="tl-company">Antananarivo</div>
+        <div class="tl-date">Juin 2018 — Aout 2025</div>
+        <div class="tl-desc">
+          <strong>Consultant IT Support Automation Lead (2023-2025)</strong>
+          <ul>
+            <li>Encadrement equipe IT, indicateurs SLA (+40% visibilite via Grafana/Prometheus)</li>
+            <li>Automatisation PowerShell/Python (MTTR -35%)</li>
+            <li>Migration Exchange On-Premise vers Exchange Online, Teams, SharePoint</li>
+            <li>Taux de conformite SLA > 95%</li>
+          </ul>
+          <strong style="display:block;margin-top:8px;">Team Lead Support Technique (2022-2023)</strong>
+          Supervision equipements, Exchange On-Premise, sauvegarde hybride Veeam + AWS S3 (-40% downtime, -30% couts).
+          <strong style="display:block;margin-top:8px;">Technicien Support & Maintenance (2018-2022)</strong>
+          Support N1/N2, OTRS, maintenance parc, supervision Nagios, inventaire OCS Inventory.
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-header"><h3>Experiences anterieures</h3></div>
+        <div class="tl-desc">
+          <ul>
+            <li>Gerant Point Cybercafe (50+ utilisateurs) — Antananarivo</li>
+            <li>Consultant gestion de stocks — DHL International Madagascar (app PHP scan codes-barres)</li>
+            <li>Stagiaire support technique — Ministere des Finances</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <span class="section-label">Realisations</span>
+    <h2 class="section-title">Projets GitHub</h2>
+    <p class="section-sub">Depots open source illustrant mon travail en automatisation, securite et infrastructure.</p>
+    <div style="margin-top:24px">
+      <div class="proj-item">
+        <a href="https://github.com/razafimandimby-IT/security-hardening-toolkit" target="_blank" rel="noopener">security-hardening-toolkit  &nearr;</a>
+        <div class="proj-desc">Hardening et audit securite Windows/Linux (CIS benchmarks, reporting HTML, remediation automatique)</div>
+      </div>
+      <div class="proj-item">
+        <a href="https://github.com/razafimandimby-IT/ansible-infra-automation" target="_blank" rel="noopener">ansible-infra-automation  &nearr;</a>
+        <div class="proj-desc">Infrastructure as Code Ansible (AD, serveurs web, bases de donnees, monitoring, securite) — 46 fichiers</div>
+      </div>
+      <div class="proj-item">
+        <a href="https://github.com/razafimandimby-IT/infra-monitoring" target="_blank" rel="noopener">infra-monitoring  &nearr;</a>
+        <div class="proj-desc">Stack complete Zabbix, Prometheus, Grafana, Wazuh — deploiement Docker Compose</div>
+      </div>
+      <div class="proj-item">
+        <a href="https://github.com/razafimandimby-IT/powershell-toolkit" target="_blank" rel="noopener">powershell-toolkit  &nearr;</a>
+        <div class="proj-desc">Scripts PowerShell : inventaire AD, reporting systeme, standardisation environnement Windows</div>
+      </div>
+      <div class="proj-item">
+        <a href="https://github.com/razafimandimby-IT/dotfiles-linux" target="_blank" rel="noopener">dotfiles-linux  &nearr;</a>
+        <div class="proj-desc">Configuration Linux, alias Bash, scripts d'administration systeme et backup</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS & LANGUES -->
+<section id="certifications">
+  <div class="container">
+    <span class="section-label">Certifications</span>
+    <h2 class="section-title">Formation continue</h2>
+    <div class="cert-grid" style="margin-top:16px">
+      <div class="cert-item"><h4>ServiceNow ITSM & Flow Designer</h4><p>En cours</p></div>
+      <div class="cert-item"><h4>ITIL 4 Foundation</h4><p>Preparation</p></div>
+      <div class="cert-item"><h4>Azure Fundamentals AZ-900</h4><p>Preparation</p></div>
+    </div>
+    <div style="max-width:400px;margin-top:24px">
+      <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px">Langues</h3>
+      <div class="lang-item"><span class="name">Francais</span><span class="level"><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span> Courant</span></div>
+      <div class="lang-item"><span class="name">Anglais</span><span class="level"><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot half"></span><span class="lang-dot empty"></span> Professionnel</span></div>
+      <div class="lang-item"><span class="name">Malgache</span><span class="level"><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span> Langue maternelle</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <span class="section-label">Contact</span>
+    <h2 class="section-title">Echangeons</h2>
+    <p class="section-sub">Disponible pour discuter d'opportunites en France ou en remote.</p>
+    <div class="contact-grid" style="margin-top:24px">
+      <a href="mailto:l.denis.razafimandimby@gmail.com" class="contact-card">
+        <span class="icon">&#9993;</span>
+        <div class="label">Email</div>
+        <div class="value" style="font-size:0.78rem">l.denis.razafimandimby@gmail.com</div>
+      </a>
+      <a href="https://wellfound.com/u/denis-razafimandimby" target="_blank" rel="noopener" class="contact-card">
+        <span class="icon">&#127760;</span>
+        <div class="label">Wellfound (AngelList)</div>
+        <div class="value">Profil</div>
+      </a>
+      <a href="https://www.linkedin.com/in/louis-denis-razafimandimby-488610227/" target="_blank" rel="noopener" class="contact-card">
+        <span class="icon">&#128100;</span>
+        <div class="label">LinkedIn</div>
+        <div class="value">Profil</div>
+      </a>
+      <a href="https://github.com/razafimandimby-IT" target="_blank" rel="noopener" class="contact-card">
+        <span class="icon">&#128187;</span>
+        <div class="label">GitHub</div>
+        <div class="value">razafimandimby-IT</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; Denis Razafimandimby &mdash; CV mis a jour juillet 2026</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // Loader
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var l = document.getElementById('loader');
+      if (l) l.classList.add('hidden');
+    }, 800);
+  });
+
+  // Theme
+  var html = document.documentElement;
+  var moon = document.getElementById('moonIcon');
+  var sun = document.getElementById('sunIcon');
+  var saved = localStorage.getItem('theme');
+  if (saved) html.setAttribute('data-theme', saved);
+
+  function updateIcons() {
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    if (moon) moon.style.display = isDark ? '' : 'none';
+    if (sun) sun.style.display = isDark ? 'none' : '';
+  }
+  updateIcons();
+
+  var themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function() {
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcons();
+    });
+  }
+
+  // Typing
+  var texts = [
+    'IT Manager &middot; Infrastructure &amp; Cybersecurity',
+    'ITSM / ITIL &middot; Automation &amp; ERP',
+    '8+ ans d&rsquo;experience en direction IT',
+    'Pilotage ERP &middot; Supervision &middot; Hardening'
+  ];
+  var el = document.getElementById('typingText');
+  var textIndex = 0, charIndex = 0, isDeleting = false;
+
+  function type() {
+    if (!el) return;
+    var current = texts[textIndex];
+    if (!isDeleting) {
+      el.innerHTML = current.substring(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === current.length) {
+        isDeleting = true;
+        setTimeout(type, 2000);
+        return;
+      }
+      setTimeout(type, 40 + Math.random() * 30);
+    } else {
+      el.innerHTML = current.substring(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+        setTimeout(type, 300);
+        return;
+      }
+      setTimeout(type, 20);
+    }
+  }
+  setTimeout(type, 1200);
+
+  // Lenis smooth scroll
+  try {
+    var lenis = new Lenis({ duration: 1.2, easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); } });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  } catch(e) {}
+
+  // GSAP ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero entrance
+  var heroContent = document.getElementById('heroContent');
+  if (heroContent) {
+    gsap.from(heroContent.children, {
+      y: 30, opacity: 0, duration: 0.8, stagger: 0.15,
+      ease: 'power3.out', delay: 0.3
+    });
+  }
+
+  // Section titles animation
+  gsap.utils.toArray('.section-title, .section-sub, .section-label').forEach(function(el) {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
+      y: 20, opacity: 0, duration: 0.6, ease: 'power2.out'
+    });
+  });
+
+  // Timeline items
+  gsap.utils.toArray('.tl-item').forEach(function(el, i) {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+      y: 24, opacity: 0, duration: 0.5, delay: i * 0.1, ease: 'power2.out'
+    });
+  });
+
+  // Project items
+  gsap.utils.toArray('.proj-item').forEach(function(el, i) {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
+      y: 16, opacity: 0, duration: 0.4, delay: i * 0.08, ease: 'power2.out'
+    });
+  });
+
+  // Skills stagger
+  gsap.utils.toArray('.skill-cat-label').forEach(function(el, i) {
+    gsap.from(el.nextElementSibling.children, {
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
+      scale: 0.9, opacity: 0, duration: 0.3, stagger: 0.03, ease: 'back.out(1.4)'
+    });
+  });
+
+  // ERP cards stagger
+  gsap.from('.erp-card', {
+    scrollTrigger: { trigger: '.erp-grid', start: 'top 88%', toggleActions: 'play none none none' },
+    y: 12, opacity: 0, duration: 0.3, stagger: 0.04, ease: 'power2.out'
+  });
+
+  // Cert cards
+  gsap.from('.cert-item', {
+    scrollTrigger: { trigger: '.cert-grid', start: 'top 88%', toggleActions: 'play none none none' },
+    y: 12, opacity: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out'
+  });
+
+  // Contact cards
+  gsap.from('.contact-card', {
+    scrollTrigger: { trigger: '.contact-grid', start: 'top 88%', toggleActions: 'play none none none' },
+    y: 12, opacity: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out'
+  });
+
+  // Nav scroll spy
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('nav a');
+  function updateNav() {
+    var scrollY = window.scrollY + 100;
+    var current = '';
+    sections.forEach(function(s) {
+      if (s.offsetTop <= scrollY && s.offsetTop + s.offsetHeight > scrollY) {
+        current = s.getAttribute('id');
+      }
+    });
+    navLinks.forEach(function(a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateNav);
+  updateNav();
+
+})();
+</script>
 </body>
 </html>
