@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Denis Razafimandimby — IT Manager</title>
-  <meta name="description" content="IT Manager specialise en infrastructure, cybersecurite, ITSM/ITIL, automatisation et ERP. 8 ans d'experience.">
+  <title>Denis Razafimandimby — IT Manager | Infrastructure & Cybersecurity | ITSM/ITIL | Automation & ERP</title>
+  <meta name="description" content="IT Manager specialise en infrastructure, cybersecurite, ITSM/ITIL, automatisation et ERP. 8 ans d'experience en direction IT, developpement ERP, et gouvernance SI.">
   <meta property="og:title" content="Denis Razafimandimby — IT Manager">
   <meta property="og:description" content="Infrastructure & Cybersecurity & ITSM/ITIL & Automation & ERP">
   <meta property="og:type" content="website">
@@ -21,6 +21,7 @@
       --accent: #2b9348;
       --accent-hover: #34d058;
       --accent-dim: rgba(43,147,72,0.12);
+      --accent-glow: rgba(43,147,72,0.25);
       --radius: 12px;
       --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -99,50 +100,55 @@
     nav a:hover, nav a.active { color: var(--text); background: rgba(255,255,255,0.06); }
     [data-theme="light"] nav a:hover { background: rgba(0,0,0,0.04); }
 
-    /* Glass card */
-    .glass {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); transition: all var(--transition);
-    }
-    .glass:hover {
-      background: var(--bg-card-hover); border-color: var(--border-hover);
-      transform: translateY(-1px);
-    }
-
     /* Section */
-    section { padding: 80px 0; }
+    section { padding: 72px 0; }
     .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
     .section-label {
       display: inline-block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px;
+      letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px;
     }
     .section-title {
-      font-size: 1.8rem; font-weight: 700; letter-spacing: -0.03em;
-      margin-bottom: 12px;
+      font-size: 1.75rem; font-weight: 700; letter-spacing: -0.03em;
+      margin-bottom: 8px;
     }
     .section-sub {
-      font-size: 0.95rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7;
+      font-size: 0.95rem; color: var(--text-secondary); max-width: 680px; line-height: 1.7;
     }
 
-    /* Hero */
+    /* ============ HERO ============ */
     .hero { min-height: 100vh; display: flex; align-items: center; position: relative; }
     .hero-avatar {
-      width: 80px; height: 80px; border-radius: 50%;
+      width: 72px; height: 72px; border-radius: 50%;
       background: linear-gradient(135deg, var(--accent), #4ade80);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; font-weight: 700; color: white; margin-bottom: 24px;
+      font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 20px;
       border: 2px solid rgba(255,255,255,0.1);
     }
     .hero h1 {
-      font-size: 3.5rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
-      margin-bottom: 12px;
+      font-size: 3.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+      margin-bottom: 6px;
     }
     .hero .typing-wrap {
-      font-size: 1.1rem; color: var(--text-secondary); min-height: 1.8em;
-      margin-bottom: 32px;
+      font-size: 1.05rem; color: var(--text-secondary); min-height: 1.6em;
+      margin-bottom: 18px;
     }
     .hero .typing-wrap .cursor { display: inline-block; width: 2px; height: 1.2em; background: var(--accent); margin-left: 2px; vertical-align: text-bottom; animation: blink 1s step-end infinite; }
     @keyframes blink { 50% { opacity: 0; } }
+    .hero-summary {
+      font-size: 0.92rem; color: var(--text-tertiary); line-height: 1.7;
+      max-width: 580px; margin-bottom: 24px;
+    }
+    .hero-stats {
+      display: flex; gap: 32px; margin-bottom: 28px; flex-wrap: wrap;
+    }
+    .hero-stat {}
+    .hero-stat .num { font-size: 1.2rem; font-weight: 700; color: var(--text); }
+    .hero-stat .lbl { font-size: 0.75rem; color: var(--text-tertiary); }
+    .hero-links {
+      display: flex; gap: 16px; font-size: 0.82rem; color: var(--text-tertiary); margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .hero-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    .hero-links a:hover { color: var(--accent); }
     .btn-group { display: flex; flex-wrap: wrap; gap: 10px; }
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
@@ -158,6 +164,15 @@
     }
     .btn-ghost:hover { background: var(--bg-card); color: var(--text); border-color: var(--border-hover); }
 
+    /* Badge disponibilite */
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; padding: 4px 14px; border-radius: 20px;
+      border: 1px solid var(--accent-dim); color: var(--accent); background: var(--accent-dim);
+    }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
     /* Skills tags */
     .skill-tag {
       display: inline-block; font-size: 0.8rem; padding: 6px 16px; border-radius: 8px;
@@ -170,8 +185,8 @@
       transform: translateY(-1px);
     }
     .skill-cat-label {
-      font-size: 0.72rem; font-weight: 600; color: var(--text-tertiary);
-      text-transform: uppercase; letter-spacing: 0.06em; margin: 16px 0 8px;
+      font-size: 0.7rem; font-weight: 600; color: var(--text-tertiary);
+      text-transform: uppercase; letter-spacing: 0.06em; margin: 14px 0 6px;
     }
     .skill-cat-label:first-child { margin-top: 0; }
 
@@ -182,69 +197,99 @@
       width: 1px; background: var(--border);
     }
     .tl-item {
-      position: relative; padding-left: 48px; padding-bottom: 32px;
-      opacity: 0; transform: translateY(20px);
+      position: relative; padding-left: 48px; padding-bottom: 36px;
     }
-    .tl-item.visible { opacity: 1; transform: translateY(0); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    .tl-item:last-child { padding-bottom: 0; }
     .tl-item::before {
       content: ''; position: absolute; left: 10px; top: 6px;
       width: 12px; height: 12px; border-radius: 50%;
       background: var(--accent); border: 2px solid var(--bg);
       box-shadow: 0 0 0 3px var(--accent-dim);
     }
+    .tl-item .tl-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 20px; transition: all 0.2s;
+    }
+    .tl-item .tl-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
     .tl-header { margin-bottom: 4px; }
     .tl-header h3 { font-size: 1.05rem; font-weight: 600; }
     .tl-company { font-size: 0.88rem; color: var(--accent); font-weight: 500; }
     .tl-date { font-size: 0.78rem; color: var(--text-tertiary); margin-bottom: 6px; }
     .tl-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
-    .tl-desc ul { list-style: none; margin-top: 4px; }
-    .tl-desc ul li { padding-left: 16px; position: relative; margin-bottom: 2px; }
+    .tl-desc ul { list-style: none; margin-top: 6px; }
+    .tl-desc ul li { padding-left: 16px; position: relative; margin-bottom: 3px; }
     .tl-desc ul li::before { content: ''; position: absolute; left: 2px; top: 10px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5; }
 
     /* ERP grid */
-    .erp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin: 16px 0; }
+    .erp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin: 16px 0; }
     .erp-card {
-      padding: 12px 16px; border-radius: 10px; border-left: 3px solid var(--accent);
-      background: var(--bg-card); border: 1px solid var(--border);
+      padding: 14px 16px; border-radius: 10px;
+      background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--accent);
       transition: all 0.2s;
     }
-    .erp-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .erp-card:hover { transform: translateY(-2px); border-color: var(--border-hover); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
     .erp-card h4 { font-size: 0.82rem; font-weight: 600; margin-bottom: 2px; }
     .erp-card p { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; }
+    .erp-stack {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px;
+    }
+    .erp-stack span {
+      font-size: 0.72rem; padding: 4px 12px; border-radius: 6px;
+      background: var(--accent-dim); color: var(--accent); font-weight: 500;
+    }
 
     /* Projects */
     .proj-item {
-      padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border);
+      padding: 16px 18px; border-radius: 10px; border: 1px solid var(--border);
       transition: all 0.2s; margin-bottom: 8px;
-      opacity: 0; transform: translateY(12px);
     }
-    .proj-item.visible { opacity: 1; transform: translateY(0); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
     .proj-item:hover { background: var(--bg-card); border-color: var(--border-hover); transform: translateY(-1px); }
-    .proj-item a { font-weight: 600; font-size: 0.9rem; color: var(--text); text-decoration: none; }
-    .proj-item a:hover { color: var(--accent); }
-    .proj-desc { font-size: 0.82rem; color: var(--text-secondary); margin-top: 2px; }
+    .proj-item-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+    .proj-item a.main-link { font-weight: 600; font-size: 0.9rem; color: var(--text); text-decoration: none; }
+    .proj-item a.main-link:hover { color: var(--accent); }
+    .proj-desc { font-size: 0.82rem; color: var(--text-secondary); margin-top: 4px; line-height: 1.5; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .proj-tags span {
+      font-size: 0.65rem; padding: 2px 10px; border-radius: 4px;
+      background: var(--bg-elevated); color: var(--text-tertiary);
+    }
+
+    /* Stats */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-top: 24px; }
+    .stat-card {
+      padding: 18px; border-radius: 10px; border: 1px solid var(--border);
+      text-align: center; transition: all 0.2s;
+    }
+    .stat-card:hover { border-color: var(--border-hover); background: var(--bg-card); }
+    .stat-card .val { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+    .stat-card .lbl { font-size: 0.78rem; color: var(--text-tertiary); margin-top: 2px; }
 
     /* Certifications / Langues */
-    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
     .cert-item {
       padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border);
-      transition: all 0.2s;
+      transition: all 0.2s; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
     }
     .cert-item:hover { border-color: var(--border-hover); background: var(--bg-card); }
     .cert-item h4 { font-size: 0.9rem; font-weight: 600; }
-    .cert-item p { font-size: 0.8rem; color: var(--text-secondary); }
-
-    .lang-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
-    .lang-item:last-child { border-bottom: none; }
+    .cert-item .cert-status {
+      font-size: 0.72rem; padding: 3px 10px; border-radius: 6px;
+      background: var(--accent-dim); color: var(--accent); font-weight: 500;
+    }
+    .lang-section { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px; margin-top: 16px; }
+    .lang-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border); }
     .lang-item .name { font-weight: 500; font-size: 0.9rem; }
     .lang-item .level { font-size: 0.82rem; color: var(--text-secondary); }
-    .lang-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 4px; }
+    .lang-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 3px; }
     .lang-dot.full { background: var(--accent); }
     .lang-dot.half { background: var(--accent); opacity: 0.4; }
     .lang-dot.empty { background: var(--border); }
 
     /* Contact */
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
     .contact-card {
       padding: 16px; border-radius: 10px; border: 1px solid var(--border);
       text-align: center; transition: all 0.2s; text-decoration: none; display: block;
@@ -252,7 +297,7 @@
     .contact-card:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
     .contact-card .icon { font-size: 1.3rem; margin-bottom: 6px; display: block; }
     .contact-card .label { font-size: 0.78rem; color: var(--text-secondary); }
-    .contact-card .value { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-top: 2px; }
+    .contact-card .value { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-top: 2px; word-break: break-all; }
 
     /* Footer */
     footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 40px; }
@@ -260,15 +305,18 @@
 
     /* Responsive */
     @media (max-width: 640px) {
-      .hero h1 { font-size: 2.2rem; }
-      section { padding: 48px 0; }
-      .section-title { font-size: 1.4rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero-summary { font-size: 0.85rem; }
+      .hero-stats { gap: 18px; }
+      .hero-stat .num { font-size: 1rem; }
+      section { padding: 40px 0; }
+      .section-title { font-size: 1.3rem; }
       nav { display: none; }
       .theme-toggle { top: 12px; right: 12px; }
       .erp-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) and (min-width: 641px) {
-      .hero h1 { font-size: 2.8rem; }
+      .hero h1 { font-size: 2.5rem; }
     }
 
     /* Loading */
@@ -297,23 +345,22 @@
 
 <div class="bg-gradient-animated"></div>
 
-<!-- Theme toggle -->
 <button class="theme-toggle" id="themeToggle" aria-label="Basculer le mode sombre/clair">
   <svg id="moonIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
   <svg id="sunIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
 </button>
 
-<!-- Nav -->
 <nav role="navigation" aria-label="Navigation principale">
   <a href="#hero">Accueil</a>
   <a href="#about">Profil</a>
   <a href="#skills">Competences</a>
+  <a href="#erp">ERP</a>
   <a href="#experience">Experience</a>
   <a href="#projects">Projets</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- HERO -->
+<!-- ============ HERO ============ -->
 <section id="hero" class="hero">
   <div class="container" style="width:100%">
     <div id="heroContent">
@@ -322,186 +369,412 @@
       <div class="typing-wrap">
         <span id="typingText"></span><span class="cursor" aria-hidden="true"></span>
       </div>
+      <p class="hero-summary">
+        Responsable Informatique avec une double competence : gouvernance des systemes d'information
+        <strong style="color:var(--text-secondary)">ET</strong> developpement d'applications metier.
+        Je pilote la strategie IT d'organisations en croissance et je conçois les ERP qui digitalisent leurs processus.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">8+</div><div class="lbl">ans d'experience</div></div>
+        <div class="hero-stat"><div class="num">2</div><div class="lbl">directions IT pilotees</div></div>
+        <div class="hero-stat"><div class="num">8</div><div class="lbl">modules ERP developpes</div></div>
+        <div class="hero-stat"><div class="num">+35%</div><div class="lbl">MTTR reduit</div></div>
+      </div>
+      <div class="hero-links">
+        <span class="badge"><span class="badge-dot"></span> Ouvert aux opportunites</span>
+        <a href="mailto:l.denis.razafimandimby@gmail.com">&#9993; l.denis.razafimandimby@gmail.com</a>
+        <a href="https://www.linkedin.com/in/louis-denis-razafimandimby-488610227/" target="_blank" rel="noopener">&#10070; LinkedIn</a>
+      </div>
       <div class="btn-group">
         <a href="#contact" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Me contacter
         </a>
-        <a href="https://www.linkedin.com/in/louis-denis-razafimandimby-488610227/" target="_blank" rel="noopener" class="btn btn-ghost">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-        <a href="https://github.com/razafimandimby-IT" target="_blank" rel="noopener" class="btn btn-ghost">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
+        <a href="#experience" class="btn btn-ghost">Parcours</a>
+        <a href="#projects" class="btn btn-ghost">Realisations</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ============ ABOUT ============ -->
 <section id="about">
   <div class="container">
     <span class="section-label">Profil</span>
     <h2 class="section-title">IT Manager & Developeur ERP</h2>
-    <p class="section-sub" style="max-width:700px">
-      IT Manager avec une double competence : gouvernance des systemes d'information et developpement d'applications metier.
-      8 ans d'experience a structurer des directions IT, deployer des infrastructures securisees et concevoir des ERP
-      complets. Actuellement en charge de l'infrastructure, de la cybersecurite et du pilotage de l'ERP interne chez Dessineo.
+    <p class="section-sub" style="max-width:720px">
+      IT Manager avec 8 ans d'experience alliant management IT et developpement logiciel.
+      Ma particularite : je parle couramment deux langages — celui de la gouvernance SI (ITIL, budgets, equipes, prestataires)
+      et celui du code (PHP, Laravel, Python, PowerShell, infrastructure as code).
     </p>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="container">
-    <span class="section-label">Expertise</span>
-    <h2 class="section-title">Competences</h2>
-    <p class="section-sub">Domaines de competence couvrant le management IT, l'infrastructure, la securite et le developpement.</p>
-    <div style="margin-top:28px">
-      <div class="skill-cat-label">Management IT</div>
-      <div><span class="skill-tag">ITSM</span><span class="skill-tag">ITIL</span><span class="skill-tag">Gestion de projets</span><span class="skill-tag">Management d'equipes</span><span class="skill-tag">Pilotage prestataires</span><span class="skill-tag">Conduite du changement</span></div>
-      <div class="skill-cat-label">Infrastructure & Systemes</div>
-      <div><span class="skill-tag">Windows Server</span><span class="skill-tag">Linux (Debian/Ubuntu)</span><span class="skill-tag">Active Directory</span><span class="skill-tag">Hyper-V</span><span class="skill-tag">Proxmox VE</span><span class="skill-tag">Docker</span></div>
-      <div class="skill-cat-label">Cloud & Securite</div>
-      <div><span class="skill-tag">Microsoft 365</span><span class="skill-tag">Exchange Online</span><span class="skill-tag">SharePoint</span><span class="skill-tag">Google Workspace</span><span class="skill-tag">BitLocker</span><span class="skill-tag">LAPS</span><span class="skill-tag">MFA</span><span class="skill-tag">Wazuh</span><span class="skill-tag">pfSense</span></div>
-      <div class="skill-cat-label">Supervision</div>
-      <div><span class="skill-tag">Zabbix</span><span class="skill-tag">Grafana</span><span class="skill-tag">Prometheus</span><span class="skill-tag">Nagios</span></div>
-      <div class="skill-cat-label">Developpement & Automation</div>
-      <div><span class="skill-tag">Laravel</span><span class="skill-tag">PHP</span><span class="skill-tag">MySQL/MariaDB</span><span class="skill-tag">API REST</span><span class="skill-tag">PowerShell</span><span class="skill-tag">Python</span><span class="skill-tag">Bash</span><span class="skill-tag">Git</span><span class="skill-tag">Ansible</span></div>
-      <div class="skill-cat-label">ITSM & ERP</div>
-      <div><span class="skill-tag">GLPI</span><span class="skill-tag">OCS Inventory</span><span class="skill-tag">Jira</span><span class="skill-tag">ServiceNow</span><span class="skill-tag">EspoCRM</span></div>
+    <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px">
+      <div class="erp-card" style="border-left-color:var(--accent)">
+        <h4>Gouvernance & Management</h4>
+        <p>Feuille de route IT, procedure d'exploitation, KPI, management d'equipe, pilotage prestataires,
+        conduite du changement, budget IT, conformite SLA &gt;95%.</p>
+      </div>
+      <div class="erp-card" style="border-left-color:#4ade80">
+        <h4>Infrastructure & Securite</h4>
+        <p>Windows Server, Linux, AD, GPO, Hyper-V, Proxmox, Docker, reseau (pfSense),
+        securisation (BitLocker, LAPS, MFA, Wazuh), supervision (Zabbix, Grafana, Prometheus), backup.</p>
+      </div>
+      <div class="erp-card" style="border-left-color:#3b82f6">
+        <h4>Developpement & Automation</h4>
+        <p>Conception et developpement ERP (Laravel/PHP, MySQL, API REST), scripts PowerShell/Python/Bash pour automation,
+        Infrastructure as Code avec Ansible, deploiement Docker, Git.</p>
+      </div>
+      <div class="erp-card" style="border-left-color:#a78bfa">
+        <h4>Cloud & Collaboration</h4>
+        <p>Migration et administration Microsoft 365 (Exchange Online, Teams, SharePoint, OneDrive),
+        Google Workspace, gestion des identites et acces, securite cloud.</p>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="val">95%+</div><div class="lbl">Conformite SLA</div></div>
+      <div class="stat-card"><div class="val">-35%</div><div class="lbl">MTTR (automatisation)</div></div>
+      <div class="stat-card"><div class="val">-40%</div><div class="lbl">Downtime (backup hybride)</div></div>
+      <div class="stat-card"><div class="val">-30%</div><div class="lbl">Couts infrastructure</div></div>
+      <div class="stat-card"><div class="val">+40%</div><div class="lbl">Visibilite supervision</div></div>
     </div>
   </div>
 </section>
 
-<!-- ERP PROJECT -->
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="container">
+    <span class="section-label">Expertise</span>
+    <h2 class="section-title">Competences techniques & fonctionnelles</h2>
+    <p class="section-sub">
+      Domaine de competence couvrant l'ensemble du spectre IT : de la gouvernance a l'infrastructure,
+      de la securite au developpement.
+    </p>
+    <div style="margin-top:24px">
+      <div class="skill-cat-label">Management & Gouvernance IT</div>
+      <div>
+        <span class="skill-tag">ITSM</span>
+        <span class="skill-tag">ITIL 4</span>
+        <span class="skill-tag">Gestion de projets</span>
+        <span class="skill-tag">Management d'equipes</span>
+        <span class="skill-tag">Pilotage prestataires</span>
+        <span class="skill-tag">Conduite du changement</span>
+        <span class="skill-tag">KPI / Reporting</span>
+        <span class="skill-tag">Budget IT</span>
+        <span class="skill-tag">ServiceNow</span>
+      </div>
+      <div class="skill-cat-label">Infrastructure & Systemes</div>
+      <div>
+        <span class="skill-tag">Windows Server 2016/2019/2022</span>
+        <span class="skill-tag">Linux (Debian, Ubuntu)</span>
+        <span class="skill-tag">Active Directory</span>
+        <span class="skill-tag">GPO</span>
+        <span class="skill-tag">DNS / DHCP</span>
+        <span class="skill-tag">Hyper-V</span>
+        <span class="skill-tag">Proxmox VE</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Sauvegarde (Veeam, AWS S3)</span>
+      </div>
+      <div class="skill-cat-label">Securite</div>
+      <div>
+        <span class="skill-tag">BitLocker</span>
+        <span class="skill-tag">LAPS</span>
+        <span class="skill-tag">MFA / 2FA</span>
+        <span class="skill-tag">Wazuh SIEM</span>
+        <span class="skill-tag">pfSense</span>
+        <span class="skill-tag">CIS Benchmarks</span>
+        <span class="skill-tag">Hardening Windows/Linux</span>
+        <span class="skill-tag">RBAC</span>
+        <span class="skill-tag">Audit trail</span>
+      </div>
+      <div class="skill-cat-label">Supervision & Monitoring</div>
+      <div>
+        <span class="skill-tag">Zabbix</span>
+        <span class="skill-tag">Grafana</span>
+        <span class="skill-tag">Prometheus</span>
+        <span class="skill-tag">Nagios</span>
+        <span class="skill-tag">GLPI</span>
+        <span class="skill-tag">OCS Inventory</span>
+      </div>
+      <div class="skill-cat-label">Cloud & Messagerie</div>
+      <div>
+        <span class="skill-tag">Microsoft 365</span>
+        <span class="skill-tag">Exchange Online</span>
+        <span class="skill-tag">Teams</span>
+        <span class="skill-tag">SharePoint</span>
+        <span class="skill-tag">OneDrive</span>
+        <span class="skill-tag">Azure</span>
+        <span class="skill-tag">Google Workspace</span>
+      </div>
+      <div class="skill-cat-label">Developpement & Automation</div>
+      <div>
+        <span class="skill-tag">Laravel</span>
+        <span class="skill-tag">PHP</span>
+        <span class="skill-tag">MySQL / MariaDB</span>
+        <span class="skill-tag">API REST</span>
+        <span class="skill-tag">PowerShell</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Bash</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Ansible</span>
+        <span class="skill-tag">HTML / CSS</span>
+        <span class="skill-tag">JavaScript</span>
+      </div>
+      <div class="skill-cat-label">Outils & Methodes</div>
+      <div>
+        <span class="skill-tag">Jira</span>
+        <span class="skill-tag">Confluence</span>
+        <span class="skill-tag">EspoCRM</span>
+        <span class="skill-tag">ITIL 4</span>
+        <span class="skill-tag">PRA / PCA</span>
+        <span class="skill-tag">Methode Agile</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ERP ============ -->
 <section id="erp">
   <div class="container">
     <span class="section-label">Projet phare</span>
     <h2 class="section-title">ERP interne multi-domaines</h2>
-    <p class="section-sub" style="margin-bottom:16px">
-      Pilotage fonctionnel et developpement d'un ERP couvrant 8 domaines. Architecture Laravel, API REST, MySQL, Docker.
-      Securite integree : RBAC, audit trail, sauvegardes automatisees.
+    <p class="section-sub" style="margin-bottom:4px">
+      De la conception au deploiement : pilotage fonctionnel et participation au developpement d'un ERP interne
+      couvrant l'ensemble des processus de l'entreprise. Une solution integree qui remplace plusieurs outils
+      separes par une plateforme unique, securisee et evolutive.
+    </p>
+    <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:8px">
+      <strong style="color:var(--text)">Objectif :</strong> digitaliser les processus papier, automatiser les flux,
+      centraliser les donnees et offrir une visibilite en temps reel a la direction, RH, IT et logistique.
     </p>
     <div class="erp-grid">
-      <div class="erp-card"><h4>Ressources Humaines</h4><p>Employes, contrats, conges, pointage biometrique, heures, export paie</p></div>
-      <div class="erp-card"><h4>Gestion documentaire</h4><p>Archivage, GED, versionning, circuit de validation</p></div>
-      <div class="erp-card"><h4>Tickets IT</h4><p>Helpdesk, incidents, demandes, suivi SLA, base de connaissances</p></div>
-      <div class="erp-card"><h4>Parc informatique</h4><p>Inventaire, licences, garanties, affectation, historique</p></div>
-      <div class="erp-card"><h4>Stocks</h4><p>Entrees/sorties, inventaire, mouvements, alertes</p></div>
-      <div class="erp-card"><h4>Logistique & Achats</h4><p>Fournisseurs, receptions, consommables, suivi equipements</p></div>
-      <div class="erp-card"><h4>Signature electronique</h4><p>Validations, circuit d'approbation, historique</p></div>
-      <div class="erp-card"><h4>Planning & Reporting</h4><p>Equipes, ressources, indicateurs direction/RH/IT/logistique</p></div>
+      <div class="erp-card">
+        <h4>Ressources Humaines</h4>
+        <p>Gestion des employes, contrats, conges, absences, organigramme, pointage biometrique,
+        calcul des heures (supplementaires, retards), export paie</p>
+      </div>
+      <div class="erp-card">
+        <h4>Gestion documentaire</h4>
+        <p>Archivage numerique, GED, versionning des documents, circuit de validation documentaire,
+        recherche plein texte, historique des modifications</p>
+      </div>
+      <div class="erp-card">
+        <h4>Tickets IT</h4>
+        <p>Helpdesk, gestion des incidents et demandes, suivi SLA, base de connaissances,
+        escalation, attribution automatique, reporting</p>
+      </div>
+      <div class="erp-card">
+        <h4>Parc informatique</h4>
+        <p>Inventaire complet, licences, garanties, affectation du materiel, historique des
+        mouvements, alertes de maintenance et renouvellement</p>
+      </div>
+      <div class="erp-card">
+        <h4>Stocks</h4>
+        <p>Entrees/sorties, inventaire permanent, mouvements, alertes de stock minimum,
+        valorisation, historique des transactions</p>
+      </div>
+      <div class="erp-card">
+        <h4>Logistique & Achats</h4>
+        <p>Gestion des achats, fournisseurs, bons de reception, consommables, suivi des
+        equipements, commandes, devis</p>
+      </div>
+      <div class="erp-card">
+        <h4>Signature electronique</h4>
+        <p>Validation electronique des demandes, circuit d'approbation multi-niveaux,
+        historique des signatures, tracabilite complete</p>
+      </div>
+      <div class="erp-card">
+        <h4>Planning & Reporting</h4>
+        <p>Equipes, affectation des ressources, disponibilites, tableaux de bord
+        direction/RH/IT/logistique, indicateurs temps reel</p>
+      </div>
+    </div>
+    <div class="erp-stack">
+      <span>Laravel</span>
+      <span>PHP</span>
+      <span>MySQL / MariaDB</span>
+      <span>API REST</span>
+      <span>Docker</span>
+      <span>Git</span>
+      <span>RBAC</span>
+      <span>Audit trail</span>
+      <span>Sauvegardes automatisees</span>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- ============ EXPERIENCE ============ -->
 <section id="experience">
   <div class="container">
     <span class="section-label">Parcours</span>
     <h2 class="section-title">Experience professionnelle</h2>
-    <p class="section-sub">8 annees d'experience en evolution continue, du support technique a la direction IT.</p>
-    <div class="tl" style="margin-top:32px">
+    <p class="section-sub">8 annees d'experience en evolution continue, du support technique a la direction IT,
+    en passant par le developpement d'applications et l'automatisation.</p>
+    <div class="tl" style="margin-top:28px">
       <div class="tl-item">
-        <div class="tl-header"><h3>IT Manager & Logistique</h3></div>
-        <div class="tl-company">Dessineo — Antananarivo</div>
-        <div class="tl-date">Aout 2025 — Aujourd'hui</div>
-        <div class="tl-desc">
-          Gouvernance SI, infrastructure (Windows/Linux, AD, Hyper-V), cybersecurite (BitLocker, LAPS, MFA),
-          supervision Zabbix/Grafana/Prometheus/Wazuh. Pilotage et developpement ERP interne. Management equipe technique.
+        <div class="tl-card">
+          <div class="tl-header"><h3>Responsable Informatique & Logistique</h3></div>
+          <div class="tl-company">Dessineo — Antananarivo</div>
+          <div class="tl-date">Aout 2025 — Aujourd'hui</div>
+          <div class="tl-desc">
+            <ul>
+              <li>Gouvernance SI : feuille de route strategique, procedure d'exploitation, KPI et reporting direction</li>
+              <li>Infrastructure : administration serveurs Windows/Linux, Active Directory, GPO, Hyper-V, sauvegardes</li>
+              <li>Cybersecurite : BitLocker, LAPS, MFA, supervision Zabbix/Grafana/Prometheus/Wazuh</li>
+              <li>Cloud : Microsoft 365 (Exchange Online, Teams, SharePoint), Google Workspace</li>
+              <li><strong>ERP : pilotage fonctionnel et developpement de l'ERP interne multi-domaines (8 modules) —
+                analyse des besoins, conception, developpement, deploiement et formation</strong></li>
+              <li>Management des equipes techniques et coordination des prestataires externes</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-header"><h3>Datajet</h3></div>
-        <div class="tl-company">Antananarivo</div>
-        <div class="tl-date">Juin 2018 — Aout 2025</div>
-        <div class="tl-desc">
-          <strong>Consultant IT Support Automation Lead (2023-2025)</strong>
-          <ul>
-            <li>Encadrement equipe IT, indicateurs SLA (+40% visibilite via Grafana/Prometheus)</li>
-            <li>Automatisation PowerShell/Python (MTTR -35%)</li>
-            <li>Migration Exchange On-Premise vers Exchange Online, Teams, SharePoint</li>
-            <li>Taux de conformite SLA > 95%</li>
-          </ul>
-          <strong style="display:block;margin-top:8px;">Team Lead Support Technique (2022-2023)</strong>
-          Supervision equipements, Exchange On-Premise, sauvegarde hybride Veeam + AWS S3 (-40% downtime, -30% couts).
-          <strong style="display:block;margin-top:8px;">Technicien Support & Maintenance (2018-2022)</strong>
-          Support N1/N2, OTRS, maintenance parc, supervision Nagios, inventaire OCS Inventory.
+        <div class="tl-card">
+          <div class="tl-header"><h3>Datajet — Antananarivo</h3></div>
+          <div class="tl-date">Juin 2018 — Aout 2025</div>
+          <div class="tl-desc">
+            <strong style="color:var(--text)">Consultant IT — Support Automation Lead (2023-2025)</strong>
+            <ul>
+              <li>Encadrement d'une equipe IT : gestion des priorités, mentoring, indicateurs de performance</li>
+              <li>Developpement de scripts PowerShell et Python pour l'automatisation des taches repetitives :
+              <strong>MTTR reduit de 35%</strong></li>
+              <li>Migration de l'infrastructure Exchange On-Premise vers Exchange Online / Teams / SharePoint</li>
+              <li>Mise en place de tableaux de bord Grafana et Prometheus : <strong>+40% de visibilite sur les SLA</strong></li>
+              <li>Standardisation des processus ITIL : taux de conformite SLA maintenu <strong>&gt;95%</strong></li>
+            </ul>
+            <strong style="display:block;margin-top:8px;color:var(--text)">Team Lead Support Technique (2022-2023)</strong>
+            <ul>
+              <li>Gestion du cycle de vie des equipements informatiques (acquisition, deploiement, maintenance, mise au rebut)</li>
+              <li>Administration Exchange On-Premise, supervision messagerie, gestion des boites aux lettres</li>
+              <li>Mise en place d'une solution de sauvegarde hybride Veeam + AWS S3 :
+              <strong>-40% de downtime, -30% de couts</strong></li>
+              <li>Migration SpiceWorks vers GLPI pour la gestion du parc et du helpdesk</li>
+            </ul>
+            <strong style="display:block;margin-top:8px;color:var(--text)">Technicien Support & Maintenance (2018-2022)</strong>
+            <ul>
+              <li>Support N1/N2 (OTRS, GLPI) : prise en charge des incidents et demandes</li>
+              <li>Maintenance du parc informatique (300+ postes), installation et configuration</li>
+              <li>Supervision Nagios et administration des serveurs Linux</li>
+              <li>Inventaire et suivi des equipements via OCS Inventory</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-header"><h3>Experiences anterieures</h3></div>
-        <div class="tl-desc">
-          <ul>
-            <li>Gerant Point Cybercafe (50+ utilisateurs) — Antananarivo</li>
-            <li>Consultant gestion de stocks — DHL International Madagascar (app PHP scan codes-barres)</li>
-            <li>Stagiaire support technique — Ministere des Finances</li>
-          </ul>
+        <div class="tl-card">
+          <div class="tl-header"><h3>Experiences anterieures</h3></div>
+          <div class="tl-desc">
+            <ul>
+              <li><strong>Gerant — Point Cybercafe</strong> (Antananarivo) : gestion d'un etablissement de 50+ utilisateurs,
+              maintenance reseau et postes, support client, comptabilite</li>
+              <li><strong>Consultant gestion de stocks — DHL International Madagascar</strong> : developpement d'une application
+              PHP de scan de codes-barres pour la tracabilite logistique</li>
+              <li><strong>Stagiaire support technique — Ministere des Finances</strong> : maintenance parc informatique,
+              assistance utilisateurs, administration reseau</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- ============ PROJECTS ============ -->
 <section id="projects">
   <div class="container">
-    <span class="section-label">Realisations</span>
+    <span class="section-label">Realisations open source</span>
     <h2 class="section-title">Projets GitHub</h2>
-    <p class="section-sub">Depots open source illustrant mon travail en automatisation, securite et infrastructure.</p>
+    <p class="section-sub">Depots publics illustrant mon travail en automatisation, securite, infrastructure as code et monitoring.</p>
     <div style="margin-top:24px">
       <div class="proj-item">
-        <a href="https://github.com/razafimandimby-IT/security-hardening-toolkit" target="_blank" rel="noopener">security-hardening-toolkit  &nearr;</a>
-        <div class="proj-desc">Hardening et audit securite Windows/Linux (CIS benchmarks, reporting HTML, remediation automatique)</div>
+        <div class="proj-item-header">
+          <a href="https://github.com/razafimandimby-IT/security-hardening-toolkit" target="_blank" rel="noopener" class="main-link">security-hardening-toolkit  &nearr;</a>
+        </div>
+        <div class="proj-desc">Framework complet de hardening et d'audit de securite pour Windows Server et Linux (Debian/Ubuntu).
+        Base sur les CIS benchmarks. Genere un rapport HTML d'audit avec recommandations et propose une remediation automatique
+        pour les ecarts critiques. 17 fichiers.</div>
+        <div class="proj-tags"><span>PowerShell</span><span>Bash</span><span>CIS Benchmarks</span><span>HTML Report</span><span>Hardening</span></div>
       </div>
       <div class="proj-item">
-        <a href="https://github.com/razafimandimby-IT/ansible-infra-automation" target="_blank" rel="noopener">ansible-infra-automation  &nearr;</a>
-        <div class="proj-desc">Infrastructure as Code Ansible (AD, serveurs web, bases de donnees, monitoring, securite) — 46 fichiers</div>
+        <div class="proj-item-header">
+          <a href="https://github.com/razafimandimby-IT/ansible-infra-automation" target="_blank" rel="noopener" class="main-link">ansible-infra-automation  &nearr;</a>
+        </div>
+        <div class="proj-desc">Infrastructure as Code avec Ansible : playbooks et roles pour le deploiement automatise d'Active Directory,
+        serveurs web (Apache/Nginx), bases de donnees (MySQL), serveurs de monitoring (Zabbix, Prometheus, Grafana),
+        agents Wazuh, et configuration de securite. 46 fichiers couvrant l'ensemble du socle IT.</div>
+        <div class="proj-tags"><span>Ansible</span><span>Infrastructure as Code</span><span>AD</span><span>Monitoring</span><span>Securite</span></div>
       </div>
       <div class="proj-item">
-        <a href="https://github.com/razafimandimby-IT/infra-monitoring" target="_blank" rel="noopener">infra-monitoring  &nearr;</a>
-        <div class="proj-desc">Stack complete Zabbix, Prometheus, Grafana, Wazuh — deploiement Docker Compose</div>
+        <div class="proj-item-header">
+          <a href="https://github.com/razafimandimby-IT/infra-monitoring" target="_blank" rel="noopener" class="main-link">infra-monitoring  &nearr;</a>
+        </div>
+        <div class="proj-desc">Stack de supervision complete prete au deploiement via Docker Compose : Zabbix (monitoring reseau/services),
+        Prometheus (metriques temps reel), Grafana (tableaux de bord personnalisables), Wazuh (SIEM et detection d'intrusion).
+        Inclut les configurations par defaut, dashboards et regles d'alerte.</div>
+        <div class="proj-tags"><span>Docker</span><span>Zabbix</span><span>Prometheus</span><span>Grafana</span><span>Wazuh</span><span>SIEM</span></div>
       </div>
       <div class="proj-item">
-        <a href="https://github.com/razafimandimby-IT/powershell-toolkit" target="_blank" rel="noopener">powershell-toolkit  &nearr;</a>
-        <div class="proj-desc">Scripts PowerShell : inventaire AD, reporting systeme, standardisation environnement Windows</div>
+        <div class="proj-item-header">
+          <a href="https://github.com/razafimandimby-IT/powershell-toolkit" target="_blank" rel="noopener" class="main-link">powershell-toolkit  &nearr;</a>
+        </div>
+        <div class="proj-desc">Collection de scripts PowerShell pour l'administration et l'automatisation d'environnements Windows :
+        inventaire AD detaille, reporting systeme, standardisation de configuration, gestion des utilisateurs et groupes,
+        audit de securite, maintenance planifiee.</div>
+        <div class="proj-tags"><span>PowerShell</span><span>AD</span><span>Windows</span><span>Automation</span><span>Audit</span></div>
       </div>
       <div class="proj-item">
-        <a href="https://github.com/razafimandimby-IT/dotfiles-linux" target="_blank" rel="noopener">dotfiles-linux  &nearr;</a>
-        <div class="proj-desc">Configuration Linux, alias Bash, scripts d'administration systeme et backup</div>
+        <div class="proj-item-header">
+          <a href="https://github.com/razafimandimby-IT/dotfiles-linux" target="_blank" rel="noopener" class="main-link">dotfiles-linux  &nearr;</a>
+        </div>
+        <div class="proj-desc">Configuration et personnalisation d'environnement Linux : alias Bash optimises pour l'administration,
+        variables d'environnement, scripts d'administration systeme, automatisation de sauvegardes, configuration ssh,
+        et utilitaires pour le quotidien du sysadmin.</div>
+        <div class="proj-tags"><span>Linux</span><span>Bash</span><span>Dotfiles</span><span>Administration</span><span>Backup</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CERTIFICATIONS & LANGUES -->
+<!-- ============ CERTIFICATIONS ============ -->
 <section id="certifications">
   <div class="container">
     <span class="section-label">Certifications</span>
     <h2 class="section-title">Formation continue</h2>
+    <p class="section-sub">Certifications en cours de preparation pour renforcer l'expertise en gestion des services IT et cloud.</p>
     <div class="cert-grid" style="margin-top:16px">
-      <div class="cert-item"><h4>ServiceNow ITSM & Flow Designer</h4><p>En cours</p></div>
-      <div class="cert-item"><h4>ITIL 4 Foundation</h4><p>Preparation</p></div>
-      <div class="cert-item"><h4>Azure Fundamentals AZ-900</h4><p>Preparation</p></div>
+      <div class="cert-item">
+        <div><h4>ServiceNow ITSM & Flow Designer</h4><p>Gestion des services IT, automatisation des workflows, catalogues de services</p></div>
+        <span class="cert-status">En cours</span>
+      </div>
+      <div class="cert-item">
+        <div><h4>ITIL 4 Foundation</h4><p>Cadre de reference pour la gestion des services IT (ITSM)</p></div>
+        <span class="cert-status">Preparation</span>
+      </div>
+      <div class="cert-item">
+        <div><h4>Azure Fundamentals AZ-900</h4><p>Fondamentaux du cloud Azure, services, securite, conformite</p></div>
+        <span class="cert-status">Preparation</span>
+      </div>
     </div>
-    <div style="max-width:400px;margin-top:24px">
-      <h3 style="font-size:0.9rem;font-weight:600;margin-bottom:12px">Langues</h3>
-      <div class="lang-item"><span class="name">Francais</span><span class="level"><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span> Courant</span></div>
-      <div class="lang-item"><span class="name">Anglais</span><span class="level"><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot half"></span><span class="lang-dot empty"></span> Professionnel</span></div>
-      <div class="lang-item"><span class="name">Malgache</span><span class="level"><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span> Langue maternelle</span></div>
+    <div style="margin-top:24px">
+      <span class="section-label" style="display:block;margin-bottom:8px">Langues</span>
+      <div class="lang-section">
+        <div class="lang-item"><span class="name">Francais</span><span class="level"><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span> Courant</span></div>
+        <div class="lang-item"><span class="name">Anglais</span><span class="level"><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot half"></span><span class="lang-dot empty"></span> Professionnel</span></div>
+        <div class="lang-item"><span class="name">Malgache</span><span class="level"><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span> Langue maternelle</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ============ CONTACT ============ -->
 <section id="contact">
   <div class="container">
     <span class="section-label">Contact</span>
     <h2 class="section-title">Echangeons</h2>
-    <p class="section-sub">Disponible pour discuter d'opportunites en France ou en remote.</p>
+    <p class="section-sub">
+      Disponible pour discuter d'opportunites en France ou en remote.
+      N'hesitez pas a me contacter par email ou sur les reseaux professionnels.
+    </p>
     <div class="contact-grid" style="margin-top:24px">
       <a href="mailto:l.denis.razafimandimby@gmail.com" class="contact-card">
         <span class="icon">&#9993;</span>
@@ -511,17 +784,22 @@
       <a href="https://wellfound.com/u/denis-razafimandimby" target="_blank" rel="noopener" class="contact-card">
         <span class="icon">&#127760;</span>
         <div class="label">Wellfound (AngelList)</div>
-        <div class="value">Profil</div>
+        <div class="value">@denis-razafimandimby</div>
       </a>
       <a href="https://www.linkedin.com/in/louis-denis-razafimandimby-488610227/" target="_blank" rel="noopener" class="contact-card">
-        <span class="icon">&#128100;</span>
+        <span class="icon">&#10070;</span>
         <div class="label">LinkedIn</div>
-        <div class="value">Profil</div>
+        <div class="value">Voir le profil</div>
       </a>
       <a href="https://github.com/razafimandimby-IT" target="_blank" rel="noopener" class="contact-card">
         <span class="icon">&#128187;</span>
         <div class="label">GitHub</div>
         <div class="value">razafimandimby-IT</div>
+      </a>
+      <a href="https://razafimandimby-it.github.io/cv/" class="contact-card" style="grid-column:1/-1">
+        <span class="icon">&#128279;</span>
+        <div class="label">CV en ligne</div>
+        <div class="value">https://razafimandimby-it.github.io/cv/</div>
       </a>
     </div>
   </div>
@@ -529,7 +807,8 @@
 
 <footer>
   <div class="container">
-    <p>&copy; Denis Razafimandimby &mdash; CV mis a jour juillet 2026</p>
+    <p>&copy; Denis Razafimandimby &mdash; CV mis a jour juillet 2026 &mdash;
+    <span class="badge" style="opacity:0.7">Disponible</span></p>
   </div>
 </footer>
 
@@ -537,7 +816,6 @@
 (function() {
   'use strict';
 
-  // Loader
   window.addEventListener('load', function() {
     setTimeout(function() {
       var l = document.getElementById('loader');
@@ -551,14 +829,12 @@
   var sun = document.getElementById('sunIcon');
   var saved = localStorage.getItem('theme');
   if (saved) html.setAttribute('data-theme', saved);
-
   function updateIcons() {
     var isDark = html.getAttribute('data-theme') === 'dark';
     if (moon) moon.style.display = isDark ? '' : 'none';
     if (sun) sun.style.display = isDark ? 'none' : '';
   }
   updateIcons();
-
   var themeBtn = document.getElementById('themeToggle');
   if (themeBtn) {
     themeBtn.addEventListener('click', function() {
@@ -575,32 +851,23 @@
     'IT Manager &middot; Infrastructure &amp; Cybersecurity',
     'ITSM / ITIL &middot; Automation &amp; ERP',
     '8+ ans d&rsquo;experience en direction IT',
-    'Pilotage ERP &middot; Supervision &middot; Hardening'
+    'Pilotage ERP &middot; Supervision &middot; Hardening',
+    'Management IT &middot; Developpement &middot; Securite'
   ];
   var el = document.getElementById('typingText');
   var textIndex = 0, charIndex = 0, isDeleting = false;
-
   function type() {
     if (!el) return;
     var current = texts[textIndex];
     if (!isDeleting) {
       el.innerHTML = current.substring(0, charIndex + 1);
       charIndex++;
-      if (charIndex === current.length) {
-        isDeleting = true;
-        setTimeout(type, 2000);
-        return;
-      }
+      if (charIndex === current.length) { isDeleting = true; setTimeout(type, 2000); return; }
       setTimeout(type, 40 + Math.random() * 30);
     } else {
       el.innerHTML = current.substring(0, charIndex - 1);
       charIndex--;
-      if (charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-        setTimeout(type, 300);
-        return;
-      }
+      if (charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % texts.length; setTimeout(type, 300); return; }
       setTimeout(type, 20);
     }
   }
@@ -613,66 +880,70 @@
     requestAnimationFrame(raf);
   } catch(e) {}
 
-  // GSAP ScrollTrigger
+  // GSAP
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero entrance
   var heroContent = document.getElementById('heroContent');
   if (heroContent) {
     gsap.from(heroContent.children, {
-      y: 30, opacity: 0, duration: 0.8, stagger: 0.15,
+      y: 30, opacity: 0, duration: 0.8, stagger: 0.12,
       ease: 'power3.out', delay: 0.3
     });
   }
 
-  // Section titles animation
   gsap.utils.toArray('.section-title, .section-sub, .section-label').forEach(function(el) {
     gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
-      y: 20, opacity: 0, duration: 0.6, ease: 'power2.out'
+      scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
+      y: 20, opacity: 0, duration: 0.5, ease: 'power2.out'
     });
   });
 
-  // Timeline items
   gsap.utils.toArray('.tl-item').forEach(function(el, i) {
     gsap.from(el, {
       scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
-      y: 24, opacity: 0, duration: 0.5, delay: i * 0.1, ease: 'power2.out'
+      y: 24, opacity: 0, duration: 0.5, delay: i * 0.12, ease: 'power2.out'
     });
   });
 
-  // Project items
   gsap.utils.toArray('.proj-item').forEach(function(el, i) {
     gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
+      scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
+      y: 16, opacity: 0, duration: 0.35, delay: i * 0.08, ease: 'power2.out'
+    });
+  });
+
+  gsap.utils.toArray('.skill-cat-label').forEach(function(el) {
+    gsap.from(el.nextElementSibling.children, {
+      scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
+      scale: 0.9, opacity: 0, duration: 0.25, stagger: 0.02, ease: 'back.out(1.4)'
+    });
+  });
+
+  gsap.from('.erp-card', {
+    scrollTrigger: { trigger: '.erp-grid', start: 'top 90%', toggleActions: 'play none none none' },
+    y: 12, opacity: 0, duration: 0.3, stagger: 0.04, ease: 'power2.out'
+  });
+
+  gsap.utils.toArray('.erp-card-narrow').forEach(function(el, i) {
+    gsap.from(el, {
+      scrollTrigger: { trigger: '#about', start: 'top 80%', toggleActions: 'play none none none' },
       y: 16, opacity: 0, duration: 0.4, delay: i * 0.08, ease: 'power2.out'
     });
   });
 
-  // Skills stagger
-  gsap.utils.toArray('.skill-cat-label').forEach(function(el, i) {
-    gsap.from(el.nextElementSibling.children, {
-      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
-      scale: 0.9, opacity: 0, duration: 0.3, stagger: 0.03, ease: 'back.out(1.4)'
-    });
+  gsap.from('.stat-card', {
+    scrollTrigger: { trigger: '.stats-grid', start: 'top 90%', toggleActions: 'play none none none' },
+    y: 12, opacity: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out'
   });
 
-  // ERP cards stagger
-  gsap.from('.erp-card', {
-    scrollTrigger: { trigger: '.erp-grid', start: 'top 88%', toggleActions: 'play none none none' },
-    y: 12, opacity: 0, duration: 0.3, stagger: 0.04, ease: 'power2.out'
-  });
-
-  // Cert cards
   gsap.from('.cert-item', {
-    scrollTrigger: { trigger: '.cert-grid', start: 'top 88%', toggleActions: 'play none none none' },
-    y: 12, opacity: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out'
+    scrollTrigger: { trigger: '.cert-grid', start: 'top 92%', toggleActions: 'play none none none' },
+    y: 12, opacity: 0, duration: 0.35, stagger: 0.06, ease: 'power2.out'
   });
 
-  // Contact cards
   gsap.from('.contact-card', {
-    scrollTrigger: { trigger: '.contact-grid', start: 'top 88%', toggleActions: 'play none none none' },
-    y: 12, opacity: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out'
+    scrollTrigger: { trigger: '.contact-grid', start: 'top 92%', toggleActions: 'play none none none' },
+    y: 12, opacity: 0, duration: 0.35, stagger: 0.05, ease: 'power2.out'
   });
 
   // Nav scroll spy
