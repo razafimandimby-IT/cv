@@ -1342,6 +1342,7 @@
       var revealItems = gsap.utils.toArray('[data-reveal="fade"]');
       revealItems.forEach(function(el) {
         gsap.from(el, {
+          immediateRender: false,
           scrollTrigger: { trigger: el, start: 'top 94%', toggleActions: 'play none none none' },
           y: 20, opacity: 0, duration: 0.5, ease: 'power2.out'
         });
@@ -1350,6 +1351,7 @@
       // Skill category cards stagger
       gsap.utils.toArray('.skill-category-card').forEach(function(el, i) {
         gsap.from(el, {
+          immediateRender: false,
           scrollTrigger: { trigger: el, start: 'top 94%', toggleActions: 'play none none none' },
           y: 16, opacity: 0, duration: 0.4, delay: i * 0.04, ease: 'power2.out'
         });
@@ -1358,6 +1360,7 @@
       // TL items stagger
       gsap.utils.toArray('.tl-item').forEach(function(el, i) {
         gsap.from(el, {
+          immediateRender: false,
           scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
           y: 24, opacity: 0, duration: 0.5, delay: i * 0.1, ease: 'power2.out'
         });
@@ -1366,6 +1369,7 @@
       // Projects stagger
       gsap.utils.toArray('.proj-item').forEach(function(el, i) {
         gsap.from(el, {
+          immediateRender: false,
           scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
           y: 16, opacity: 0, duration: 0.35, delay: i * 0.06, ease: 'power2.out'
         });
@@ -1373,42 +1377,49 @@
 
       // ERP cards stagger
       gsap.from('.erp-card', {
+        immediateRender: false,
         scrollTrigger: { trigger: '.erp-grid', start: 'top 92%', toggleActions: 'play none none none' },
         y: 12, opacity: 0, duration: 0.35, stagger: 0.04, ease: 'power2.out'
       });
 
       // Tech cards stagger
       gsap.from('.tech-card', {
+        immediateRender: false,
         scrollTrigger: { trigger: '.tech-grid', start: 'top 94%', toggleActions: 'play none none none' },
         y: 16, opacity: 0, duration: 0.35, stagger: 0.025, ease: 'power2.out'
       });
 
       // Stats stagger
       gsap.from('.stat-card', {
+        immediateRender: false,
         scrollTrigger: { trigger: '.stats-grid', start: 'top 92%', toggleActions: 'play none none none' },
         y: 12, opacity: 0, duration: 0.35, stagger: 0.05, ease: 'power2.out'
       });
 
       // Certification cards
       gsap.from('.cert-item', {
+        immediateRender: false,
         scrollTrigger: { trigger: '.cert-grid', start: 'top 92%', toggleActions: 'play none none none' },
         y: 12, opacity: 0, duration: 0.35, stagger: 0.05, ease: 'power2.out'
       });
 
       // Education cards
       gsap.from('.edu-item', {
+        immediateRender: false,
         scrollTrigger: { trigger: '#formation', start: 'top 92%', toggleActions: 'play none none none' },
         x: -12, opacity: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out'
       });
 
       // Contact cards stagger
       gsap.from('.contact-card', {
+        immediateRender: false,
         scrollTrigger: { trigger: '.contact-grid', start: 'top 92%', toggleActions: 'play none none none' },
         y: 12, opacity: 0, duration: 0.35, stagger: 0.05, ease: 'power2.out'
       });
 
-      // Force le recalcul des positions ScrollTrigger (indispensable avec Lenis)
+      // Recalcul des positions ScrollTrigger (indispensable avec Lenis)
       ScrollTrigger.refresh();
+      setTimeout(function() { ScrollTrigger.refresh(); }, 300);
 
       // ---- Magnetic buttons ----
       document.querySelectorAll('.magnetic').forEach(function(btn) {
