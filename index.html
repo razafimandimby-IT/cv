@@ -3,933 +3,641 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Denis Razafimandimby — IT Manager | Infrastructure & Cybersecurity | ITSM/ITIL | Automation & ERP</title>
-  <meta name="description" content="IT Manager spécialisé en infrastructure, cybersécurité, ITSM/ITIL, automatisation et ERP. 8 ans d'expérience en direction IT, développement ERP, et gouvernance SI.">
+  <title>Denis Razafimandimby — IT Manager | Infrastructure & Cybersecurity | Automation & ERP</title>
+  <meta name="description" content="IT Manager spécialisé en infrastructure, cybersécurité, ITSM/ITIL, automatisation et ERP. 8 ans d'expérience en direction IT, développement ERP et gouvernance SI.">
   <meta property="og:title" content="Denis Razafimandimby — IT Manager">
   <meta property="og:description" content="Infrastructure & Cybersecurity & ITSM/ITIL & Automation & ERP">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://razafimandimby-it.github.io/cv/">
   <link rel="canonical" href="https://razafimandimby-it.github.io/cv/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
   <style>
-    /* ===== Variables ===== */
+    /* ============================================================
+       VARIABLES
+       ============================================================ */
     :root {
       --accent: #2b9348;
       --accent-hover: #34d058;
-      --accent-dim: rgba(43, 147, 72, 0.12);
-      --accent-glow: rgba(43, 147, 72, 0.25);
+      --accent-dim: rgba(43,147,72,0.12);
+      --accent-glow: rgba(43,147,72,0.25);
+      --accent-soft: rgba(43,147,72,0.06);
+      --radius-sm: 8px;
       --radius: 12px;
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
     }
     [data-theme="dark"] {
-      --bg: #0a0a0f;
-      --bg-card: #12121a;
-      --bg-card-hover: #1a1a26;
-      --bg-elevated: #1e1e2a;
-      --border: rgba(255, 255, 255, 0.06);
-      --border-hover: rgba(255, 255, 255, 0.12);
-      --text: #f1f1f5;
+      --bg: #07070b;
+      --bg-card: #0e0e14;
+      --bg-card-hover: #16161f;
+      --bg-elevated: #1a1a26;
+      --bg-soft: rgba(255,255,255,0.02);
+      --border: rgba(255,255,255,0.05);
+      --border-hover: rgba(255,255,255,0.10);
+      --border-accent: rgba(43,147,72,0.20);
+      --text: #ededef;
       --text-secondary: #8b8ba0;
       --text-tertiary: #5c5c72;
-      --glow: rgba(43, 147, 72, 0.08);
+      --glow: rgba(43,147,72,0.06);
+      --glow-strong: rgba(43,147,72,0.12);
+      --glass-bg: rgba(14,14,20,0.60);
+      --glass-border: rgba(255,255,255,0.06);
     }
     [data-theme="light"] {
-      --bg: #f8f9fb;
+      --bg: #f6f7f9;
       --bg-card: #ffffff;
-      --bg-card-hover: #f4f5f8;
-      --bg-elevated: #eef0f4;
-      --border: rgba(0, 0, 0, 0.06);
-      --border-hover: rgba(0, 0, 0, 0.12);
+      --bg-card-hover: #f2f3f6;
+      --bg-elevated: #e8eaf0;
+      --bg-soft: rgba(0,0,0,0.01);
+      --border: rgba(0,0,0,0.06);
+      --border-hover: rgba(0,0,0,0.12);
+      --border-accent: rgba(43,147,72,0.15);
       --text: #0f1117;
       --text-secondary: #5c5c72;
       --text-tertiary: #9ca3af;
-      --glow: rgba(43, 147, 72, 0.06);
+      --glow: rgba(43,147,72,0.04);
+      --glow-strong: rgba(43,147,72,0.08);
+      --glass-bg: rgba(255,255,255,0.60);
+      --glass-border: rgba(0,0,0,0.06);
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    ::selection {
-      background: var(--accent);
-      color: white;
-    }
-    :focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-      border-radius: 4px;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    ::selection { background: var(--accent); color: #fff; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
       transition: background var(--transition), color var(--transition);
       overflow-x: hidden;
-      cursor: default;
     }
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
 
-    /* ===== Background ===== */
-    .bg-gradient-animated {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: radial-gradient(ellipse 80% 60% at 50% -20%, var(--glow) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(43, 147, 72, 0.03) 0%, transparent 50%);
+    /* ============================================================
+       SCROLLBAR
+       ============================================================ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--text-tertiary); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+    /* ============================================================
+       ANIMATED GRID BACKGROUND
+       ============================================================ */
+    .bg-grid {
+      position: fixed; inset: 0; z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 70% 50% at 50% 0%, black 30%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 0%, black 30%, transparent 70%);
+    }
+    [data-theme="light"] .bg-grid {
+      background-image:
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    }
+    .bg-glow {
+      position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(ellipse 600px 400px at 20% 10%, var(--glow-strong) 0%, transparent 60%),
+        radial-gradient(ellipse 500px 300px at 80% 20%, rgba(43,147,72,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse 400px 500px at 50% 80%, rgba(43,147,72,0.03) 0%, transparent 50%);
+    }
+    .bg-orb {
+      position: fixed; z-index: -1; pointer-events: none;
+      border-radius: 50%; filter: blur(80px); opacity: 0.3;
+    }
+    .bg-orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
+      top: -200px; left: -100px;
+      animation: orbFloat 20s ease-in-out infinite;
+    }
+    .bg-orb-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(43,147,72,0.08) 0%, transparent 70%);
+      bottom: -150px; right: -100px;
+      animation: orbFloat 25s ease-in-out infinite reverse;
+    }
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -40px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
     }
 
-    /* ===== Custom Cursor (light) ===== */
-    .custom-cursor {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(43, 147, 72, 0.08);
-      border: 1px solid rgba(43, 147, 72, 0.25);
-      transform: translate(-50%, -50%);
-      transition: width 0.25s, height 0.25s, background 0.25s, border-color 0.25s;
-      backdrop-filter: blur(2px);
-      will-change: transform;
+    /* ============================================================
+       LOADER
+       ============================================================ */
+    .loader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px;
+      transition: opacity 0.6s, visibility 0.6s;
     }
-    .custom-cursor.hover {
-      width: 44px;
-      height: 44px;
-      background: rgba(43, 147, 72, 0.12);
-      border-color: var(--accent);
-    }
-    @media (pointer: coarse) {
-      .custom-cursor {
-        display: none;
-      }
-    }
+    .loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-ring { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--border); border-top-color: var(--accent); animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loader-text { font-size: 0.75rem; color: var(--text-tertiary); letter-spacing: 0.1em; text-transform: uppercase; }
 
-    /* ===== Theme toggle ===== */
+    /* ============================================================
+       THEME TOGGLE
+       ============================================================ */
     .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 100;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: fixed; top: 20px; right: 20px; z-index: 100;
+      width: 40px; height: 40px; border-radius: var(--radius);
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      color: var(--text-secondary); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
       transition: all var(--transition);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     }
-    .theme-toggle:hover {
-      background: var(--bg-card-hover);
-      color: var(--text);
-      border-color: var(--border-hover);
-    }
+    .theme-toggle:hover { background: var(--bg-card-hover); color: var(--text); border-color: var(--border-hover); transform: scale(1.05); }
 
-    /* ===== Nav ===== */
+    /* ============================================================
+       NAVIGATION
+       ============================================================ */
     nav {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 99;
-      display: flex;
-      gap: 2px;
-      padding: 4px;
-      background: rgba(18, 18, 26, 0.6);
-      backdrop-filter: blur(20px);
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    [data-theme="light"] nav {
-      background: rgba(255, 255, 255, 0.7);
-      border-color: rgba(0, 0, 0, 0.06);
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      z-index: 99; display: flex; gap: 2px; padding: 4px;
+      background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-radius: 14px; border: 1px solid var(--glass-border);
     }
     nav a {
-      padding: 8px 16px;
-      border-radius: 10px;
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--text-tertiary);
-      text-decoration: none;
-      transition: all 0.2s;
-      white-space: nowrap;
+      padding: 8px 16px; border-radius: 10px; font-size: 0.78rem; font-weight: 500;
+      color: var(--text-tertiary); text-decoration: none; transition: all 0.2s; white-space: nowrap;
     }
-    nav a:hover,
-    nav a.active {
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.06);
-    }
-    [data-theme="light"] nav a:hover {
-      background: rgba(0, 0, 0, 0.04);
-    }
+    nav a:hover, nav a.active { color: var(--text); background: var(--bg-soft); }
+    nav a.active { color: var(--accent); background: var(--accent-soft); }
 
-    /* ===== Sections ===== */
-    section {
-      padding: 72px 0;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    /* ============================================================
+       SHARED
+       ============================================================ */
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; position: relative; }
     .section-label {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      margin-bottom: 6px;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--accent); margin-bottom: 8px;
+    }
+    .section-label::before {
+      content: ''; display: inline-block; width: 20px; height: 1.5px;
+      background: var(--accent); border-radius: 2px;
     }
     .section-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 8px;
+      font-size: 2rem; font-weight: 800; letter-spacing: -0.035em;
+      line-height: 1.15; margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--text) 60%, var(--text-tertiary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     .section-sub {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      max-width: 680px;
-      line-height: 1.7;
+      font-size: 0.95rem; color: var(--text-secondary); max-width: 680px; line-height: 1.7;
     }
 
-    /* ===== Hero ===== */
+    /* ============================================================
+       CARDS (shared)
+       ============================================================ */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 20px 24px; transition: all var(--transition);
+    }
+    .card:hover {
+      border-color: var(--border-hover); box-shadow: var(--shadow-hover); transform: translateY(-2px);
+    }
+    .card-accent { border-left: 3px solid var(--accent); }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-    /* Ensure hero content always visible (no-JS fallback) */
-    #heroContent { visibility: visible; }
-    .hero-avatar, .hero h1, .typing-wrap, .hero-summary, .hero-stats, .hero-links, .btn-group { opacity: 1; }
-    .hero-avatar {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), #4ade80);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 20px;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-    }
-    .hero h1 {
-      font-size: 3.2rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 6px;
-    }
-    .hero .typing-wrap {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      min-height: 1.6em;
-      margin-bottom: 18px;
-    }
-    .hero .typing-wrap .cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1.2em;
-      background: var(--accent);
-      margin-left: 2px;
-      vertical-align: text-bottom;
-      animation: blink 1s step-end infinite;
-    }
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
-    }
-    .hero-summary {
-      font-size: 0.92rem;
-      color: var(--text-tertiary);
-      line-height: 1.7;
-      max-width: 580px;
-      margin-bottom: 24px;
-    }
-    .hero-stats {
-      display: flex;
-      gap: 32px;
-      margin-bottom: 28px;
-      flex-wrap: wrap;
-    }
-    .hero-stat .num {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-    .hero-stat .lbl {
-      font-size: 0.75rem;
-      color: var(--text-tertiary);
-    }
-    .hero-links {
-      display: flex;
-      gap: 16px;
-      font-size: 0.82rem;
-      color: var(--text-tertiary);
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    .hero-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .hero-links a:hover {
-      color: var(--accent);
-    }
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 22px;
-      border-radius: 10px;
-      font-size: 0.88rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-    }
-    .btn-primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px var(--accent-glow);
-    }
-    .btn-ghost {
-      color: var(--text-secondary);
-      border: 1px solid var(--border);
-    }
-    .btn-ghost:hover {
-      background: var(--bg-card);
-      color: var(--text);
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
-    }
-
-    /* ===== Badge ===== */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.78rem;
-      padding: 4px 14px;
-      border-radius: 20px;
-      border: 1px solid var(--accent-dim);
-      color: var(--accent);
-      background: var(--accent-dim);
-    }
-    .badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: pulse-dot 2s infinite;
-    }
-    @keyframes pulse-dot {
-      0%,
-      100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.4;
-      }
-    }
-
-    /* ===== Skill tags ===== */
-    .skill-tag {
-      display: inline-block;
-      font-size: 0.8rem;
-      padding: 6px 16px;
-      border-radius: 8px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      transition: all 0.2s;
-      cursor: default;
-      margin: 3px;
-    }
-    .skill-tag:hover {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-1px);
-    }
-    .skill-cat-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin: 14px 0 6px;
-    }
-    .skill-cat-label:first-child {
-      margin-top: 0;
-    }
-
-    /* ===== Timeline ===== */
-    .tl {
-      position: relative;
-    }
-    .tl::before {
-      content: '';
-      position: absolute;
-      left: 15px;
-      top: 4px;
-      bottom: 4px;
-      width: 1px;
-      background: var(--border);
-    }
-    .tl-item {
-      position: relative;
-      padding-left: 48px;
-      padding-bottom: 36px;
-    }
-    .tl-item:last-child {
-      padding-bottom: 0;
-    }
-    .tl-item::before {
-      content: '';
-      position: absolute;
-      left: 10px;
-      top: 6px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 0 3px var(--accent-dim);
-    }
-    .tl-item .tl-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px 20px;
-      transition: all 0.2s;
-    }
-    .tl-item .tl-card:hover {
-      border-color: var(--border-hover);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-      transform: translateY(-2px);
-    }
-    .tl-header {
-      margin-bottom: 4px;
-    }
-    .tl-header h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-    .tl-company {
-      font-size: 0.88rem;
-      color: var(--accent);
-      font-weight: 500;
-    }
-    .tl-date {
-      font-size: 0.78rem;
-      color: var(--text-tertiary);
-      margin-bottom: 6px;
-    }
-    .tl-desc {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-    .tl-desc ul {
-      list-style: none;
-      margin-top: 6px;
-    }
-    .tl-desc ul li {
-      padding-left: 16px;
-      position: relative;
-      margin-bottom: 3px;
-    }
-    .tl-desc ul li::before {
-      content: '';
-      position: absolute;
-      left: 2px;
-      top: 10px;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.5;
-    }
-
-    /* ===== ERP grid ===== */
-    .erp-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 10px;
-      margin: 16px 0;
-    }
-    .erp-card {
-      padding: 14px 16px;
-      border-radius: 10px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      transition: all 0.2s;
-    }
-    .erp-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--border-hover);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-    .erp-card h4 {
-      font-size: 0.82rem;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-    .erp-card p {
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      line-height: 1.4;
-    }
-    .erp-stack {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-    .erp-stack span {
-      font-size: 0.72rem;
-      padding: 4px 12px;
-      border-radius: 6px;
-      background: var(--accent-dim);
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    /* ===== Projects ===== */
-    .proj-item {
-      padding: 16px 18px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      transition: all 0.2s;
-      margin-bottom: 8px;
-      background: var(--bg-card);
-    }
-    .proj-item:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    }
-    .proj-item-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .proj-item a.main-link {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--text);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .proj-item a.main-link:hover {
-      color: var(--accent);
-    }
-    .proj-desc {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      margin-top: 4px;
-      line-height: 1.5;
-    }
-    .proj-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 6px;
-    }
-    .proj-tags span {
-      font-size: 0.65rem;
-      padding: 2px 10px;
-      border-radius: 4px;
-      background: var(--bg-elevated);
-      color: var(--text-tertiary);
-    }
-
-    /* ===== Stats ===== */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 12px;
-      margin-top: 24px;
-    }
-    .stat-card {
-      padding: 18px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      text-align: center;
-      transition: all 0.2s;
-      background: var(--bg-card);
-    }
-    .stat-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
-    }
-    .stat-card .val {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    .stat-card .lbl {
-      font-size: 0.78rem;
-      color: var(--text-tertiary);
-      margin-top: 2px;
-    }
-
-    /* ===== Technologies grid ===== */
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 12px;
-      margin-top: 20px;
-    }
-    .tech-card {
-      padding: 16px 12px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-      text-align: center;
-      transition: all 0.25s;
-      cursor: default;
-    }
-    .tech-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 8px 24px var(--accent-glow);
-    }
-    .tech-card .tech-icon {
-      font-size: 2rem;
-      display: block;
-      margin-bottom: 6px;
-    }
-    .tech-card .tech-name {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-
-    /* ===== Certifications ===== */
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 10px;
-    }
-    .cert-item {
-      padding: 14px 18px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      transition: all 0.2s;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      background: var(--bg-card);
-    }
-    .cert-item:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
-    }
-    .cert-item h4 {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    .cert-item .cert-status {
-      font-size: 0.72rem;
-      padding: 3px 10px;
-      border-radius: 6px;
-      background: var(--accent-dim);
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    /* ===== Langues ===== */
-    .lang-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 6px;
-      margin-top: 16px;
-    }
-    .lang-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 14px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-    }
-    .lang-item .name {
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-    .lang-item .level {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-    }
-    .lang-dot {
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      margin-right: 3px;
-    }
-    .lang-dot.full {
-      background: var(--accent);
-    }
-    .lang-dot.half {
-      background: var(--accent);
-      opacity: 0.4;
-    }
-    .lang-dot.empty {
-      background: var(--border);
-    }
-
-    /* ===== Formation ===== */
-    .edu-item {
-      display: flex;
-      gap: 16px;
-      padding: 14px 18px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-      transition: all 0.2s;
-      margin-bottom: 8px;
-      align-items: flex-start;
-    }
-    .edu-item:hover {
-      border-color: var(--border-hover);
-      transform: translateX(4px);
-    }
-    .edu-item .edu-icon {
-      font-size: 1.4rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .edu-item .edu-content h4 {
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-    .edu-item .edu-content .edu-meta {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-    }
-    .edu-item .edu-content p {
-      font-size: 0.85rem;
-      color: var(--text-tertiary);
-      margin-top: 2px;
-    }
-
-    /* ===== Contact ===== */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 10px;
-    }
-    .contact-card {
-      padding: 16px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      text-align: center;
-      transition: all 0.2s;
-      text-decoration: none;
-      display: block;
-      background: var(--bg-card);
-    }
-    .contact-card:hover {
-      border-color: var(--accent);
-      background: var(--accent-dim);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px var(--accent-glow);
-    }
-    .contact-card .icon {
-      font-size: 1.3rem;
-      margin-bottom: 6px;
-      display: block;
-    }
-    .contact-card .label {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-    }
-    .contact-card .value {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-top: 2px;
-      word-break: break-all;
-    }
-
-    /* ===== Footer ===== */
-    footer {
-      padding: 40px 0;
-      text-align: center;
-      border-top: 1px solid var(--border);
-      margin-top: 40px;
-      position: relative;
-    }
-    footer p {
-      font-size: 0.8rem;
-      color: var(--text-tertiary);
-    }
-    .back-top {
-      position: absolute;
-      right: 24px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
-    .back-top:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-50%) scale(1.05);
-    }
-    @media (max-width: 640px) {
-      .back-top {
-        right: 16px;
-        width: 36px;
-        height: 36px;
-      }
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 640px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero-summary {
-        font-size: 0.85rem;
-      }
-      .hero-stats {
-        gap: 18px;
-      }
-      .hero-stat .num {
-        font-size: 1rem;
-      }
-      section {
-        padding: 40px 0;
-      }
-      .section-title {
-        font-size: 1.3rem;
-      }
-      nav {
-        display: none;
-      }
-      .theme-toggle {
-        top: 12px;
-        right: 12px;
-      }
-      .erp-grid {
-        grid-template-columns: 1fr;
-      }
-      .tech-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      }
-    }
-    @media (max-width: 768px) and (min-width: 641px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-    }
-
-    /* ===== Loader ===== */
-    .loader {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.6s;
-    }
-    .loader.hidden {
-      opacity: 0;
+      min-height: 100vh; display: flex; align-items: center; position: relative;
+      padding: 120px 0 80px; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, var(--glow) 0%, transparent 60%);
       pointer-events: none;
     }
-    .loader-bar {
-      width: 120px;
-      height: 3px;
-      border-radius: 4px;
-      background: var(--border);
-      overflow: hidden;
+    #heroContent { visibility: visible; position: relative; z-index: 2; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 100px; font-size: 0.78rem; font-weight: 500;
+      border: 1px solid var(--border-accent); color: var(--accent); margin-bottom: 24px;
+      background: var(--accent-soft);
     }
-    .loader-bar-inner {
-      width: 0%;
-      height: 100%;
-      border-radius: 4px;
-      background: linear-gradient(90deg, var(--accent), #4ade80);
-      animation: load 1.2s ease-in-out forwards;
+    .hero-badge .dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+      animation: pulse-dot 2s ease-in-out infinite;
     }
-    @keyframes load {
-      to {
-        width: 100%;
-      }
+    @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem); font-weight: 900;
+      letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 12px;
+    }
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, var(--accent), #4ade80, var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      background-size: 200% 200%; animation: gradientShift 4s ease-in-out infinite;
+    }
+    @keyframes gradientShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+    .hero-typing {
+      font-size: 1.1rem; color: var(--text-secondary); min-height: 1.6em; margin-bottom: 20px;
+    }
+    .hero-typing .cursor { display: inline-block; width: 2px; height: 1.2em; background: var(--accent); margin-left: 2px; vertical-align: text-bottom; animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .hero-summary {
+      font-size: 0.95rem; color: var(--text-tertiary); line-height: 1.7;
+      max-width: 600px; margin-bottom: 28px;
     }
 
-    /* ===== Glassmorphism extras ===== */
-    .glass {
-      background: rgba(18, 18, 26, 0.4);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+    .hero-stats {
+      display: flex; gap: 40px; margin-bottom: 32px; flex-wrap: wrap;
     }
-    [data-theme="light"] .glass {
-      background: rgba(255, 255, 255, 0.5);
-      border-color: rgba(0, 0, 0, 0.06);
+    .hero-stat { text-align: center; }
+    .hero-stat .num {
+      font-size: 2rem; font-weight: 800; letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--accent), #4ade80);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-stat .lbl { font-size: 0.75rem; color: var(--text-tertiary); margin-top: 2px; font-weight: 500; }
+
+    .hero-links {
+      display: flex; gap: 20px; font-size: 0.85rem; flex-wrap: wrap; margin-bottom: 24px;
+    }
+    .hero-links a {
+      color: var(--text-secondary); text-decoration: none; transition: color 0.2s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .hero-links a:hover { color: var(--accent); }
+
+    .btn-group { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: var(--radius); font-size: 0.88rem; font-weight: 500;
+      text-decoration: none; cursor: pointer; border: none; position: relative; overflow: hidden;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #2a8f45);
+      color: #fff; box-shadow: 0 4px 16px var(--accent-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px); box-shadow: 0 8px 28px var(--accent-glow);
+    }
+    .btn-ghost {
+      color: var(--text-secondary); border: 1px solid var(--border); background: var(--bg-card);
+    }
+    .btn-ghost:hover { background: var(--bg-card-hover); color: var(--text); border-color: var(--border-hover); transform: translateY(-2px); }
+
+    /* ============================================================
+       ABOUT / PROFILE
+       ============================================================ */
+    .about-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px; margin-top: 24px;
+    }
+    .about-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 22px; transition: all var(--transition);
+    }
+    .about-card:hover {
+      border-color: var(--border-hover); transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .about-card .card-icon {
+      width: 36px; height: 36px; border-radius: var(--radius-sm);
+      background: var(--accent-soft); display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; margin-bottom: 12px; color: var(--accent);
+    }
+    .about-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+    .about-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px; margin-top: 24px;
+    }
+    .stat-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px; text-align: center;
+      transition: all var(--transition);
+    }
+    .stat-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+    .stat-card .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+    .stat-card .lbl { font-size: 0.75rem; color: var(--text-tertiary); margin-top: 2px; }
+
+    /* ============================================================
+       SKILLS (compact redesign)
+       ============================================================ */
+    .skills-compact {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 10px; margin-top: 20px;
+    }
+    .skill-category-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px 18px;
+      transition: all var(--transition);
+    }
+    .skill-category-card:hover { border-color: var(--border-hover); }
+    .skill-category-card .cat-title {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--accent); margin-bottom: 10px;
+    }
+    .skill-category-card .tags {
+      display: flex; flex-wrap: wrap; gap: 4px;
+    }
+    .skill-category-card .tags span {
+      font-size: 0.72rem; padding: 3px 10px; border-radius: 6px;
+      background: var(--bg-soft); border: 1px solid var(--border);
+      color: var(--text-secondary); transition: all 0.2s; cursor: default;
+    }
+    .skill-category-card .tags span:hover {
+      background: var(--accent-soft); border-color: var(--border-accent);
+      color: var(--accent); transform: translateY(-1px);
+    }
+
+    /* ============================================================
+       TECH SHOWCASE
+       ============================================================ */
+    .tech-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px; margin-top: 20px;
+    }
+    .tech-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px 10px; text-align: center;
+      transition: all 0.25s; cursor: default;
+    }
+    .tech-card:hover {
+      border-color: var(--accent); transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 12px 32px var(--accent-glow);
+    }
+    .tech-card .tech-icon { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+    .tech-card .tech-name { font-size: 0.72rem; font-weight: 500; color: var(--text-secondary); }
+    .tech-cat-divider {
+      grid-column: 1 / -1; margin: 8px 0 4px;
+      font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--text-tertiary);
+    }
+
+    /* ============================================================
+       ERP
+       ============================================================ */
+    .erp-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px; margin: 16px 0;
+    }
+    .erp-card {
+      padding: 14px 16px; border-radius: var(--radius);
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent); transition: all var(--transition);
+    }
+    .erp-card:hover { transform: translateY(-2px); border-color: var(--border-hover); box-shadow: var(--shadow-hover); }
+    .erp-card h4 { font-size: 0.82rem; font-weight: 600; margin-bottom: 2px; }
+    .erp-card p { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; }
+    .erp-stack {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px;
+    }
+    .erp-stack span {
+      font-size: 0.72rem; padding: 4px 12px; border-radius: 6px;
+      background: var(--accent-soft); color: var(--accent); font-weight: 500;
+    }
+
+    /* ============================================================
+       EXPERIENCE / TIMELINE
+       ============================================================ */
+    .tl { position: relative; }
+    .tl::before {
+      content: ''; position: absolute; left: 15px; top: 4px; bottom: 4px;
+      width: 1.5px; background: linear-gradient(to bottom, var(--border), var(--accent-dim), var(--border));
+    }
+    .tl-item {
+      position: relative; padding-left: 48px; padding-bottom: 32px;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before {
+      content: ''; position: absolute; left: 10px; top: 6px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--bg);
+      box-shadow: 0 0 0 4px var(--accent-dim);
+    }
+    .tl-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 22px; transition: all var(--transition);
+    }
+    .tl-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .tl-header h3 { font-size: 1.05rem; font-weight: 600; }
+    .tl-company { font-size: 0.88rem; color: var(--accent); font-weight: 500; }
+    .tl-date { font-size: 0.78rem; color: var(--text-tertiary); margin-bottom: 8px; }
+    .tl-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+    .tl-desc ul { list-style: none; margin-top: 6px; }
+    .tl-desc ul li { padding-left: 16px; position: relative; margin-bottom: 3px; }
+    .tl-desc ul li::before {
+      content: ''; position: absolute; left: 2px; top: 10px;
+      width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5;
+    }
+    .sub-role-title { display: block; margin-top: 10px; font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .sub-role-title:first-of-type { margin-top: 0; }
+
+    /* ============================================================
+       PROJECTS
+       ============================================================ */
+    .proj-item {
+      padding: 18px 20px; border-radius: var(--radius); border: 1px solid var(--border);
+      transition: all var(--transition); margin-bottom: 10px; background: var(--bg-card);
+    }
+    .proj-item:hover { border-color: var(--border-hover); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    .proj-item-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+    .proj-item a.main-link { font-weight: 600; font-size: 0.9rem; color: var(--text); text-decoration: none; transition: color 0.2s; }
+    .proj-item a.main-link:hover { color: var(--accent); }
+    .proj-desc { font-size: 0.82rem; color: var(--text-secondary); margin-top: 4px; line-height: 1.5; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .proj-tags span {
+      font-size: 0.65rem; padding: 2px 10px; border-radius: 4px;
+      background: var(--bg-elevated); color: var(--text-tertiary);
+    }
+
+    /* ============================================================
+       FORMATION / EDUCATION
+       ============================================================ */
+    .edu-item {
+      display: flex; gap: 16px; padding: 16px 20px; border-radius: var(--radius);
+      border: 1px solid var(--border); background: var(--bg-card);
+      transition: all var(--transition); margin-bottom: 8px; align-items: flex-start;
+    }
+    .edu-item:hover { border-color: var(--border-hover); transform: translateX(4px); }
+    .edu-item .edu-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .edu-item .edu-content h4 { font-size: 0.92rem; font-weight: 600; }
+    .edu-item .edu-content .edu-meta { font-size: 0.8rem; color: var(--text-secondary); }
+    .edu-item .edu-content p { font-size: 0.82rem; color: var(--text-tertiary); margin-top: 2px; }
+
+    /* ============================================================
+       CERTIFICATIONS
+       ============================================================ */
+    .cert-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 10px; margin-top: 16px;
+    }
+    .cert-item {
+      padding: 14px 18px; border-radius: var(--radius); border: 1px solid var(--border);
+      transition: all var(--transition); display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 8px; background: var(--bg-card);
+    }
+    .cert-item:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+    .cert-item h4 { font-size: 0.85rem; font-weight: 600; }
+    .cert-item p { font-size: 0.75rem; color: var(--text-secondary); }
+    .cert-item .cert-status {
+      font-size: 0.68rem; padding: 3px 10px; border-radius: 6px;
+      background: var(--accent-soft); color: var(--accent); font-weight: 500; white-space: nowrap;
+    }
+
+    /* ============================================================
+       INTERESTS
+       ============================================================ */
+    .interests-row {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;
+    }
+    .interest-tag {
+      font-size: 0.78rem; padding: 6px 16px; border-radius: 100px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-secondary); transition: all 0.2s; cursor: default;
+    }
+    .interest-tag:hover {
+      border-color: var(--accent); color: var(--accent); background: var(--accent-soft);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       LANGUES
+       ============================================================ */
+    .lang-section {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px; margin-top: 16px;
+    }
+    .lang-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 16px; border-radius: var(--radius-sm);
+      background: var(--bg-card); border: 1px solid var(--border);
+    }
+    .lang-item .name { font-weight: 500; font-size: 0.88rem; }
+    .lang-item .level { font-size: 0.8rem; color: var(--text-secondary); }
+    .lang-dot {
+      display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 2px;
+    }
+    .lang-dot.full { background: var(--accent); }
+    .lang-dot.half { background: var(--accent); opacity: 0.4; }
+    .lang-dot.empty { background: var(--border); }
+
+    /* ============================================================
+       CONTACT — redesigned
+       ============================================================ */
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px; margin-top: 24px;
+    }
+    .contact-card {
+      padding: 20px 16px; border-radius: var(--radius); border: 1px solid var(--border);
+      text-align: center; transition: all var(--transition); text-decoration: none; display: block;
+      background: var(--bg-card); position: relative; overflow: hidden;
+    }
+    .contact-card::before {
+      content: ''; position: absolute; inset: 0; opacity: 0;
+      background: linear-gradient(135deg, var(--accent-soft), transparent);
+      transition: opacity 0.3s;
+    }
+    .contact-card:hover::before { opacity: 1; }
+    .contact-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 24px var(--accent-glow); }
+    .contact-card .icon { font-size: 1.4rem; margin-bottom: 8px; display: block; position: relative; }
+    .contact-card .label { font-size: 0.72rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.06em; position: relative; }
+    .contact-card .value { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-top: 4px; word-break: break-all; position: relative; }
+
+    .available-section { margin-top: 28px; }
+    .available-section h3 { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 10px; }
+    .available-badges {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .available-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 16px; border-radius: 100px; font-size: 0.78rem;
+      background: var(--accent-soft); border: 1px solid var(--border-accent);
+      color: var(--accent); transition: all 0.2s; cursor: default;
+    }
+    .available-badge:hover { transform: translateY(-2px); box-shadow: 0 4px 12px var(--accent-glow); }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer {
+      padding: 40px 0; text-align: center; border-top: 1px solid var(--border);
+      margin-top: 40px; position: relative;
+    }
+    footer p { font-size: 0.78rem; color: var(--text-tertiary); }
+    .back-top {
+      position: absolute; right: 24px; top: 50%; transform: translateY(-50%);
+      width: 40px; height: 40px; border-radius: var(--radius);
+      border: 1px solid var(--border); background: var(--bg-card);
+      color: var(--text-secondary); display: flex; align-items: center;
+      justify-content: center; cursor: pointer; transition: all 0.2s; text-decoration: none;
+    }
+    .back-top:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-50%) scale(1.05); }
+
+    /* ============================================================
+       CUSTOM CURSOR
+       ============================================================ */
+    .custom-cursor {
+      position: fixed; pointer-events: none; z-index: 9999;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(43,147,72,0.06); border: 1px solid rgba(43,147,72,0.20);
+      transform: translate(-50%, -50%); transition: width 0.25s, height 0.25s, background 0.25s, border-color 0.25s;
+      backdrop-filter: blur(2px); will-change: transform;
+    }
+    .custom-cursor.hover { width: 44px; height: 44px; background: rgba(43,147,72,0.10); border-color: var(--accent); }
+    @media (pointer: coarse) { .custom-cursor { display: none; } }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 768px) {
+      section { padding: 56px 0; }
+      .section-title { font-size: 1.5rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero-stats { gap: 24px; }
+      .hero-stat .num { font-size: 1.5rem; }
+      .skills-compact { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      nav { display: none; }
+      .theme-toggle { top: 12px; right: 12px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .erp-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats { gap: 16px; }
+      .back-top { right: 16px; width: 36px; height: 36px; }
+    }
+    @media (max-width: 768px) and (min-width: 641px) {
+      .hero h1 { font-size: 2.5rem; }
     }
   </style>
 </head>
@@ -937,11 +645,15 @@
 
   <!-- Loader -->
   <div class="loader" id="loader" role="status" aria-label="Chargement">
-    <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+    <div class="loader-ring"></div>
+    <div class="loader-text">Chargement</div>
   </div>
 
-  <!-- Background -->
-  <div class="bg-gradient-animated"></div>
+  <!-- Background layers -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
 
   <!-- Custom Cursor -->
   <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
@@ -965,217 +677,191 @@
   </nav>
 
   <!-- ============================================================ -->
-  <!-- HERO -->
+  <!-- HERO — Premium Landing -->
   <!-- ============================================================ -->
   <section id="hero" class="hero">
     <div class="container" style="width:100%">
       <div id="heroContent">
-        <div class="hero-avatar" aria-hidden="true">DR</div>
-        <h1>Denis Razafimandimby</h1>
-        <div class="typing-wrap">
+        <div class="hero-badge" data-reveal="fade">
+          <span class="dot"></span>
+          Ouvert aux opportunités
+        </div>
+        <div data-reveal="fade">
+          <h1>Denis <span class="gradient-text">Razafimandimby</span></h1>
+        </div>
+        <div class="hero-typing" data-reveal="fade" style="transition-delay:0.05s">
           <span id="typingText"></span><span class="cursor" aria-hidden="true"></span>
         </div>
-        <p class="hero-summary">
+        <p class="hero-summary" data-reveal="fade" style="transition-delay:0.1s">
           Responsable Informatique avec une double compétence : gouvernance des systèmes d'information
           <strong style="color:var(--text-secondary)">ET</strong> développement d'applications métier.
           Je pilote la stratégie IT d'organisations en croissance et je conçois les ERP qui digitalisent leurs processus.
         </p>
-        <div class="hero-stats">
+        <div class="hero-stats" data-reveal="fade" style="transition-delay:0.15s">
           <div class="hero-stat"><div class="num">8+</div><div class="lbl">ans d'expérience</div></div>
           <div class="hero-stat"><div class="num">2</div><div class="lbl">directions IT pilotées</div></div>
           <div class="hero-stat"><div class="num">8</div><div class="lbl">modules ERP développés</div></div>
           <div class="hero-stat"><div class="num">-35%</div><div class="lbl">MTTR réduit</div></div>
         </div>
-        <div class="hero-links">
-          <span class="badge"><span class="badge-dot"></span> Ouvert aux opportunités</span>
+        <div class="hero-links" data-reveal="fade" style="transition-delay:0.2s">
           <a href="mailto:l.denis.razafimandimby@gmail.com">✉ l.denis.razafimandimby@gmail.com</a>
           <a href="tel:+261374831648">📞 +261 37 483 16 48</a>
           <a href="https://www.linkedin.com/in/louis-denis-razafimandimby-488610227/" target="_blank" rel="noopener">✦ LinkedIn</a>
         </div>
-        <div class="btn-group">
+        <div class="btn-group" data-reveal="fade" style="transition-delay:0.25s">
           <a href="#contact" class="btn btn-primary magnetic">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Me contacter
           </a>
           <a href="#experience" class="btn btn-ghost magnetic">Parcours</a>
           <a href="#projects" class="btn btn-ghost magnetic">Réalisations</a>
+          <a href="https://github.com/razafimandimby-IT" target="_blank" class="btn btn-ghost magnetic">GitHub ↗</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- ABOUT -->
+  <!-- ABOUT / PROFIL -->
   <!-- ============================================================ -->
   <section id="about">
     <div class="container">
-      <span class="section-label">Profil</span>
-      <h2 class="section-title">IT Manager & Développeur ERP</h2>
-      <p class="section-sub" style="max-width:720px">
+      <span class="section-label" data-reveal="fade">Profil</span>
+      <h2 class="section-title" data-reveal="fade">IT Manager & Développeur ERP</h2>
+      <p class="section-sub" data-reveal="fade" style="max-width:720px">
         IT Manager avec 8 ans d'expérience alliant management IT et développement logiciel.
         Ma particularité : je parle couramment deux langages — celui de la gouvernance SI (ITIL, budgets, équipes, prestataires)
         et celui du code (PHP, Laravel, Python, PowerShell, infrastructure as code).
       </p>
-      <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px">
-        <div class="erp-card" style="border-left-color:var(--accent)">
+      <div class="about-grid">
+        <div class="about-card" data-reveal="fade" style="transition-delay:0.05s">
+          <div class="card-icon">🏗️</div>
           <h4>Gouvernance & Management</h4>
-          <p>Feuille de route IT, procédure d'exploitation, KPI, management d'équipe, pilotage prestataires,
-          conduite du changement, budget IT, conformité SLA &gt;95%.</p>
+          <p>Feuille de route IT, procédure d'exploitation, KPI, management d'équipe, pilotage prestataires, conduite du changement, budget IT, conformité SLA &gt;95%.</p>
         </div>
-        <div class="erp-card" style="border-left-color:#4ade80">
+        <div class="about-card" data-reveal="fade" style="transition-delay:0.1s">
+          <div class="card-icon">🔒</div>
           <h4>Infrastructure & Sécurité</h4>
-          <p>Windows Server, Linux, AD, GPO, Hyper-V, Proxmox, Docker, réseau (pfSense),
-          sécurisation (BitLocker, LAPS, MFA, Wazuh), supervision (Zabbix, Grafana, Prometheus), backup.</p>
+          <p>Windows Server, Linux, AD, GPO, Hyper-V, Proxmox, Docker, réseau (pfSense), sécurisation (BitLocker, LAPS, MFA, Wazuh), supervision (Zabbix, Grafana, Prometheus), backup.</p>
         </div>
-        <div class="erp-card" style="border-left-color:#3b82f6">
+        <div class="about-card" data-reveal="fade" style="transition-delay:0.15s">
+          <div class="card-icon">⚡</div>
           <h4>Développement & Automation</h4>
-          <p>Conception et développement ERP (Laravel/PHP, MySQL, API REST), scripts PowerShell/Python/Bash pour automation,
-          Infrastructure as Code avec Ansible, déploiement Docker, Git.</p>
+          <p>Conception et développement ERP (Laravel/PHP, MySQL, API REST), scripts PowerShell/Python/Bash pour automation, Infrastructure as Code avec Ansible, déploiement Docker, Git.</p>
         </div>
-        <div class="erp-card" style="border-left-color:#a78bfa">
+        <div class="about-card" data-reveal="fade" style="transition-delay:0.2s">
+          <div class="card-icon">☁️</div>
           <h4>Cloud & Collaboration</h4>
-          <p>Migration et administration Microsoft 365 (Exchange Online, Teams, SharePoint, OneDrive),
-          Google Workspace, gestion des identités et accès, sécurité cloud.</p>
+          <p>Migration et administration Microsoft 365 (Exchange Online, Teams, SharePoint, OneDrive), Google Workspace, gestion des identités et accès, sécurité cloud.</p>
         </div>
       </div>
       <div class="stats-grid">
-        <div class="stat-card"><div class="val">95%+</div><div class="lbl">Conformité SLA</div></div>
-        <div class="stat-card"><div class="val">-35%</div><div class="lbl">MTTR (automatisation)</div></div>
-        <div class="stat-card"><div class="val">-40%</div><div class="lbl">Downtime (backup hybride)</div></div>
-        <div class="stat-card"><div class="val">-30%</div><div class="lbl">Coûts infrastructure</div></div>
-        <div class="stat-card"><div class="val">+40%</div><div class="lbl">Visibilité supervision</div></div>
+        <div class="stat-card" data-reveal="fade"><div class="val" data-count="95">95%+</div><div class="lbl">Conformité SLA</div></div>
+        <div class="stat-card" data-reveal="fade"><div class="val" data-count="35">-35%</div><div class="lbl">MTTR (automatisation)</div></div>
+        <div class="stat-card" data-reveal="fade"><div class="val" data-count="40">-40%</div><div class="lbl">Downtime (backup hybride)</div></div>
+        <div class="stat-card" data-reveal="fade"><div class="val" data-count="30">-30%</div><div class="lbl">Coûts infrastructure</div></div>
+        <div class="stat-card" data-reveal="fade"><div class="val" data-count="40">+40%</div><div class="lbl">Visibilité supervision</div></div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- SKILLS -->
+  <!-- SKILLS — Compact Grid -->
   <!-- ============================================================ -->
   <section id="skills">
     <div class="container">
-      <span class="section-label">Expertise</span>
-      <h2 class="section-title">Compétences techniques & fonctionnelles</h2>
-      <p class="section-sub">
-        Domaine de compétence couvrant l'ensemble du spectre IT : de la gouvernance à l'infrastructure,
-        de la sécurité au développement.
-      </p>
-      <div style="margin-top:24px">
-        <div class="skill-cat-label">Management & Gouvernance IT</div>
-        <div>
-          <span class="skill-tag">ITSM</span>
-          <span class="skill-tag">ITIL 4</span>
-          <span class="skill-tag">Gestion de projets</span>
-          <span class="skill-tag">Management d'équipes</span>
-          <span class="skill-tag">Pilotage prestataires</span>
-          <span class="skill-tag">Conduite du changement</span>
-          <span class="skill-tag">KPI / Reporting</span>
-          <span class="skill-tag">Budget IT</span>
-          <span class="skill-tag">ServiceNow</span>
+      <span class="section-label" data-reveal="fade">Expertise</span>
+      <h2 class="section-title" data-reveal="fade">Compétences techniques & fonctionnelles</h2>
+      <p class="section-sub" data-reveal="fade">Domaine de compétence couvrant l'ensemble du spectre IT : de la gouvernance à l'infrastructure, de la sécurité au développement.</p>
+      <div class="skills-compact">
+        <div class="skill-category-card" data-reveal="fade">
+          <div class="cat-title">Management & Gouvernance IT</div>
+          <div class="tags">
+            <span>ITSM</span><span>ITIL 4</span><span>Gestion de projets</span><span>Management d'équipes</span><span>Pilotage prestataires</span><span>Conduite du changement</span><span>KPI / Reporting</span><span>Budget IT</span><span>ServiceNow</span>
+          </div>
         </div>
-        <div class="skill-cat-label">Infrastructure & Systèmes</div>
-        <div>
-          <span class="skill-tag">Windows Server 2016/2019/2022</span>
-          <span class="skill-tag">Linux (Debian, Ubuntu)</span>
-          <span class="skill-tag">Active Directory</span>
-          <span class="skill-tag">GPO</span>
-          <span class="skill-tag">DNS / DHCP</span>
-          <span class="skill-tag">Hyper-V</span>
-          <span class="skill-tag">Proxmox VE</span>
-          <span class="skill-tag">Docker</span>
-          <span class="skill-tag">Sauvegarde (Veeam, AWS S3)</span>
+        <div class="skill-category-card" data-reveal="fade" style="transition-delay:0.04s">
+          <div class="cat-title">Infrastructure & Systèmes</div>
+          <div class="tags">
+            <span>Windows Server 2016/2019/2022</span><span>Linux (Debian, Ubuntu)</span><span>Active Directory</span><span>GPO</span><span>DNS / DHCP</span><span>Hyper-V</span><span>Proxmox VE</span><span>Docker</span><span>Sauvegarde Veeam + AWS S3</span>
+          </div>
         </div>
-        <div class="skill-cat-label">Réseau & Sécurité</div>
-        <div>
-          <span class="skill-tag">TCP/IP</span>
-          <span class="skill-tag">VLAN</span>
-          <span class="skill-tag">VPN</span>
-          <span class="skill-tag">Firewall</span>
-          <span class="skill-tag">BitLocker</span>
-          <span class="skill-tag">LAPS</span>
-          <span class="skill-tag">MFA / 2FA</span>
-          <span class="skill-tag">Wazuh SIEM</span>
-          <span class="skill-tag">pfSense</span>
-          <span class="skill-tag">CIS Benchmarks</span>
-          <span class="skill-tag">Hardening Windows/Linux</span>
-          <span class="skill-tag">RBAC</span>
-          <span class="skill-tag">Audit trail</span>
+        <div class="skill-category-card" data-reveal="fade" style="transition-delay:0.08s">
+          <div class="cat-title">Réseau & Sécurité</div>
+          <div class="tags">
+            <span>TCP/IP</span><span>VLAN</span><span>VPN</span><span>Firewall</span><span>BitLocker</span><span>LAPS</span><span>MFA / 2FA</span><span>Wazuh SIEM</span><span>pfSense</span><span>CIS Benchmarks</span><span>Hardening</span><span>RBAC</span><span>Audit trail</span>
+          </div>
         </div>
-        <div class="skill-cat-label">Supervision & Monitoring</div>
-        <div>
-          <span class="skill-tag">Zabbix</span>
-          <span class="skill-tag">Grafana</span>
-          <span class="skill-tag">Prometheus</span>
-          <span class="skill-tag">Nagios</span>
-          <span class="skill-tag">GLPI</span>
-          <span class="skill-tag">OCS Inventory</span>
+        <div class="skill-category-card" data-reveal="fade" style="transition-delay:0.12s">
+          <div class="cat-title">Supervision & Monitoring</div>
+          <div class="tags">
+            <span>Zabbix</span><span>Grafana</span><span>Prometheus</span><span>Nagios</span><span>GLPI</span><span>OCS Inventory</span>
+          </div>
         </div>
-        <div class="skill-cat-label">Cloud & Messagerie</div>
-        <div>
-          <span class="skill-tag">Microsoft 365</span>
-          <span class="skill-tag">Exchange Online</span>
-          <span class="skill-tag">Teams</span>
-          <span class="skill-tag">SharePoint</span>
-          <span class="skill-tag">OneDrive</span>
-          <span class="skill-tag">Azure</span>
-          <span class="skill-tag">Google Workspace</span>
+        <div class="skill-category-card" data-reveal="fade" style="transition-delay:0.16s">
+          <div class="cat-title">Cloud & Messagerie</div>
+          <div class="tags">
+            <span>Microsoft 365</span><span>Exchange Online</span><span>Teams</span><span>SharePoint</span><span>OneDrive</span><span>Azure</span><span>Google Workspace</span>
+          </div>
         </div>
-        <div class="skill-cat-label">Développement & Automation</div>
-        <div>
-          <span class="skill-tag">Laravel</span>
-          <span class="skill-tag">PHP</span>
-          <span class="skill-tag">MySQL / MariaDB</span>
-          <span class="skill-tag">PostgreSQL</span>
-          <span class="skill-tag">API REST</span>
-          <span class="skill-tag">PowerShell</span>
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">Bash</span>
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">Git</span>
-          <span class="skill-tag">Ansible</span>
-          <span class="skill-tag">HTML / CSS</span>
-          <span class="skill-tag">JavaScript</span>
+        <div class="skill-category-card" data-reveal="fade" style="transition-delay:0.2s">
+          <div class="cat-title">Développement & Automation</div>
+          <div class="tags">
+            <span>Laravel</span><span>PHP</span><span>MySQL / MariaDB</span><span>PostgreSQL</span><span>API REST</span><span>PowerShell</span><span>Python</span><span>Bash</span><span>SQL</span><span>Git</span><span>Ansible</span><span>HTML / CSS</span><span>JavaScript</span>
+          </div>
         </div>
-        <div class="skill-cat-label">Outils & Méthodes</div>
-        <div>
-          <span class="skill-tag">Jira</span>
-          <span class="skill-tag">Confluence</span>
-          <span class="skill-tag">EspoCRM</span>
-          <span class="skill-tag">ITIL 4</span>
-          <span class="skill-tag">PRA / PCA</span>
-          <span class="skill-tag">Méthode Agile</span>
+        <div class="skill-category-card" data-reveal="fade" style="transition-delay:0.24s">
+          <div class="cat-title">Outils & Méthodes</div>
+          <div class="tags">
+            <span>Jira</span><span>Confluence</span><span>EspoCRM</span><span>ITIL 4</span><span>PRA / PCA</span><span>Méthode Agile</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- TECHNOLOGIES (nouvelle section) -->
+  <!-- TECHNOLOGIES — Showcase -->
   <!-- ============================================================ -->
   <section id="tech">
     <div class="container">
-      <span class="section-label">Stack technique</span>
-      <h2 class="section-title">Technologies maîtrisées</h2>
-      <p class="section-sub">Outils, langages et frameworks que j'utilise au quotidien pour concevoir, automatiser et sécuriser.</p>
+      <span class="section-label" data-reveal="fade">Stack technique</span>
+      <h2 class="section-title" data-reveal="fade">Technologies maîtrisées</h2>
+      <p class="section-sub" data-reveal="fade">Outils, langages et frameworks que j'utilise au quotidien pour concevoir, automatiser et sécuriser.</p>
       <div class="tech-grid">
-        <div class="tech-card"><span class="tech-icon">🐘</span><span class="tech-name">PHP</span></div>
-        <div class="tech-card"><span class="tech-icon">⚡</span><span class="tech-name">Laravel</span></div>
-        <div class="tech-card"><span class="tech-icon">🐍</span><span class="tech-name">Python</span></div>
-        <div class="tech-card"><span class="tech-icon">🖥️</span><span class="tech-name">PowerShell</span></div>
-        <div class="tech-card"><span class="tech-icon">🐚</span><span class="tech-name">Bash</span></div>
-        <div class="tech-card"><span class="tech-icon">🐘</span><span class="tech-name">MySQL</span></div>
-        <div class="tech-card"><span class="tech-icon">🐘</span><span class="tech-name">PostgreSQL</span></div>
-        <div class="tech-card"><span class="tech-icon">🐳</span><span class="tech-name">Docker</span></div>
-        <div class="tech-card"><span class="tech-icon">🔧</span><span class="tech-name">Ansible</span></div>
-        <div class="tech-card"><span class="tech-icon">📊</span><span class="tech-name">Grafana</span></div>
-        <div class="tech-card"><span class="tech-icon">📈</span><span class="tech-name">Prometheus</span></div>
-        <div class="tech-card"><span class="tech-icon">🛡️</span><span class="tech-name">Wazuh</span></div>
-        <div class="tech-card"><span class="tech-icon">☁️</span><span class="tech-name">Azure</span></div>
-        <div class="tech-card"><span class="tech-icon">☁️</span><span class="tech-name">M365</span></div>
-        <div class="tech-card"><span class="tech-icon">🐧</span><span class="tech-name">Linux</span></div>
-        <div class="tech-card"><span class="tech-icon">🪟</span><span class="tech-name">Windows Server</span></div>
-        <div class="tech-card"><span class="tech-icon">🌐</span><span class="tech-name">HTML/CSS/JS</span></div>
-        <div class="tech-card"><span class="tech-icon">🗄️</span><span class="tech-name">Git</span></div>
-        <div class="tech-card"><span class="tech-icon">📋</span><span class="tech-name">ITIL</span></div>
+        <!-- Languages & Frameworks -->
+        <div class="tech-cat-divider" data-reveal="fade">Langages & Frameworks</div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">⚡</span><span class="tech-name">Laravel</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🐘</span><span class="tech-name">PHP</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🐍</span><span class="tech-name">Python</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">📜</span><span class="tech-name">JavaScript</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🌐</span><span class="tech-name">HTML / CSS</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🐘</span><span class="tech-name">MySQL</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🗃️</span><span class="tech-name">PostgreSQL</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🔷</span><span class="tech-name">SQL</span></div>
+
+        <!-- Automation & Infra -->
+        <div class="tech-cat-divider" data-reveal="fade">Automatisation & Infrastructure</div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🖥️</span><span class="tech-name">PowerShell</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🐚</span><span class="tech-name">Bash</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🔧</span><span class="tech-name">Ansible</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🐳</span><span class="tech-name">Docker</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🪟</span><span class="tech-name">Windows Server</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🐧</span><span class="tech-name">Linux</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🗄️</span><span class="tech-name">Git</span></div>
+
+        <!-- Monitoring & Security -->
+        <div class="tech-cat-divider" data-reveal="fade">Monitoring & Sécurité</div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">📊</span><span class="tech-name">Grafana</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">📈</span><span class="tech-name">Prometheus</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">🛡️</span><span class="tech-name">Wazuh</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">📡</span><span class="tech-name">Zabbix</span></div>
+
+        <!-- Cloud -->
+        <div class="tech-cat-divider" data-reveal="fade">Cloud & Collaboration</div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">☁️</span><span class="tech-name">Azure</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">☁️</span><span class="tech-name">M365</span></div>
+        <div class="tech-card" data-reveal="fade"><span class="tech-icon">📋</span><span class="tech-name">ITIL</span></div>
       </div>
     </div>
   </section>
@@ -1185,28 +871,28 @@
   <!-- ============================================================ -->
   <section id="erp">
     <div class="container">
-      <span class="section-label">Projet phare</span>
-      <h2 class="section-title">ERP interne multi-domaines</h2>
-      <p class="section-sub" style="margin-bottom:4px">
+      <span class="section-label" data-reveal="fade">Projet phare</span>
+      <h2 class="section-title" data-reveal="fade">ERP interne multi-domaines</h2>
+      <p class="section-sub" style="margin-bottom:4px" data-reveal="fade">
         De la conception au déploiement : pilotage fonctionnel et participation au développement d'un ERP interne
         couvrant l'ensemble des processus de l'entreprise. Une solution intégrée qui remplace plusieurs outils
         séparés par une plateforme unique, sécurisée et évolutive.
       </p>
-      <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:8px">
+      <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:8px" data-reveal="fade">
         <strong style="color:var(--text)">Objectif :</strong> digitaliser les processus papier, automatiser les flux,
         centraliser les données et offrir une visibilité en temps réel à la direction, RH, IT et logistique.
       </p>
       <div class="erp-grid">
-        <div class="erp-card"><h4>Ressources Humaines</h4><p>Gestion des employés, contrats, congés, absences, organigramme, pointage biométrique, calcul des heures (supplémentaires, retards), export paie</p></div>
-        <div class="erp-card"><h4>Gestion documentaire</h4><p>Archivage numérique, GED, versionning des documents, circuit de validation documentaire, recherche plein texte, historique des modifications</p></div>
-        <div class="erp-card"><h4>Tickets IT</h4><p>Helpdesk, gestion des incidents et demandes, suivi SLA, base de connaissances, escalation, attribution automatique, reporting</p></div>
-        <div class="erp-card"><h4>Parc informatique</h4><p>Inventaire complet, licences, garanties, affectation du matériel, historique des mouvements, alertes de maintenance et renouvellement</p></div>
-        <div class="erp-card"><h4>Stocks</h4><p>Entrées/sorties, inventaire permanent, mouvements, alertes de stock minimum, valorisation, historique des transactions</p></div>
-        <div class="erp-card"><h4>Logistique & Achats</h4><p>Gestion des achats, fournisseurs, bons de réception, consommables, suivi des équipements, commandes, devis</p></div>
-        <div class="erp-card"><h4>Signature électronique</h4><p>Validation électronique des demandes, circuit d'approbation multi-niveaux, historique des signatures, traçabilité complète</p></div>
-        <div class="erp-card"><h4>Planning & Reporting</h4><p>Équipes, affectation des ressources, disponibilités, tableaux de bord direction/RH/IT/logistique, indicateurs temps réel</p></div>
+        <div class="erp-card" data-reveal="fade"><h4>Ressources Humaines</h4><p>Gestion des employés, contrats, congés, absences, organigramme, pointage biométrique, calcul des heures (supplémentaires, retards), export paie</p></div>
+        <div class="erp-card" data-reveal="fade" style="transition-delay:0.04s"><h4>Gestion documentaire</h4><p>Archivage numérique, GED, versionning des documents, circuit de validation documentaire, recherche plein texte, historique des modifications</p></div>
+        <div class="erp-card" data-reveal="fade" style="transition-delay:0.08s"><h4>Tickets IT</h4><p>Helpdesk, gestion des incidents et demandes, suivi SLA, base de connaissances, escalation, attribution automatique, reporting</p></div>
+        <div class="erp-card" data-reveal="fade" style="transition-delay:0.12s"><h4>Parc informatique</h4><p>Inventaire complet, licences, garanties, affectation du matériel, historique des mouvements, alertes de maintenance et renouvellement</p></div>
+        <div class="erp-card" data-reveal="fade" style="transition-delay:0.16s"><h4>Stocks</h4><p>Entrées/sorties, inventaire permanent, mouvements, alertes de stock minimum, valorisation, historique des transactions</p></div>
+        <div class="erp-card" data-reveal="fade" style="transition-delay:0.2s"><h4>Logistique & Achats</h4><p>Gestion des achats, fournisseurs, bons de réception, consommables, suivi des équipements, commandes, devis</p></div>
+        <div class="erp-card" data-reveal="fade" style="transition-delay:0.24s"><h4>Signature électronique</h4><p>Validation électronique des demandes, circuit d'approbation multi-niveaux, historique des signatures, traçabilité complète</p></div>
+        <div class="erp-card" data-reveal="fade" style="transition-delay:0.28s"><h4>Planning & Reporting</h4><p>Équipes, affectation des ressources, disponibilités, tableaux de bord direction/RH/IT/logistique, indicateurs temps réel</p></div>
       </div>
-      <div class="erp-stack">
+      <div class="erp-stack" data-reveal="fade">
         <span>Laravel</span><span>PHP</span><span>MySQL / MariaDB</span><span>API REST</span><span>Docker</span><span>Git</span><span>RBAC</span><span>Audit trail</span><span>Sauvegardes automatisées</span>
       </div>
     </div>
@@ -1217,87 +903,87 @@
   <!-- ============================================================ -->
   <section id="experience">
     <div class="container">
-      <span class="section-label">Parcours</span>
-      <h2 class="section-title">Expérience professionnelle</h2>
-      <p class="section-sub">8 années d'expérience en évolution continue, du support technique à la direction IT,
-      en passant par le développement d'applications et l'automatisation.</p>
+      <span class="section-label" data-reveal="fade">Parcours</span>
+      <h2 class="section-title" data-reveal="fade">Expérience professionnelle</h2>
+      <p class="section-sub" data-reveal="fade">8 années d'expérience en évolution continue, du support technique à la direction IT, en passant par le développement d'applications et l'automatisation.</p>
       <div class="tl" style="margin-top:28px">
-        <div class="tl-item">
+
+        <div class="tl-item" data-reveal="fade">
           <div class="tl-card">
             <div class="tl-header"><h3>Responsable Informatique & Logistique</h3></div>
             <div class="tl-company">Dessineo — Antananarivo</div>
             <div class="tl-date">Août 2025 — Aujourd'hui</div>
             <div class="tl-desc">
               <ul>
-                <li>Gouvernance SI : feuille de route stratégique, définition des KPI de qualité de service, procédures et standards d'exploitation, reporting direction</li>
-                <li>Infrastructure : administration des serveurs Windows/Linux, Active Directory, DNS/DHCP/GPO, virtualisation Hyper-V/Proxmox, sauvegardes ; pilotage de Microsoft 365 (Exchange Online, Teams, SharePoint, OneDrive) et Google Workspace</li>
-                <li>Cybersécurité : politique de sécurité, déploiement de BitLocker, Microsoft LAPS et MFA, gestion des privilèges, participation aux audits internes</li>
-                <li>Supervision : conception d'une architecture Zabbix/Grafana/Prometheus/Wazuh pour le suivi temps réel des serveurs, du stockage et des alertes de sécurité</li>
-                <li>Cloud : Microsoft 365 (Exchange Online, Teams, SharePoint), Google Workspace, gestion des identités et accès</li>
-                <li><strong>ERP : pilotage fonctionnel d'un ERP interne multi-domaines (RH, pointage, gestion documentaire, stocks, tickets IT, signature électronique) — de l'analyse des besoins au déploiement et à la formation des utilisateurs</strong></li>
-                <li>Parc, support & management : cycle de vie des équipements, organisation du support N1-N3, encadrement des équipes techniques et coordination des prestataires ; automatisation PowerShell/Python/Bash de l'inventaire et des rapports</li>
+                <li>Gouvernance SI : feuille de route stratégique, KPI de qualité de service, procédures et standards d'exploitation, reporting direction</li>
+                <li>Infrastructure : administration serveurs Windows/Linux, Active Directory, DNS/DHCP/GPO, virtualisation Hyper-V/Proxmox, sauvegardes ; Microsoft 365 et Google Workspace</li>
+                <li>Cybersécurité : politique de sécurité, BitLocker, LAPS, MFA, gestion des privilèges, audits internes</li>
+                <li>Supervision : architecture Zabbix/Grafana/Prometheus/Wazuh pour suivi temps réel</li>
+                <li><strong>ERP : pilotage fonctionnel de l'ERP interne multi-domaines (8 modules) — analyse des besoins, conception, déploiement et formation</strong></li>
+                <li>Management des équipes techniques, coordination prestataires, automatisation PowerShell/Python/Bash</li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="tl-item">
+
+        <div class="tl-item" data-reveal="fade">
           <div class="tl-card">
             <div class="tl-header"><h3>Datajet — Antananarivo</h3></div>
-            <div class="tl-date">Juin 2018 — Août 2025</div>
+            <div class="tl-date">Juin 2018 — Août 2025 · 7 ans (progression interne)</div>
             <div class="tl-desc">
-              <strong style="color:var(--text)">Consultant IT — Support Automation Lead (Janv. 2023 - Août 2025)</strong>
+              <span class="sub-role-title">Consultant IT — Support Automation Lead (Janv. 2023 - Août 2025)</span>
               <ul>
-                <li>Encadrement d'une équipe IT : recrutement, formation, montée en compétence, gestion des priorités et suivi des indicateurs de performance</li>
-                <li>Développement de scripts PowerShell et Python pour l'automatisation des tâches répétitives et l'industrialisation des processus de résolution : <strong>MTTR réduit de 35%</strong></li>
-                <li>Administration complète du parc (postes, serveurs, comptes, accès), déploiement automatisé de correctifs, audits internes</li>
-                <li>Migration de l'infrastructure Exchange On-Premise vers Exchange Online / Teams / SharePoint</li>
-                <li>Mise en place de tableaux de bord Grafana et Prometheus : <strong>+40% de visibilité sur les SLA</strong></li>
-                <li>Standardisation des procédures selon les bonnes pratiques ITIL : taux de conformité SLA maintenu <strong>&gt;95%</strong></li>
+                <li>Encadrement d'une équipe IT : recrutement, formation, montée en compétence, indicateurs de performance</li>
+                <li>Développement de scripts PowerShell/Python pour automatisation : <strong>MTTR -35%</strong></li>
+                <li>Administration complète du parc, déploiement automatisé de correctifs, audits internes</li>
+                <li>Migration Exchange On-Premise → Exchange Online / Teams / SharePoint</li>
+                <li>Tableaux de bord Grafana/Prometheus : <strong>+40% visibilité SLA</strong></li>
+                <li>Standardisation ITIL : conformité SLA <strong>&gt;95%</strong></li>
               </ul>
-              <strong style="display:block;margin-top:8px;color:var(--text)">Team Lead Support Technique (2022-2023)</strong>
+              <span class="sub-role-title">Team Lead Support Technique (Juil. 2022 - Janv. 2023)</span>
               <ul>
-                <li>Gestion du cycle de vie des équipements informatiques (acquisition, déploiement, maintenance, mise au rebut)</li>
-                <li>Administration Exchange On-Premise, supervision messagerie, gestion des boîtes aux lettres</li>
-                <li>Mise en place d'une solution de sauvegarde hybride Veeam + AWS S3 : <strong>-40% de downtime, -30% de coûts</strong></li>
-                <li>Migration SpiceWorks vers GLPI pour la gestion du parc et du helpdesk</li>
+                <li>Cycle de vie des équipements, Exchange On-Premise, gestion des boîtes aux lettres</li>
+                <li>Sauvegarde hybride Veeam + AWS S3 : <strong>-40% downtime, -30% coûts</strong></li>
+                <li>Migration SpiceWorks → GLPI, supervision unifiée Prometheus/Grafana</li>
               </ul>
-              <strong style="display:block;margin-top:8px;color:var(--text)">Technicien Support & Maintenance (2018-2022)</strong>
+              <span class="sub-role-title">Technicien Support & Maintenance (Juin 2018 - Juil. 2022)</span>
               <ul>
-                <li>Support N1/N2 (OTRS, GLPI) : prise en charge des incidents et demandes</li>
-                <li>Maintenance du parc informatique (300+ postes), installation et configuration</li>
-                <li>Supervision Nagios et administration des serveurs Linux</li>
-                <li>Inventaire et suivi des équipements via OCS Inventory</li>
+                <li>Support N1/N2 (OTRS, GLPI) : incidents et demandes</li>
+                <li>Maintenance parc 300+ postes, installation et configuration</li>
+                <li>Supervision Nagios, administration serveurs Linux, inventaire OCS Inventory</li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="tl-item">
+
+        <div class="tl-item" data-reveal="fade">
           <div class="tl-card">
             <div class="tl-header"><h3>Expériences antérieures</h3></div>
             <div class="tl-desc">
               <ul>
-                <li><strong>Gérant — Point Cybercafé</strong> (Antananarivo, Août 2016 - Oct. 2017) : gestion d'un établissement de 50+ utilisateurs, maintenance réseau et postes, support client, automatisation des stocks</li>
-                <li><strong>Consultant gestion de stocks — DHL International Madagascar</strong> (Déc. 2014 - Janv. 2016) : développement d'une application web PHP avec scan de codes-barres et intégration d'API pour la traçabilité logistique</li>
-                <li><strong>Stagiaire Gestionnaire de Stock — DHL International Madagascar</strong> (Mai 2012 - Janv. 2013) : conception d'un logiciel de gestion des étiquettes logistiques (projet de fin d'études)</li>
-                <li><strong>Stagiaire support technique — Ministère des Finances</strong> (Fév. 2016 - Juil. 2016) : maintenance parc informatique, assistance utilisateurs, administration réseau</li>
+                <li><strong>Gérant — Point Cybercafé</strong> (Août 2016 - Oct. 2017) : gestion 50+ utilisateurs, maintenance, automatisation des stocks</li>
+                <li><strong>Consultant — DHL International Madagascar</strong> (Déc. 2014 - Janv. 2016) : app PHP scan codes-barres traçabilité logistique</li>
+                <li><strong>Stagiaire Gestionnaire de Stock — DHL</strong> (Mai 2012 - Janv. 2013) : logiciel de gestion des étiquettes logistiques</li>
+                <li><strong>Stagiaire — Ministère des Finances</strong> (Fév. 2016 - Juil. 2016) : maintenance parc, assistance utilisateurs</li>
               </ul>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- FORMATION (nouvelle section) -->
+  <!-- FORMATION -->
   <!-- ============================================================ -->
   <section id="formation">
     <div class="container">
-      <span class="section-label">Formation</span>
-      <h2 class="section-title">Parcours académique</h2>
-      <p class="section-sub">Un socle solide alliant technique, management et systèmes d'information.</p>
+      <span class="section-label" data-reveal="fade">Formation</span>
+      <h2 class="section-title" data-reveal="fade">Parcours académique</h2>
+      <p class="section-sub" data-reveal="fade">Un socle solide alliant technique, management et systèmes d'information.</p>
       <div style="margin-top:20px">
-        <div class="edu-item">
+        <div class="edu-item" data-reveal="fade">
           <span class="edu-icon">🎓</span>
           <div class="edu-content">
             <h4>Master en Génie Logiciel et Systèmes d'Information</h4>
@@ -1305,28 +991,20 @@
             <p>Spécialisation en architecture logicielle, bases de données, gestion de projets et sécurité des SI.</p>
           </div>
         </div>
-        <div class="edu-item">
-          <span class="edu-icon">📚</span>
+        <div class="edu-item" data-reveal="fade">
+          <span class="edu-icon">📖</span>
           <div class="edu-content">
             <h4>Licence en Informatique de Gestion</h4>
             <div class="edu-meta">ISPM, Antananarivo — 2009 – 2012</div>
-            <p>Génie logiciel & Intelligence Artificielle. Fondamentaux de l'informatique, systèmes d'information, gestion d'entreprise.</p>
+            <p>Génie logiciel & Intelligence Artificielle. Fondamentaux de l'informatique et systèmes d'information.</p>
           </div>
         </div>
-        <div class="edu-item">
+        <div class="edu-item" data-reveal="fade">
           <span class="edu-icon">📜</span>
           <div class="edu-content">
             <h4>Baccalauréat</h4>
             <div class="edu-meta">Lycée Saint Jean Bosco — 2006 – 2009</div>
             <p>Filière générale, spécialisation scientifique.</p>
-          </div>
-        </div>
-        <div class="edu-item">
-          <span class="edu-icon">🛠️</span>
-          <div class="edu-content">
-            <h4>Formations continues & certifications</h4>
-            <div class="edu-meta">ITIL 4 Foundation, ServiceNow ITSM, Azure Fundamentals (en cours)</div>
-            <p>Veille technologique permanente et montée en compétences sur les standards du marché.</p>
           </div>
         </div>
       </div>
@@ -1338,93 +1016,97 @@
   <!-- ============================================================ -->
   <section id="projects">
     <div class="container">
-      <span class="section-label">Réalisations open source</span>
-      <h2 class="section-title">Projets GitHub</h2>
-      <p class="section-sub">Dépôts publics illustrant mon travail en automatisation, sécurité, infrastructure as code et monitoring.</p>
+      <span class="section-label" data-reveal="fade">Réalisations open source</span>
+      <h2 class="section-title" data-reveal="fade">Projets GitHub</h2>
+      <p class="section-sub" data-reveal="fade">Dépôts publics illustrant mon travail en automatisation, sécurité, infrastructure as code et monitoring.</p>
       <div style="margin-top:24px">
-        <div class="proj-item">
+        <div class="proj-item" data-reveal="fade">
           <div class="proj-item-header">
             <a href="https://github.com/razafimandimby-IT/security-hardening-toolkit" target="_blank" rel="noopener" class="main-link">security-hardening-toolkit  ↗</a>
           </div>
-          <div class="proj-desc">Framework complet de hardening et d'audit de sécurité pour Windows Server et Linux (Debian/Ubuntu). Basé sur les CIS benchmarks. Génère un rapport HTML d'audit avec recommandations et propose une remédiation automatique pour les écarts critiques. 17 fichiers.</div>
-          <div class="proj-tags"><span>PowerShell</span><span>Bash</span><span>CIS Benchmarks</span><span>HTML Report</span><span>Hardening</span></div>
+          <div class="proj-desc">Framework complet de hardening et d'audit de sécurité pour Windows Server et Linux (Debian/Ubuntu). Basé sur les CIS benchmarks. Génère un rapport HTML d'audit avec recommandations et remédiation automatique.</div>
+          <div class="proj-tags"><span>PowerShell</span><span>Bash</span><span>CIS Benchmarks</span><span>Hardening</span></div>
         </div>
-        <div class="proj-item">
+        <div class="proj-item" data-reveal="fade">
           <div class="proj-item-header">
             <a href="https://github.com/razafimandimby-IT/ansible-infra-automation" target="_blank" rel="noopener" class="main-link">ansible-infra-automation  ↗</a>
           </div>
-          <div class="proj-desc">Infrastructure as Code avec Ansible : playbooks et rôles pour le déploiement automatisé d'Active Directory, serveurs web (Apache/Nginx), bases de données (MySQL), serveurs de monitoring (Zabbix, Prometheus, Grafana), agents Wazuh, et configuration de sécurité. 46 fichiers couvrant l'ensemble du socle IT.</div>
-          <div class="proj-tags"><span>Ansible</span><span>Infrastructure as Code</span><span>AD</span><span>Monitoring</span><span>Sécurité</span></div>
+          <div class="proj-desc">Infrastructure as Code avec Ansible : playbooks pour AD, serveurs web, bases de données, monitoring Zabbix/Prometheus/Grafana, agents Wazuh, sécurité.</div>
+          <div class="proj-tags"><span>Ansible</span><span>Infrastructure as Code</span><span>AD</span><span>Monitoring</span></div>
         </div>
-        <div class="proj-item">
+        <div class="proj-item" data-reveal="fade">
           <div class="proj-item-header">
             <a href="https://github.com/razafimandimby-IT/infra-monitoring" target="_blank" rel="noopener" class="main-link">infra-monitoring  ↗</a>
           </div>
-          <div class="proj-desc">Stack de supervision complète prête au déploiement via Docker Compose : Zabbix (monitoring réseau/services), Prometheus (métriques temps réel), Grafana (tableaux de bord personnalisables), Wazuh (SIEM et détection d'intrusion). Inclut les configurations par défaut, dashboards et règles d'alerte.</div>
-          <div class="proj-tags"><span>Docker</span><span>Zabbix</span><span>Prometheus</span><span>Grafana</span><span>Wazuh</span><span>SIEM</span></div>
+          <div class="proj-desc">Stack de supervision complète en Docker Compose : Zabbix, Prometheus, Grafana, Wazuh (SIEM). Inclut dashboards et règles d'alerte.</div>
+          <div class="proj-tags"><span>Docker</span><span>Zabbix</span><span>Prometheus</span><span>Grafana</span><span>Wazuh</span></div>
         </div>
-        <div class="proj-item">
+        <div class="proj-item" data-reveal="fade">
           <div class="proj-item-header">
             <a href="https://github.com/razafimandimby-IT/powershell-toolkit" target="_blank" rel="noopener" class="main-link">powershell-toolkit  ↗</a>
           </div>
-          <div class="proj-desc">Collection de scripts PowerShell pour l'administration et l'automatisation d'environnements Windows : inventaire AD détaillé, reporting système, standardisation de configuration, gestion des utilisateurs et groupes, audit de sécurité, maintenance planifiée.</div>
-          <div class="proj-tags"><span>PowerShell</span><span>AD</span><span>Windows</span><span>Automation</span><span>Audit</span></div>
+          <div class="proj-desc">Scripts PowerShell pour administration Windows : inventaire AD, reporting système, standardisation, gestion utilisateurs, audit sécurité.</div>
+          <div class="proj-tags"><span>PowerShell</span><span>AD</span><span>Windows</span><span>Automation</span></div>
         </div>
-        <div class="proj-item">
+        <div class="proj-item" data-reveal="fade">
           <div class="proj-item-header">
             <a href="https://github.com/razafimandimby-IT/dotfiles-linux" target="_blank" rel="noopener" class="main-link">dotfiles-linux  ↗</a>
           </div>
-          <div class="proj-desc">Configuration et personnalisation d'environnement Linux : alias Bash optimisés pour l'administration, variables d'environnement, scripts d'administration système, automatisation de sauvegardes, configuration ssh, et utilitaires pour le quotidien du sysadmin.</div>
-          <div class="proj-tags"><span>Linux</span><span>Bash</span><span>Dotfiles</span><span>Administration</span><span>Backup</span></div>
+          <div class="proj-desc">Configuration Linux : alias Bash, variables d'environnement, scripts d'administration, automatisation sauvegardes, config ssh.</div>
+          <div class="proj-tags"><span>Linux</span><span>Bash</span><span>Dotfiles</span><span>Administration</span></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- CERTIFICATIONS & LANGUES -->
+  <!-- CERTIFICATIONS & LANGUES & INTERESTS -->
   <!-- ============================================================ -->
   <section id="certifications">
     <div class="container">
-      <span class="section-label">Certifications</span>
-      <h2 class="section-title">Formation continue</h2>
-      <p class="section-sub">Certifications en cours de préparation pour renforcer l'expertise en gestion des services IT et cloud.</p>
+      <span class="section-label" data-reveal="fade">Certifications</span>
+      <h2 class="section-title" data-reveal="fade">Formation continue</h2>
+      <p class="section-sub" data-reveal="fade">Certifications et formations pour renforcer l'expertise en gestion des services IT et cloud.</p>
       <div class="cert-grid" style="margin-top:16px">
-        <div class="cert-item">
-          <div><h4>ServiceNow ITSM & Flow Designer</h4><p>Gestion des services IT, automatisation des workflows, catalogues de services</p></div>
+        <div class="cert-item" data-reveal="fade">
+          <div><h4>ServiceNow ITSM & Flow Designer</h4><p>Gestion des services IT, automatisation des workflows</p></div>
           <span class="cert-status">En cours</span>
         </div>
-        <div class="cert-item">
-          <div><h4>ITIL 4 Foundation</h4><p>Cadre de référence pour la gestion des services IT (ITSM)</p></div>
+        <div class="cert-item" data-reveal="fade">
+          <div><h4>ITIL 4 Foundation</h4><p>Cadre de référence pour la gestion des services IT</p></div>
           <span class="cert-status">Préparation</span>
         </div>
-        <div class="cert-item">
-          <div><h4>Azure Fundamentals AZ-900</h4><p>Fondamentaux du cloud Azure, services, sécurité, conformité</p></div>
+        <div class="cert-item" data-reveal="fade">
+          <div><h4>Azure Fundamentals AZ-900</h4><p>Fondamentaux du cloud Azure, services, sécurité</p></div>
           <span class="cert-status">Préparation</span>
         </div>
-        <div class="cert-item">
+        <div class="cert-item" data-reveal="fade">
           <div><h4>Docker & Conteneurisation</h4><p>Déploiement, orchestration et gestion de conteneurs</p></div>
           <span class="cert-status">Formation continue</span>
         </div>
-        <div class="cert-item">
+        <div class="cert-item" data-reveal="fade">
           <div><h4>Python & Cybersécurité Open Source</h4><p>Développement d'outils de sécurité et d'automatisation</p></div>
           <span class="cert-status">Formation continue</span>
         </div>
-        <div class="cert-item">
+        <div class="cert-item" data-reveal="fade">
           <div><h4>Zammad — Système de Tickets</h4><p>Gestion de helpdesk et support IT</p></div>
           <span class="cert-status">Formation continue</span>
         </div>
       </div>
-      <div style="margin-top:28px">
+
+      <!-- Centres d'intérêt -->
+      <div style="margin-top:28px" data-reveal="fade">
         <span class="section-label" style="display:block;margin-bottom:8px">Centres d'intérêt</span>
-        <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <span class="skill-tag" style="cursor:default">🔒 Cybersécurité & Open Source</span>
-          <span class="skill-tag" style="cursor:default">👨‍🏫 Mentorat bénévole</span>
-          <span class="skill-tag" style="cursor:default">🥾 Randonnée écologique</span>
-          <span class="skill-tag" style="cursor:default">🤾 Sports collectifs (handball, football, basketball)</span>
+        <div class="interests-row">
+          <span class="interest-tag">🔒 Cybersécurité & Open Source</span>
+          <span class="interest-tag">👨‍🏫 Mentorat bénévole</span>
+          <span class="interest-tag">🥾 Randonnée écologique</span>
+          <span class="interest-tag">🤾 Sports collectifs (handball, football, basketball)</span>
         </div>
       </div>
-      <div style="margin-top:24px">
+
+      <!-- Langues -->
+      <div style="margin-top:24px" data-reveal="fade">
         <span class="section-label" style="display:block;margin-bottom:8px">Langues</span>
         <div class="lang-section">
           <div class="lang-item"><span class="name">Français</span><span class="level"><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span><span class="lang-dot full"></span> Courant</span></div>
@@ -1436,52 +1118,68 @@
   </section>
 
   <!-- ============================================================ -->
-  <!-- CONTACT -->
+  <!-- CONTACT — Premium -->
   <!-- ============================================================ -->
   <section id="contact">
     <div class="container">
-      <span class="section-label">Contact</span>
-      <h2 class="section-title">Échangeons</h2>
-      <p class="section-sub">
+      <span class="section-label" data-reveal="fade">Contact</span>
+      <h2 class="section-title" data-reveal="fade">Échangeons</h2>
+      <p class="section-sub" data-reveal="fade">
         Disponible pour discuter d'opportunités à Madagascar ou en remote.
         N'hésitez pas à me contacter par email ou sur les réseaux professionnels.
       </p>
       <div class="contact-grid" style="margin-top:24px">
-        <a href="mailto:l.denis.razafimandimby@gmail.com" class="contact-card">
+
+        <a href="mailto:l.denis.razafimandimby@gmail.com" class="contact-card" data-reveal="fade" title="Cliquer pour copier" onclick="copyToClipboard('l.denis.razafimandimby@gmail.com', this)">
           <span class="icon">✉</span>
           <div class="label">Email</div>
-          <div class="value" style="font-size:0.78rem">l.denis.razafimandimby@gmail.com</div>
+          <div class="value" style="font-size:0.8rem">l.denis.razafimandimby@gmail.com</div>
         </a>
-        <a href="https://wellfound.com/u/denis-razafimandimby" target="_blank" rel="noopener" class="contact-card">
-          <span class="icon">🌐</span>
-          <div class="label">Wellfound (AngelList)</div>
-          <div class="value">@denis-razafimandimby</div>
-        </a>
-        <a href="https://www.linkedin.com/in/louis-denis-razafimandimby-488610227/" target="_blank" rel="noopener" class="contact-card">
-          <span class="icon">✦</span>
-          <div class="label">LinkedIn</div>
-          <div class="value">Voir le profil</div>
-        </a>
-        <a href="https://github.com/razafimandimby-IT" target="_blank" rel="noopener" class="contact-card">
+
+        <a href="https://github.com/razafimandimby-IT" target="_blank" rel="noopener" class="contact-card" data-reveal="fade">
           <span class="icon">💻</span>
           <div class="label">GitHub</div>
           <div class="value">razafimandimby-IT</div>
         </a>
-        <a href="tel:+261374831648" class="contact-card">
+
+        <a href="https://wellfound.com/u/denis-razafimandimby" target="_blank" rel="noopener" class="contact-card" data-reveal="fade">
+          <span class="icon">🌐</span>
+          <div class="label">Wellfound (AngelList)</div>
+          <div class="value">@denis-razafimandimby</div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/louis-denis-razafimandimby-488610227/" target="_blank" rel="noopener" class="contact-card" data-reveal="fade">
+          <span class="icon">✦</span>
+          <div class="label">LinkedIn</div>
+          <div class="value">Voir le profil</div>
+        </a>
+
+        <a href="tel:+261374831648" class="contact-card" data-reveal="fade">
           <span class="icon">📞</span>
           <div class="label">Téléphone</div>
           <div class="value">+261 37 483 16 48</div>
         </a>
-        <div class="contact-card" style="cursor:default">
+
+        <div class="contact-card" style="cursor:default" data-reveal="fade">
           <span class="icon">📍</span>
           <div class="label">Localisation</div>
-          <div class="value" style="font-size:0.78rem">Antananarivo, Madagascar</div>
+          <div class="value" style="font-size:0.8rem">Antananarivo, Madagascar</div>
         </div>
-        <a href="https://razafimandimby-it.github.io/cv/" class="contact-card" style="grid-column:1/-1">
-          <span class="icon">🔗</span>
-          <div class="label">CV en ligne</div>
-          <div class="value">https://razafimandimby-it.github.io/cv/</div>
-        </a>
+
+      </div>
+
+      <!-- Disponible pour -->
+      <div class="available-section" data-reveal="fade">
+        <h3>Disponible pour</h3>
+        <div class="available-badges">
+          <span class="available-badge">💼 Conseil IT & Management</span>
+          <span class="available-badge">🏗️ Pilotage ERP</span>
+          <span class="available-badge">🔒 Audit & Sécurité</span>
+          <span class="available-badge">⚡ Automatisation & DevOps</span>
+          <span class="available-badge">☁️ Migration Cloud</span>
+          <span class="available-badge">📊 Supervision & Monitoring</span>
+          <span class="available-badge">🚀 Projets IT stratégiques</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1491,9 +1189,7 @@
   <!-- ============================================================ -->
   <footer>
     <div class="container" style="position:relative">
-      <p>&copy; Denis Razafimandimby — CV mis à jour juillet 2026 &mdash;
-        <span class="badge" style="opacity:0.7">Disponible</span>
-      </p>
+      <p>&copy; Denis Razafimandimby — CV mis à jour juillet 2026</p>
       <a href="#hero" class="back-top" aria-label="Retour en haut" id="backTop">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
       </a>
@@ -1510,9 +1206,9 @@
       // ---- Loader ----
       window.addEventListener('load', function() {
         setTimeout(function() {
-          var l = document.getElementById('loader');
-          if (l) l.classList.add('hidden');
-        }, 800);
+          var loader = document.getElementById('loader');
+          if (loader) loader.classList.add('hidden');
+        }, 600);
       });
 
       // ---- Theme ----
@@ -1545,14 +1241,7 @@
           cursor.style.left = e.clientX + 'px';
           cursor.style.top = e.clientY + 'px';
         });
-        // Add hover class on interactive elements
-        var interactives = document.querySelectorAll('a, button, .btn, .contact-card, .proj-item, .tl-card, .tech-card, .erp-card, .stat-card, .cert-item, .edu-item');
-        interactives.forEach(function(el) {
-          el.addEventListener('mouseenter', function() { cursor.classList.add('hover'); });
-          el.addEventListener('mouseleave', function() { cursor.classList.remove('hover'); });
-        });
-        // Also on skill tags
-        document.querySelectorAll('.skill-tag').forEach(function(el) {
+        document.querySelectorAll('a, button, .btn, .contact-card, .proj-item, .tl-card, .tech-card, .erp-card, .stat-card, .cert-item, .edu-item, .skill-category-card, .interest-tag, .available-badge').forEach(function(el) {
           el.addEventListener('mouseenter', function() { cursor.classList.add('hover'); });
           el.addEventListener('mouseleave', function() { cursor.classList.remove('hover'); });
         });
@@ -1562,14 +1251,12 @@
       var texts = [
         'IT Manager · Infrastructure & Cybersecurity',
         'ITSM / ITIL · Automation & ERP',
-        '8+ ans d’expérience en direction IT',
+        '8+ ans d\'expérience en direction IT',
         'Pilotage ERP · Supervision · Hardening',
         'Management IT · Développement · Sécurité'
       ];
       var el = document.getElementById('typingText');
-      var textIndex = 0,
-        charIndex = 0,
-        isDeleting = false;
+      var textIndex = 0, charIndex = 0, isDeleting = false;
 
       function type() {
         if (!el) return;
@@ -1577,161 +1264,121 @@
         if (!isDeleting) {
           el.innerHTML = current.substring(0, charIndex + 1);
           charIndex++;
-          if (charIndex === current.length) { isDeleting = true;
-            setTimeout(type, 2000); return; }
+          if (charIndex === current.length) { isDeleting = true; setTimeout(type, 2000); return; }
           setTimeout(type, 40 + Math.random() * 30);
         } else {
           el.innerHTML = current.substring(0, charIndex - 1);
           charIndex--;
-          if (charIndex === 0) { isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            setTimeout(type, 300); return; }
+          if (charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % texts.length; setTimeout(type, 300); return; }
           setTimeout(type, 20);
         }
       }
       setTimeout(type, 1200);
 
+      // ---- Clipboard copy ----
+      window.copyToClipboard = function(text, el) {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(text).then(function() {
+            var orig = el.innerHTML;
+            el.innerHTML = '<span class="icon">✓</span><div class="label">Copié !</div><div class="value">' + text + '</div>';
+            setTimeout(function() { el.innerHTML = orig; }, 2000);
+          });
+        }
+      };
+
       // ---- Lenis smooth scroll ----
+      var lenis = null;
       try {
-        var lenis = new Lenis({
-          duration: 1.2,
+        lenis = new Lenis({
+          duration: 1.1,
           easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }
         });
-
-        function raf(time) { lenis.raf(time);
-          requestAnimationFrame(raf); }
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
-
-        // Integrate with GSAP ScrollTrigger
         lenis.on('scroll', ScrollTrigger.update);
         gsap.ticker.add(function(time) { lenis.raf(time * 1000); });
         gsap.ticker.lagSmoothing(0);
-      } catch (e) {}
+      } catch(e) {}
 
       // ---- GSAP Animations ----
       gsap.registerPlugin(ScrollTrigger);
 
-      // Hero
+      // Hero entrance
       var heroContent = document.getElementById('heroContent');
       if (heroContent) {
         gsap.from(heroContent.children, {
-          y: 30,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: 'power3.out',
-          delay: 0.3
+          y: 30, opacity: 0, duration: 0.8, stagger: 0.12,
+          ease: 'power3.out', delay: 0.2
         });
       }
 
-      // Section titles
-      gsap.utils.toArray('.section-title, .section-sub, .section-label').forEach(function(el) {
+      // Staggered reveal for all elements with data-reveal="fade"
+      var revealItems = gsap.utils.toArray('[data-reveal="fade"]');
+      revealItems.forEach(function(el) {
         gsap.from(el, {
-          scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
-          y: 20,
-          opacity: 0,
-          duration: 0.5,
-          ease: 'power2.out'
+          scrollTrigger: { trigger: el, start: 'top 94%', toggleActions: 'play none none none' },
+          y: 20, opacity: 0, duration: 0.5, ease: 'power2.out'
         });
       });
 
-      // Timeline
+      // Skill category cards stagger
+      gsap.utils.toArray('.skill-category-card').forEach(function(el, i) {
+        gsap.from(el, {
+          scrollTrigger: { trigger: el, start: 'top 94%', toggleActions: 'play none none none' },
+          y: 16, opacity: 0, duration: 0.4, delay: i * 0.04, ease: 'power2.out'
+        });
+      });
+
+      // TL items stagger
       gsap.utils.toArray('.tl-item').forEach(function(el, i) {
         gsap.from(el, {
-          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
-          y: 24,
-          opacity: 0,
-          duration: 0.5,
-          delay: i * 0.12,
-          ease: 'power2.out'
+          scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
+          y: 24, opacity: 0, duration: 0.5, delay: i * 0.1, ease: 'power2.out'
         });
       });
 
-      // Projects
+      // Projects stagger
       gsap.utils.toArray('.proj-item').forEach(function(el, i) {
         gsap.from(el, {
           scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
-          y: 16,
-          opacity: 0,
-          duration: 0.35,
-          delay: i * 0.08,
-          ease: 'power2.out'
+          y: 16, opacity: 0, duration: 0.35, delay: i * 0.06, ease: 'power2.out'
         });
       });
 
-      // Skill categories
-      gsap.utils.toArray('.skill-cat-label').forEach(function(el) {
-        var next = el.nextElementSibling;
-        if (next && next.children) {
-          gsap.from(next.children, {
-            scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' },
-            scale: 0.9,
-            opacity: 0,
-            duration: 0.25,
-            stagger: 0.02,
-            ease: 'back.out(1.4)'
-          });
-        }
-      });
-
-      // ERP cards
+      // ERP cards stagger
       gsap.from('.erp-card', {
-        scrollTrigger: { trigger: '.erp-grid', start: 'top 90%', toggleActions: 'play none none none' },
-        y: 12,
-        opacity: 0,
-        duration: 0.3,
-        stagger: 0.04,
-        ease: 'power2.out'
+        scrollTrigger: { trigger: '.erp-grid', start: 'top 92%', toggleActions: 'play none none none' },
+        y: 12, opacity: 0, duration: 0.35, stagger: 0.04, ease: 'power2.out'
       });
 
-      // Stats
-      gsap.from('.stat-card', {
-        scrollTrigger: { trigger: '.stats-grid', start: 'top 90%', toggleActions: 'play none none none' },
-        y: 12,
-        opacity: 0,
-        duration: 0.4,
-        stagger: 0.06,
-        ease: 'power2.out'
-      });
-
-      // Technologies
+      // Tech cards stagger
       gsap.from('.tech-card', {
-        scrollTrigger: { trigger: '.tech-grid', start: 'top 92%', toggleActions: 'play none none none' },
-        y: 16,
-        opacity: 0,
-        duration: 0.35,
-        stagger: 0.03,
-        ease: 'power2.out'
+        scrollTrigger: { trigger: '.tech-grid', start: 'top 94%', toggleActions: 'play none none none' },
+        y: 16, opacity: 0, duration: 0.35, stagger: 0.025, ease: 'power2.out'
       });
 
-      // Certifications
+      // Stats stagger
+      gsap.from('.stat-card', {
+        scrollTrigger: { trigger: '.stats-grid', start: 'top 92%', toggleActions: 'play none none none' },
+        y: 12, opacity: 0, duration: 0.35, stagger: 0.05, ease: 'power2.out'
+      });
+
+      // Certification cards
       gsap.from('.cert-item', {
         scrollTrigger: { trigger: '.cert-grid', start: 'top 92%', toggleActions: 'play none none none' },
-        y: 12,
-        opacity: 0,
-        duration: 0.35,
-        stagger: 0.06,
-        ease: 'power2.out'
+        y: 12, opacity: 0, duration: 0.35, stagger: 0.05, ease: 'power2.out'
       });
 
-      // Formation
+      // Education cards
       gsap.from('.edu-item', {
         scrollTrigger: { trigger: '#formation', start: 'top 92%', toggleActions: 'play none none none' },
-        x: -16,
-        opacity: 0,
-        duration: 0.4,
-        stagger: 0.08,
-        ease: 'power2.out'
+        x: -12, opacity: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out'
       });
 
-      // Contact
+      // Contact cards stagger
       gsap.from('.contact-card', {
         scrollTrigger: { trigger: '.contact-grid', start: 'top 92%', toggleActions: 'play none none none' },
-        y: 12,
-        opacity: 0,
-        duration: 0.35,
-        stagger: 0.05,
-        ease: 'power2.out'
+        y: 12, opacity: 0, duration: 0.35, stagger: 0.05, ease: 'power2.out'
       });
 
       // ---- Magnetic buttons ----
@@ -1740,8 +1387,8 @@
           var rect = btn.getBoundingClientRect();
           var x = e.clientX - rect.left - rect.width / 2;
           var y = e.clientY - rect.top - rect.height / 2;
-          var strength = 0.3;
-          btn.style.transform = 'translate(' + x * strength + 'px, ' + y * strength + 'px)';
+          var s = 0.3;
+          btn.style.transform = 'translate(' + (x * s) + 'px, ' + (y * s) + 'px)';
         });
         btn.addEventListener('mouseleave', function() {
           btn.style.transform = 'translate(0, 0)';
@@ -1751,9 +1398,8 @@
       // ---- Nav scroll spy ----
       var sections = document.querySelectorAll('section[id]');
       var navLinks = document.querySelectorAll('nav a');
-
       function updateNav() {
-        var scrollY = window.scrollY + 100;
+        var scrollY = window.scrollY + 80;
         var current = '';
         sections.forEach(function(s) {
           if (s.offsetTop <= scrollY && s.offsetTop + s.offsetHeight > scrollY) {
@@ -1772,11 +1418,8 @@
       if (backTop) {
         backTop.addEventListener('click', function(e) {
           e.preventDefault();
-          if (lenis) {
-            lenis.scrollTo('#hero');
-          } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
+          if (lenis) { lenis.scrollTo('#hero'); }
+          else { window.scrollTo({ top: 0, behavior: 'smooth' }); }
         });
       }
 
@@ -1784,4 +1427,3 @@
   </script>
 </body>
 </html>
-
