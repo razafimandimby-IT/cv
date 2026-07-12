@@ -1329,12 +1329,13 @@
       // ---- GSAP Animations ----
       gsap.registerPlugin(ScrollTrigger);
 
-      // Hero entrance
+      // Hero entrance (loader cache la transition)
       var heroContent = document.getElementById('heroContent');
       if (heroContent) {
         gsap.from(heroContent.children, {
-          y: 30, opacity: 0, duration: 0.8, stagger: 0.12,
-          ease: 'power3.out', delay: 0.2
+          immediateRender: false,
+          y: 30, opacity: 0, duration: 0.7, stagger: 0.08,
+          ease: 'power2.out', delay: 0.1
         });
       }
 
@@ -1419,7 +1420,6 @@
 
       // Recalcul des positions ScrollTrigger (indispensable avec Lenis)
       ScrollTrigger.refresh();
-      setTimeout(function() { ScrollTrigger.refresh(); }, 300);
 
       // ---- Magnetic buttons ----
       document.querySelectorAll('.magnetic').forEach(function(btn) {
