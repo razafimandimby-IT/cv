@@ -223,6 +223,9 @@
       align-items: center;
       position: relative;
     }
+    /* Ensure hero content always visible (no-JS fallback) */
+    #heroContent { visibility: visible; }
+    .hero-avatar, .hero h1, .typing-wrap, .hero-summary, .hero-stats, .hero-links, .btn-group { opacity: 1; }
     .hero-avatar {
       width: 72px;
       height: 72px;
@@ -986,6 +989,7 @@
         <div class="hero-links">
           <span class="badge"><span class="badge-dot"></span> Ouvert aux opportunités</span>
           <a href="mailto:l.denis.razafimandimby@gmail.com">✉ l.denis.razafimandimby@gmail.com</a>
+          <a href="tel:+261374831648">📞 +261 37 483 16 48</a>
           <a href="https://www.linkedin.com/in/louis-denis-razafimandimby-488610227/" target="_blank" rel="noopener">✦ LinkedIn</a>
         </div>
         <div class="btn-group">
@@ -1080,8 +1084,12 @@
           <span class="skill-tag">Docker</span>
           <span class="skill-tag">Sauvegarde (Veeam, AWS S3)</span>
         </div>
-        <div class="skill-cat-label">Sécurité</div>
+        <div class="skill-cat-label">Réseau & Sécurité</div>
         <div>
+          <span class="skill-tag">TCP/IP</span>
+          <span class="skill-tag">VLAN</span>
+          <span class="skill-tag">VPN</span>
+          <span class="skill-tag">Firewall</span>
           <span class="skill-tag">BitLocker</span>
           <span class="skill-tag">LAPS</span>
           <span class="skill-tag">MFA / 2FA</span>
@@ -1116,6 +1124,7 @@
           <span class="skill-tag">Laravel</span>
           <span class="skill-tag">PHP</span>
           <span class="skill-tag">MySQL / MariaDB</span>
+          <span class="skill-tag">PostgreSQL</span>
           <span class="skill-tag">API REST</span>
           <span class="skill-tag">PowerShell</span>
           <span class="skill-tag">Python</span>
@@ -1154,6 +1163,7 @@
         <div class="tech-card"><span class="tech-icon">🖥️</span><span class="tech-name">PowerShell</span></div>
         <div class="tech-card"><span class="tech-icon">🐚</span><span class="tech-name">Bash</span></div>
         <div class="tech-card"><span class="tech-icon">🐘</span><span class="tech-name">MySQL</span></div>
+        <div class="tech-card"><span class="tech-icon">🐘</span><span class="tech-name">PostgreSQL</span></div>
         <div class="tech-card"><span class="tech-icon">🐳</span><span class="tech-name">Docker</span></div>
         <div class="tech-card"><span class="tech-icon">🔧</span><span class="tech-name">Ansible</span></div>
         <div class="tech-card"><span class="tech-icon">📊</span><span class="tech-name">Grafana</span></div>
@@ -1219,12 +1229,13 @@
             <div class="tl-date">Août 2025 — Aujourd'hui</div>
             <div class="tl-desc">
               <ul>
-                <li>Gouvernance SI : feuille de route stratégique, procédure d'exploitation, KPI et reporting direction</li>
-                <li>Infrastructure : administration serveurs Windows/Linux, Active Directory, GPO, Hyper-V, sauvegardes</li>
-                <li>Cybersécurité : BitLocker, LAPS, MFA, supervision Zabbix/Grafana/Prometheus/Wazuh</li>
-                <li>Cloud : Microsoft 365 (Exchange Online, Teams, SharePoint), Google Workspace</li>
-                <li><strong>ERP : pilotage fonctionnel et développement de l'ERP interne multi-domaines (8 modules) — analyse des besoins, conception, développement, déploiement et formation</strong></li>
-                <li>Management des équipes techniques et coordination des prestataires externes</li>
+                <li>Gouvernance SI : feuille de route stratégique, définition des KPI de qualité de service, procédures et standards d'exploitation, reporting direction</li>
+                <li>Infrastructure : administration des serveurs Windows/Linux, Active Directory, DNS/DHCP/GPO, virtualisation Hyper-V/Proxmox, sauvegardes ; pilotage de Microsoft 365 (Exchange Online, Teams, SharePoint, OneDrive) et Google Workspace</li>
+                <li>Cybersécurité : politique de sécurité, déploiement de BitLocker, Microsoft LAPS et MFA, gestion des privilèges, participation aux audits internes</li>
+                <li>Supervision : conception d'une architecture Zabbix/Grafana/Prometheus/Wazuh pour le suivi temps réel des serveurs, du stockage et des alertes de sécurité</li>
+                <li>Cloud : Microsoft 365 (Exchange Online, Teams, SharePoint), Google Workspace, gestion des identités et accès</li>
+                <li><strong>ERP : pilotage fonctionnel d'un ERP interne multi-domaines (RH, pointage, gestion documentaire, stocks, tickets IT, signature électronique) — de l'analyse des besoins au déploiement et à la formation des utilisateurs</strong></li>
+                <li>Parc, support & management : cycle de vie des équipements, organisation du support N1-N3, encadrement des équipes techniques et coordination des prestataires ; automatisation PowerShell/Python/Bash de l'inventaire et des rapports</li>
               </ul>
             </div>
           </div>
@@ -1234,13 +1245,14 @@
             <div class="tl-header"><h3>Datajet — Antananarivo</h3></div>
             <div class="tl-date">Juin 2018 — Août 2025</div>
             <div class="tl-desc">
-              <strong style="color:var(--text)">Consultant IT — Support Automation Lead (2023-2025)</strong>
+              <strong style="color:var(--text)">Consultant IT — Support Automation Lead (Janv. 2023 - Août 2025)</strong>
               <ul>
-                <li>Encadrement d'une équipe IT : gestion des priorités, mentoring, indicateurs de performance</li>
-                <li>Développement de scripts PowerShell et Python pour l'automatisation des tâches répétitives : <strong>MTTR réduit de 35%</strong></li>
+                <li>Encadrement d'une équipe IT : recrutement, formation, montée en compétence, gestion des priorités et suivi des indicateurs de performance</li>
+                <li>Développement de scripts PowerShell et Python pour l'automatisation des tâches répétitives et l'industrialisation des processus de résolution : <strong>MTTR réduit de 35%</strong></li>
+                <li>Administration complète du parc (postes, serveurs, comptes, accès), déploiement automatisé de correctifs, audits internes</li>
                 <li>Migration de l'infrastructure Exchange On-Premise vers Exchange Online / Teams / SharePoint</li>
                 <li>Mise en place de tableaux de bord Grafana et Prometheus : <strong>+40% de visibilité sur les SLA</strong></li>
-                <li>Standardisation des processus ITIL : taux de conformité SLA maintenu <strong>&gt;95%</strong></li>
+                <li>Standardisation des procédures selon les bonnes pratiques ITIL : taux de conformité SLA maintenu <strong>&gt;95%</strong></li>
               </ul>
               <strong style="display:block;margin-top:8px;color:var(--text)">Team Lead Support Technique (2022-2023)</strong>
               <ul>
@@ -1264,9 +1276,10 @@
             <div class="tl-header"><h3>Expériences antérieures</h3></div>
             <div class="tl-desc">
               <ul>
-                <li><strong>Gérant — Point Cybercafé</strong> (Antananarivo) : gestion d'un établissement de 50+ utilisateurs, maintenance réseau et postes, support client, comptabilité</li>
-                <li><strong>Consultant gestion de stocks — DHL International Madagascar</strong> : développement d'une application PHP de scan de codes-barres pour la traçabilité logistique</li>
-                <li><strong>Stagiaire support technique — Ministère des Finances</strong> : maintenance parc informatique, assistance utilisateurs, administration réseau</li>
+                <li><strong>Gérant — Point Cybercafé</strong> (Antananarivo, Août 2016 - Oct. 2017) : gestion d'un établissement de 50+ utilisateurs, maintenance réseau et postes, support client, automatisation des stocks</li>
+                <li><strong>Consultant gestion de stocks — DHL International Madagascar</strong> (Déc. 2014 - Janv. 2016) : développement d'une application web PHP avec scan de codes-barres et intégration d'API pour la traçabilité logistique</li>
+                <li><strong>Stagiaire Gestionnaire de Stock — DHL International Madagascar</strong> (Mai 2012 - Janv. 2013) : conception d'un logiciel de gestion des étiquettes logistiques (projet de fin d'études)</li>
+                <li><strong>Stagiaire support technique — Ministère des Finances</strong> (Fév. 2016 - Juil. 2016) : maintenance parc informatique, assistance utilisateurs, administration réseau</li>
               </ul>
             </div>
           </div>
@@ -1296,8 +1309,16 @@
           <span class="edu-icon">📚</span>
           <div class="edu-content">
             <h4>Licence en Informatique de Gestion</h4>
-            <div class="edu-meta">Université d'Antananarivo — 2013-2016</div>
-            <p>Fondamentaux de l'informatique, systèmes d'information, comptabilité, gestion d'entreprise.</p>
+            <div class="edu-meta">ISPM, Antananarivo — 2009 – 2012</div>
+            <p>Génie logiciel & Intelligence Artificielle. Fondamentaux de l'informatique, systèmes d'information, gestion d'entreprise.</p>
+          </div>
+        </div>
+        <div class="edu-item">
+          <span class="edu-icon">📜</span>
+          <div class="edu-content">
+            <h4>Baccalauréat</h4>
+            <div class="edu-meta">Lycée Saint Jean Bosco — 2006 – 2009</div>
+            <p>Filière générale, spécialisation scientifique.</p>
           </div>
         </div>
         <div class="edu-item">
@@ -1381,6 +1402,27 @@
           <div><h4>Azure Fundamentals AZ-900</h4><p>Fondamentaux du cloud Azure, services, sécurité, conformité</p></div>
           <span class="cert-status">Préparation</span>
         </div>
+        <div class="cert-item">
+          <div><h4>Docker & Conteneurisation</h4><p>Déploiement, orchestration et gestion de conteneurs</p></div>
+          <span class="cert-status">Formation continue</span>
+        </div>
+        <div class="cert-item">
+          <div><h4>Python & Cybersécurité Open Source</h4><p>Développement d'outils de sécurité et d'automatisation</p></div>
+          <span class="cert-status">Formation continue</span>
+        </div>
+        <div class="cert-item">
+          <div><h4>Zammad — Système de Tickets</h4><p>Gestion de helpdesk et support IT</p></div>
+          <span class="cert-status">Formation continue</span>
+        </div>
+      </div>
+      <div style="margin-top:28px">
+        <span class="section-label" style="display:block;margin-bottom:8px">Centres d'intérêt</span>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span class="skill-tag" style="cursor:default">🔒 Cybersécurité & Open Source</span>
+          <span class="skill-tag" style="cursor:default">👨‍🏫 Mentorat bénévole</span>
+          <span class="skill-tag" style="cursor:default">🥾 Randonnée écologique</span>
+          <span class="skill-tag" style="cursor:default">🤾 Sports collectifs (handball, football, basketball)</span>
+        </div>
       </div>
       <div style="margin-top:24px">
         <span class="section-label" style="display:block;margin-bottom:8px">Langues</span>
@@ -1425,6 +1467,16 @@
           <div class="label">GitHub</div>
           <div class="value">razafimandimby-IT</div>
         </a>
+        <a href="tel:+261374831648" class="contact-card">
+          <span class="icon">📞</span>
+          <div class="label">Téléphone</div>
+          <div class="value">+261 37 483 16 48</div>
+        </a>
+        <div class="contact-card" style="cursor:default">
+          <span class="icon">📍</span>
+          <div class="label">Localisation</div>
+          <div class="value" style="font-size:0.78rem">Antananarivo, Madagascar</div>
+        </div>
         <a href="https://razafimandimby-it.github.io/cv/" class="contact-card" style="grid-column:1/-1">
           <span class="icon">🔗</span>
           <div class="label">CV en ligne</div>
@@ -1732,3 +1784,4 @@
   </script>
 </body>
 </html>
+
