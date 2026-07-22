@@ -770,7 +770,7 @@
         <div class="about-card" data-reveal="fade" style="transition-delay:0.1s">
           <div class="card-icon">🔒</div>
           <h4>Infrastructure & Sécurité</h4>
-          <p>Windows Server, Linux, AD, GPO, Hyper-V, Proxmox, Docker, réseau (pfSense), sécurisation (BitLocker, LAPS, MFA, Wazuh), supervision (Zabbix, Grafana, Prometheus), backup.</p>
+          <p>Windows Server, Linux, AD, GPO, Hyper-V, Proxmox, VMware vSphere, Docker, réseau (pfSense), sécurisation (BitLocker, LAPS, MFA, Wazuh, CIS Benchmarks), supervision (Zabbix, Grafana, Prometheus), backup.</p>
         </div>
         <div class="about-card" data-reveal="fade" style="transition-delay:0.15s">
           <div class="card-icon">⚡</div>
@@ -811,7 +811,7 @@
         <div class="skill-category-card" style="transition-delay:0.04s">
           <div class="cat-title">Infrastructure & Systèmes</div>
           <div class="tags">
-            <span>Windows Server 2016/2019/2022</span><span>Linux (Debian, Ubuntu)</span><span>Active Directory</span><span>GPO</span><span>DNS / DHCP</span><span>Hyper-V</span><span>Proxmox VE</span><span>Docker</span><span>Sauvegarde Veeam + AWS S3</span>
+            <span>Windows Server 2016/2019/2022</span><span>Linux (Debian, Ubuntu)</span><span>Active Directory</span><span>GPO</span><span>DNS / DHCP</span><span>Hyper-V</span><span>Proxmox VE</span><span>VMware vSphere</span><span>Docker</span><span>Sauvegarde Veeam + AWS S3</span>
           </div>
         </div>
         <div class="skill-category-card" style="transition-delay:0.08s">
@@ -877,6 +877,7 @@
         <div class="tech-card"><span class="tech-icon">🪟</span><span class="tech-name">Windows Server</span></div>
         <div class="tech-card"><span class="tech-icon">🐧</span><span class="tech-name">Linux</span></div>
         <div class="tech-card"><span class="tech-icon">🗄️</span><span class="tech-name">Git</span></div>
+        <div class="tech-card"><span class="tech-icon">🖥️</span><span class="tech-name">VMware vSphere</span></div>
 
         <!-- Monitoring & Security -->
         <div class="tech-cat-divider" data-reveal="fade">Monitoring & Sécurité</div>
@@ -945,10 +946,12 @@
               <ul>
                 <li>Gouvernance SI : feuille de route stratégique, KPI de qualité de service, procédures et standards d'exploitation, reporting direction</li>
                 <li>Infrastructure : administration serveurs Windows/Linux, Active Directory, DNS/DHCP/GPO, virtualisation Hyper-V/Proxmox, sauvegardes ; Microsoft 365 et Google Workspace</li>
-                <li>Cybersécurité : politique de sécurité, BitLocker, LAPS, MFA, gestion des privilèges, audits internes</li>
+                <li>Cybersécurité : politique de sécurité, BitLocker, LAPS, MFA, gestion des privilèges, audits internes, CIS Benchmarks</li>
                 <li>Supervision : architecture Zabbix/Grafana/Prometheus/Wazuh pour suivi temps réel</li>
                 <li><strong>ERP : pilotage fonctionnel de l'ERP interne multi-domaines (8 modules) — analyse des besoins, conception, déploiement et formation</strong></li>
-                <li>Management des équipes techniques, coordination prestataires, automatisation PowerShell/Python/Bash</li>
+                <li>Management de 5 collaborateurs (techniciens support N1-N3 + développeur web), coordination prestataires</li>
+                <li>Automatisation PowerShell/Python/Bash, Infrastructure as Code (Ansible), déploiement Docker</li>
+                <li>PRA/PCA : définition et mise en place des procédures de reprise d'activité et continuité de service</li>
               </ul>
             </div>
           </div>
@@ -961,17 +964,17 @@
             <div class="tl-desc">
               <span class="sub-role-title">Consultant IT — Support Automation Lead (Janv. 2023 - Août 2025)</span>
               <ul>
-                <li>Encadrement d'une équipe IT : recrutement, formation, montée en compétence, indicateurs de performance</li>
-                <li>Développement de scripts PowerShell/Python pour automatisation : <strong>MTTR -35%</strong></li>
+                <li>Encadrement d'une équipe IT (technicien réseau, helpdesk, stagiaire) : recrutement, formation, montée en compétence, indicateurs de performance</li>
+                <li>Développement de scripts PowerShell/Python pour automatisation des tâches répétitives : <strong>MTTR -35%</strong></li>
                 <li>Administration complète du parc, déploiement automatisé de correctifs, audits internes</li>
                 <li>Migration Exchange On-Premise → Exchange Online / Teams / SharePoint</li>
                 <li>Tableaux de bord Grafana/Prometheus : <strong>+40% visibilité SLA</strong></li>
-                <li>Standardisation ITIL : conformité SLA <strong>&gt;95%</strong></li>
+                <li>Standardisation ITIL : conformité SLA <strong>&gt;95%</strong> maintenu sur plusieurs postes successifs</li>
               </ul>
               <span class="sub-role-title">Team Lead Support Technique (Juil. 2022 - Janv. 2023)</span>
               <ul>
                 <li>Cycle de vie des équipements, Exchange On-Premise, gestion des boîtes aux lettres</li>
-                <li>Sauvegarde hybride Veeam + AWS S3 : <strong>-40% downtime, -30% coûts</strong></li>
+                <li>Sauvegarde hybride Veeam + NAS + AWS S3 : <strong>-40% downtime, -30% coûts</strong></li>
                 <li>Migration SpiceWorks → GLPI, supervision unifiée Prometheus/Grafana</li>
               </ul>
               <span class="sub-role-title">Technicien Support & Maintenance (Juin 2018 - Juil. 2022)</span>
@@ -1009,12 +1012,20 @@
     <div class="container">
       <span class="section-label" data-reveal="fade">Formation</span>
       <h2 class="section-title" data-reveal="fade">Parcours académique</h2>
-      <p class="section-sub" data-reveal="fade">Un socle solide alliant technique, management et systèmes d'information.</p>
+      <p class="section-sub" data-reveal="fade">Un socle solide alliant technique, management et systèmes d'information — du License ISPM au Master Génie Logiciel & IA.</p>
       <div style="margin-top:20px">
         <div class="edu-item">
           <span class="edu-icon">🎓</span>
           <div class="edu-content">
-            <h4>Informatique de Gestion · Génie Logiciel · Intelligence Artificielle</h4>
+            <h4>Master — Génie Logiciel et Intelligence Artificielle</h4>
+            <div class="edu-meta">Université d'Antananarivo — 2016 – 2018</div>
+            <p>Formation approfondie en conception et architecture de systèmes d'information, développement logiciel, intelligence artificielle, bases de données avancées, et génie logiciel.</p>
+          </div>
+        </div>
+        <div class="edu-item" style="margin-top:8px">
+          <span class="edu-icon">🎓</span>
+          <div class="edu-content">
+            <h4>Licence — Informatique de Gestion, Génie Logiciel et Intelligence Artificielle</h4>
             <div class="edu-meta">Institut Supérieur Polytechnique de Madagascar (ISPM), Antananarivo — 2009 – 2012</div>
             <p>Formation supérieure orientée vers la conception et le développement d'applications, l'architecture des systèmes d'information, les bases de données, les réseaux, l'administration des systèmes et les fondamentaux de l'intelligence artificielle.</p>
           </div>
@@ -1090,6 +1101,10 @@
         </div>
         <div class="cert-item">
           <div><h4>Azure Fundamentals AZ-900</h4><p>Fondamentaux du cloud Azure, services, sécurité</p></div>
+          <span class="cert-status">Préparation</span>
+        </div>
+        <div class="cert-item">
+          <div><h4>VMware VCP-DCV</h4><p>Administration virtualisation vSphere, datacenter</p></div>
           <span class="cert-status">Préparation</span>
         </div>
         <div class="cert-item">
