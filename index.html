@@ -1052,8 +1052,14 @@
     <div class="container">
       <span class="section-label" data-reveal="fade">Réalisations open source</span>
       <h2 class="section-title" data-reveal="fade">Projets GitHub</h2>
-      <p class="section-sub" data-reveal="fade">Dépôts publics illustrant mon travail en automatisation, sécurité, infrastructure as code et monitoring.</p>
+      <p class="section-sub" data-reveal="fade">Dépôts publics et contributions illustrant mon travail en automatisation, sécurité, infrastructure as code, monitoring et ITSM.</p>
       <div style="margin-top:24px">
+
+        <!-- ===== MES DÉPÔTS ===== -->
+        <div style="margin-bottom:16px">
+          <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:12px">Mes dépôts</div>
+        </div>
+
         <div class="proj-item">
           <div class="proj-item-header">
             <a href="https://github.com/razafimandimby-IT/security-hardening-toolkit" target="_blank" rel="noopener" class="main-link">security-hardening-toolkit  ↗</a>
@@ -1061,34 +1067,109 @@
           <div class="proj-desc">Framework complet de hardening et d'audit de sécurité pour Windows Server et Linux (Debian/Ubuntu). Basé sur les CIS benchmarks. Génère un rapport HTML d'audit avec recommandations et remédiation automatique.</div>
           <div class="proj-tags"><span>PowerShell</span><span>Bash</span><span>CIS Benchmarks</span><span>Hardening</span></div>
         </div>
+
         <div class="proj-item">
           <div class="proj-item-header">
             <a href="https://github.com/razafimandimby-IT/ansible-infra-automation" target="_blank" rel="noopener" class="main-link">ansible-infra-automation  ↗</a>
           </div>
-          <div class="proj-desc">Infrastructure as Code avec Ansible : playbooks pour AD, serveurs web, bases de données, monitoring Zabbix/Prometheus/Grafana, agents Wazuh, sécurité.</div>
+          <div class="proj-desc">Infrastructure as Code avec Ansible : playbooks pour AD, serveurs web, bases de données, monitoring Zabbix/Prometheus/Grafana, agents Wazuh, sécurité. Conçu pour des déploiements reproductibles et traçables.</div>
           <div class="proj-tags"><span>Ansible</span><span>Infrastructure as Code</span><span>AD</span><span>Monitoring</span></div>
         </div>
+
         <div class="proj-item">
           <div class="proj-item-header">
             <a href="https://github.com/razafimandimby-IT/infra-monitoring" target="_blank" rel="noopener" class="main-link">infra-monitoring  ↗</a>
           </div>
-          <div class="proj-desc">Stack de supervision complète en Docker Compose : Zabbix, Prometheus, Grafana, Wazuh (SIEM). Inclut dashboards et règles d'alerte.</div>
+          <div class="proj-desc">Stack de supervision complète en Docker Compose : Zabbix, Prometheus, Grafana, Wazuh (SIEM). Inclut dashboards et règles d'alerte. Déployé en production chez Datajet pour piloter +40% de visibilité SLA.</div>
           <div class="proj-tags"><span>Docker</span><span>Zabbix</span><span>Prometheus</span><span>Grafana</span><span>Wazuh</span></div>
         </div>
+
         <div class="proj-item">
           <div class="proj-item-header">
             <a href="https://github.com/razafimandimby-IT/powershell-toolkit" target="_blank" rel="noopener" class="main-link">powershell-toolkit  ↗</a>
           </div>
-          <div class="proj-desc">Scripts PowerShell pour administration Windows : inventaire AD, reporting système, standardisation, gestion utilisateurs, audit sécurité.</div>
+          <div class="proj-desc">Scripts PowerShell pour administration Windows : inventaire AD, reporting système, standardisation, gestion utilisateurs, audit sécurité. Scripts utilisés en production pour automatiser le diagnostic et réduire le MTTR de 35%.</div>
           <div class="proj-tags"><span>PowerShell</span><span>AD</span><span>Windows</span><span>Automation</span></div>
         </div>
+
         <div class="proj-item">
           <div class="proj-item-header">
             <a href="https://github.com/razafimandimby-IT/dotfiles-linux" target="_blank" rel="noopener" class="main-link">dotfiles-linux  ↗</a>
           </div>
-          <div class="proj-desc">Configuration Linux : alias Bash, variables d'environnement, scripts d'administration, automatisation sauvegardes, config ssh.</div>
+          <div class="proj-desc">Configuration Linux : alias Bash, variables d'environnement, scripts d'administration, automatisation sauvegardes, config ssh. Utilisé pour standardiser les postes d'administration système.</div>
           <div class="proj-tags"><span>Linux</span><span>Bash</span><span>Dotfiles</span><span>Administration</span></div>
         </div>
+
+        <!-- ===== OUTILS OPEN SOURCE QUE J'UTILISE / CONSEILLE ===== -->
+        <div style="margin-top:28px;margin-bottom:16px">
+          <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px">Outils open source que j'intègre dans mes infrastructures</div>
+          <div style="font-size:0.82rem;color:var(--text-tertiary);margin-bottom:12px">Déploiements et configurations que je recommande et mets en production</div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-item-header">
+            <a href="https://github.com/zammad/zammad" target="_blank" rel="noopener" class="main-link">Zammad  ↗</a>
+          </div>
+          <div class="proj-desc">Système de tickets ITSM moderne — alternative open source à Freshdesk/ServiceNow. Déployé pour structurer la gestion des incidents selon ITIL. Interface web, SLA, escalation, base de connaissances intégrée.</div>
+          <div class="proj-tags"><span>ITSM</span><span>Ticketing</span><span>ITIL</span><span>Ruby</span></div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-item-header">
+            <a href="https://github.com/restic/restic" target="_blank" rel="noopener" class="main-link">Restic  ↗</a>
+          </div>
+          <div class="proj-desc">Sauvegarde chiffrée multi-backend (S3, NAS, local) — alternative open source à Veeam. Idéal pour implémenter une stratégie PRA/PCA avec chiffrement, déduplification et rotation automatique.</div>
+          <div class="proj-tags"><span>Backup</span><span>PRA/PCA</span><span>Chiffrement</span><span>Go</span></div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-item-header">
+            <a href="https://github.com/CISOfy/lynis" target="_blank" rel="noopener" class="main-link">Lynis  ↗</a>
+          </div>
+          <div class="proj-desc">Audit de sécurité Linux — outil de référence pour les tests de conformité CIS. Complète mon security-hardening-toolkit en ajoutant un scanner de vulnérabilités et de configuration système.</div>
+          <div class="proj-tags"><span>Sécurité</span><span>Compliance</span><span>Audit</span><span>Bash</span></div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-item-header">
+            <a href="https://github.com/ansible-semaphore/semaphore" target="_blank" rel="noopener" class="main-link">Ansible Semaphore  ↗</a>
+          </div>
+          <div class="proj-desc">Interface web pour Ansible — visualisation des playbooks, historique des exécutions, gestion des inventaires. Complète mon ansible-infra-automation avec un tableau de bord opérationnel.</div>
+          <div class="proj-tags"><span>Ansible</span><span>UI</span><span>DevOps</span><span>Go</span></div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-item-header">
+            <a href="https://github.com/louislam/uptime-kuma" target="_blank" rel="noopener" class="main-link">Uptime Kuma  ↗</a>
+          </div>
+          <div class="proj-desc">Surveillance d'uptime et de disponibilité des services — dashboard élégant, notifications multi-canaux (Slack, email, Telegram). Complète ma stack Zabbix/Grafana pour un monitoring orienté SLA.</div>
+          <div class="proj-tags"><span>Monitoring</span><span>Uptime</span><span>SLA</span><span>Node.js</span></div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-item-header">
+            <a href="https://github.com/requarks/wiki" target="_blank" rel="noopener" class="main-link">Wiki.js  ↗</a>
+          </div>
+          <div class="proj-desc">Base de connaissances et wiki IT — pour documenter les procédures d'exploitation, runbooks d'incidents et guides utilisateurs. Interface Markdown, recherche plein texte, permissions granulaires.</div>
+          <div class="proj-tags"><span>Documentation</span><span>Wiki</span><span>Knowledge Base</span><span>Node.js</span></div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-item-header">
+            <a href="https://github.com/portainer/portainer" target="_blank" rel="noopener" class="main-link">Portainer  ↗</a>
+          </div>
+          <div class="proj-desc">Gestion et supervision de conteneurs Docker — interface web pour déployer, monitorer et gérer les stacks Docker Compose en production. Intégré à ma stack infra-monitoring.</div>
+          <div class="proj-tags"><span>Docker</span><span>Conteneurs</span><span>DevOps</span><span>Go</span></div>
+        </div>
+
+        <div class="proj-item">
+          <div class="proj-item-header">
+            <a href="https://github.com/keycloak/keycloak" target="_blank" rel="noopener" class="main-link">Keycloak  ↗</a>
+          </div>
+          <div class="proj-desc">SSO et gestion des identités — alternative open source à Azure AD pour le SAML/OIDC. Gestion centralisée des accès, MFA, fédération d'identités. Complémentaire à mon expertise Active Directory.</div>
+          <div class="proj-tags"><span>IAM</span><span>SSO</span><span>Sécurité</span><span>Java</span></div>
+        </div>
+
       </div>
     </div>
   </section>
