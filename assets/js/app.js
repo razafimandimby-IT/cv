@@ -12,6 +12,11 @@
 
   root.classList.add('js');
 
+  const premiumStyle = document.createElement('link');
+  premiumStyle.rel = 'stylesheet';
+  premiumStyle.href = 'assets/css/premium.css';
+  document.head.appendChild(premiumStyle);
+
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'light' || savedTheme === 'dark') {
     root.dataset.theme = savedTheme;
@@ -114,7 +119,6 @@
     });
 
     hero.prepend(ambience);
-
     requestAnimationFrame(() => root.classList.add('hero-welcome-ready'));
   };
 
