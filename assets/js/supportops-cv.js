@@ -76,11 +76,21 @@
     const automationRole = roleBlocks.find(block => block.textContent.includes('Support Automation Lead'));
     if (automationRole && !automationRole.querySelector('.supportops-experience-link')) {
       const title = automationRole.querySelector('strong');
-      if (title && !title.querySelector('.supportops-badge')) {
+      const list = automationRole.querySelector('ul');
+      if (title) {
+        title.textContent = 'Consultant IT Support Automation Lead';
         const badge = document.createElement('span');
         badge.className = 'supportops-badge';
         badge.textContent = 'Cas portfolio';
         title.appendChild(badge);
+      }
+      if (list) {
+        list.innerHTML = `
+          <li><strong>Pilotage de projet :</strong> cadrage et déploiement du programme d'automatisation du support, de l'audit des processus à la mise en production, avec encadrement d'une équipe de 3 personnes.</li>
+          <li><strong>Projets d'automatisation :</strong> développement de scripts Python, PowerShell et Bash, avec standardisation des processus selon ITIL.</li>
+          <li><strong>Reporting projet :</strong> tableaux de bord SLA sous Grafana/Prometheus pour le suivi de la qualité de service, avec +40 % de visibilité.</li>
+          <li><strong>Coordination :</strong> participation aux négociations de contrats avec les fournisseurs technologiques.</li>
+          <li><strong>Résultats :</strong> MTTR réduit de 35 % et conformité SLA maintenue au-dessus de 95 %.</li>`;
       }
       const link = document.createElement('div');
       link.className = 'supportops-experience-link';
