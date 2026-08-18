@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const version = '20260818-supportops';
+  const version = '20260818-supportops-cta-theme';
 
   const style = document.createElement('link');
   style.rel = 'stylesheet';
