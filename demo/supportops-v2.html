@@ -7,30 +7,67 @@
   <meta name="theme-color" content="#08110e">
   <title>SupportOps Control Center V2 — Interactive Ops Lab</title>
   <style>
-    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#08110e}
+    :root{--boot-bg:#08110e;--boot-text:#9bb2a5;--boot-title:#f4fbf6;--boot-accent:#35c46a}
+    html[data-theme="light"]{--boot-bg:#f4f6f8;--boot-text:#66736b;--boot-title:#142019;--boot-accent:#24733b}
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--boot-bg);transition:background .2s ease}
     #supportopsFrame{display:block;width:100%;height:100%;border:0;background:transparent}
-    .boot{position:fixed;inset:0;display:grid;place-items:center;font:600 14px system-ui;color:#9bb2a5;background:#08110e;z-index:2}
-    .boot span{display:grid;gap:8px;text-align:center}.boot b{color:#f4fbf6;font-size:20px}.boot i{width:48px;height:4px;border-radius:99px;background:#35c46a;animation:pulse 1s ease-in-out infinite;margin:auto}@keyframes pulse{50%{opacity:.35;transform:scaleX(.6)}}
+    .boot{position:fixed;inset:0;display:grid;place-items:center;font:600 14px system-ui;color:var(--boot-text);background:var(--boot-bg);z-index:2;transition:background .2s ease,color .2s ease}
+    .boot span{display:grid;gap:8px;text-align:center}.boot b{color:var(--boot-title);font-size:20px}.boot i{width:48px;height:4px;border-radius:99px;background:var(--boot-accent);animation:pulse 1s ease-in-out infinite;margin:auto}@keyframes pulse{50%{opacity:.35;transform:scaleX(.6)}}
   </style>
 </head>
 <body>
   <div class="boot" id="boot"><span><b>SupportOps Control Center V2</b><i></i>Chargement de l’Interactive Ops Lab…</span></div>
-  <iframe id="supportopsFrame" src="supportops-v1.html?v=20260818v2navfix" title="SupportOps Control Center V2"></iframe>
+  <iframe id="supportopsFrame" src="supportops-v1.html?v=20260818themefix" title="SupportOps Control Center V2"></iframe>
   <script>
     (()=>{
-      const frame=document.getElementById('supportopsFrame'),boot=document.getElementById('boot');
+      const frame=document.getElementById('supportopsFrame'),boot=document.getElementById('boot'),outerRoot=document.documentElement;
+      const saved=(()=>{try{return localStorage.getItem('theme')}catch(_){return null}})();
+      const initial=saved==='light'||saved==='dark'?saved:(window.matchMedia?.('(prefers-color-scheme: light)').matches?'light':'dark');
+      outerRoot.dataset.theme=initial;
+
+      const setOuterTheme=theme=>{
+        outerRoot.dataset.theme=theme;
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content',theme==='light'?'#f4f6f8':'#08110e');
+      };
+
       frame.addEventListener('load',()=>{
         try{
           const doc=frame.contentDocument;
           if(!doc)return;
           if(!doc.querySelector('link[href*="supportops-v2.css"]')){
-            const css=doc.createElement('link');css.rel='stylesheet';css.href='supportops-v2.css?v=20260818v2navfix';doc.head.appendChild(css);
+            const css=doc.createElement('link');css.rel='stylesheet';css.href='supportops-v2.css?v=20260818themefix';doc.head.appendChild(css);
           }
           const load=(src,after)=>{
             if(doc.querySelector(`script[src*="${src}"]`)){after?.();return}
-            const js=doc.createElement('script');js.src=`${src}?v=20260818v2navfix`;js.async=false;if(after)js.addEventListener('load',after,{once:true});doc.body.appendChild(js);
+            const js=doc.createElement('script');js.src=`${src}?v=20260818themefix`;js.async=false;if(after)js.addEventListener('load',after,{once:true});doc.body.appendChild(js);
           };
           load('supportops-v2.js',()=>load('supportops-v2-hotfix.js'));
+
+          const applyTheme=theme=>{
+            const next=theme==='light'?'light':'dark';
+            doc.documentElement.dataset.theme=next;
+            setOuterTheme(next);
+            try{localStorage.setItem('theme',next)}catch(_){}
+            doc.querySelector('meta[name="theme-color"]')?.setAttribute('content',next==='light'?'#f4f6f8':'#08110e');
+            const btn=doc.getElementById('themeToggle');
+            if(btn){
+              btn.setAttribute('aria-pressed',String(next==='dark'));
+              btn.setAttribute('aria-label',next==='dark'?'Passer au thème clair':'Passer au thème sombre');
+              btn.innerHTML=`${next==='dark'?'☀':'◐'} <b>${next==='dark'?'Clair':'Sombre'}</b>`;
+            }
+          };
+
+          applyTheme(initial);
+          const themeBtn=doc.getElementById('themeToggle');
+          if(themeBtn&&!themeBtn.dataset.v2ThemeBound){
+            themeBtn.dataset.v2ThemeBound='true';
+            themeBtn.addEventListener('click',e=>{
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              applyTheme(doc.documentElement.dataset.theme==='dark'?'light':'dark');
+            },true);
+          }
+
           const back=doc.querySelector('.back-link');
           if(back)back.addEventListener('click',e=>{e.preventDefault();window.location.href='../index.html'});
           const title=doc.querySelector('.brand-block span');if(title)title.textContent='Control Center V2';

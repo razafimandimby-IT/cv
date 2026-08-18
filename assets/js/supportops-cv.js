@@ -67,7 +67,7 @@
 
         <div class="case-actions">
           <a class="btn btn-primary" href="demo/supportops.html">Voir la démo SupportOps</a>
-          <a class="text-link" href="demo/supportops-v2.html">Explorer directement la V2 <span>↗</span></a>
+          <a class="text-link" href="#experience">Voir l'expérience Datajet associée <span>↓</span></a>
         </div>`;
       projectGrid.before(article);
     }
