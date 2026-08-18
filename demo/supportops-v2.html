@@ -26,14 +26,16 @@
           if(!doc.querySelector('link[href*="supportops-v2.css"]')){
             const css=doc.createElement('link');css.rel='stylesheet';css.href='supportops-v2.css?v=20260818v2';doc.head.appendChild(css);
           }
-          if(!doc.querySelector('script[src*="supportops-v2.js"]')){
-            const js=doc.createElement('script');js.src='supportops-v2.js?v=20260818v2';doc.body.appendChild(js);
-          }
+          const load=(src,after)=>{
+            if(doc.querySelector(`script[src*="${src}"]`)){after?.();return}
+            const js=doc.createElement('script');js.src=`${src}?v=20260818v2`;js.async=false;if(after)js.addEventListener('load',after,{once:true});doc.body.appendChild(js);
+          };
+          load('supportops-v2.js',()=>load('supportops-v2-hotfix.js'));
           const back=doc.querySelector('.back-link');
           if(back)back.addEventListener('click',e=>{e.preventDefault();window.location.href='../index.html'});
           const title=doc.querySelector('.brand-block span');if(title)title.textContent='Control Center V2';
           const note=doc.querySelector('.demo-note small');if(note)note.textContent='Données fictives · simulation publique sécurisée';
-          setTimeout(()=>{boot.style.display='none'},220);
+          setTimeout(()=>{boot.style.display='none'},260);
         }catch(err){console.error(err);boot.textContent='Impossible de charger la V2.'}
       });
     })();
