@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="SupportOps Control Center V2 — démonstration portfolio interactive ITSM, automatisation, SLA, observabilité, knowledge et pilotage.">
+  <meta name="theme-color" content="#08110e">
+  <title>SupportOps Control Center V2 — Interactive Ops Lab</title>
+  <style>
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#08110e}
+    #supportopsFrame{display:block;width:100%;height:100%;border:0;background:transparent}
+    .boot{position:fixed;inset:0;display:grid;place-items:center;font:600 14px system-ui;color:#9bb2a5;background:#08110e;z-index:2}
+    .boot span{display:grid;gap:8px;text-align:center}.boot b{color:#f4fbf6;font-size:20px}.boot i{width:48px;height:4px;border-radius:99px;background:#35c46a;animation:pulse 1s ease-in-out infinite;margin:auto}@keyframes pulse{50%{opacity:.35;transform:scaleX(.6)}}
+  </style>
+</head>
+<body>
+  <div class="boot" id="boot"><span><b>SupportOps Control Center V2</b><i></i>Chargement de l’Interactive Ops Lab…</span></div>
+  <iframe id="supportopsFrame" src="supportops.html?v=20260818v2" title="SupportOps Control Center V2"></iframe>
+  <script>
+    (()=>{
+      const frame=document.getElementById('supportopsFrame'),boot=document.getElementById('boot');
+      frame.addEventListener('load',()=>{
+        try{
+          const doc=frame.contentDocument;
+          if(!doc)return;
+          if(!doc.querySelector('link[href*="supportops-v2.css"]')){
+            const css=doc.createElement('link');css.rel='stylesheet';css.href='supportops-v2.css?v=20260818v2';doc.head.appendChild(css);
+          }
+          if(!doc.querySelector('script[src*="supportops-v2.js"]')){
+            const js=doc.createElement('script');js.src='supportops-v2.js?v=20260818v2';doc.body.appendChild(js);
+          }
+          const back=doc.querySelector('.back-link');
+          if(back)back.addEventListener('click',e=>{e.preventDefault();window.location.href='../index.html'});
+          const title=doc.querySelector('.brand-block span');if(title)title.textContent='Control Center V2';
+          const note=doc.querySelector('.demo-note small');if(note)note.textContent='Données fictives · simulation publique sécurisée';
+          setTimeout(()=>{boot.style.display='none'},220);
+        }catch(err){console.error(err);boot.textContent='Impossible de charger la V2.'}
+      });
+    })();
+  </script>
+</body>
+</html>
