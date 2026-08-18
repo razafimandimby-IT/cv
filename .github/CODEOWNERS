@@ -1,0 +1,6 @@
+# Repository ownership
+# All files are owned by the repository owner.
+* @razafimandimby-IT
+
+# Protect ownership and repository configuration files explicitly.
+/.github/ @razafimandimby-IT
