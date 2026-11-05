@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Prototype interactif d'un studio de qualification de prospects, avec données fictives et traitement local dans le navigateur.">
+  <title>Studio de prospection — Prototype interactif</title>
+  <link rel="stylesheet" href="studio-prospection.css">
+  <script src="studio-prospection.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Aller au contenu</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">S<span>.</span></span><div><strong>Studio Prospection</strong><small>Prototype de portfolio</small></div></div>
+      <p class="nav-label">PARCOURS MÉTIER</p>
+      <nav class="nav" aria-label="Vues du prototype">
+        <button type="button" class="active" data-view="overview"><span>◫</span> Vue d'ensemble</button>
+        <button type="button" data-view="import"><span>⇩</span> Importer</button>
+        <button type="button" data-view="match"><span>⤨</span> Rapprocher</button>
+        <button type="button" data-view="review"><span>✓</span> Qualifier</button>
+        <button type="button" data-view="export"><span>▤</span> Livrable</button>
+      </nav>
+      <div class="sidebar-bottom"><span class="demo-dot"></span> Démonstration locale<br><small>Aucun accès à une base réelle</small><a href="../index.html#studio-prospection">← Retour au portfolio</a></div>
+    </aside>
+
+    <main class="main" id="main">
+      <header class="topbar"><div><span class="eyebrow">PROTOTYPE INTERACTIF</span><h1 id="view-title">Vue d'ensemble</h1><p id="view-subtitle">Du fichier source au prospect qualifié, avec validation humaine.</p></div><button class="button subtle" id="reset" type="button">Réinitialiser la démo</button></header>
+      <div class="notice" role="note"><strong>Données fictives.</strong> Les entreprises, identifiants et adresses de cette démo sont inventés. Toutes les actions restent dans cette page ; aucun e-mail n'est envoyé.</div>
+
+      <section class="page active" id="overview" aria-labelledby="view-title">
+        <div class="metrics"><article><span>Fiches du catalogue</span><strong id="metric-companies">0</strong><small>entreprises fictives</small></article><article><span>Suggestions à rapprocher</span><strong id="metric-suggestions">0</strong><small>après import du lot</small></article><article><span>Fiches qualifiées</span><strong id="metric-qualified">0</strong><small>contrôlées manuellement</small></article><article><span>Doublons détectés</span><strong id="metric-duplicates">0</strong><small>à traiter avant validation</small></article></div>
+        <div class="overview-grid"><article class="panel hero-panel"><span class="eyebrow">FLUX DE QUALIFICATION</span><h2>Un parcours lisible, de la source au livrable.</h2><p>Le prototype reproduit les décisions principales du Studio : aperçu d'import, rapprochement, contrôle de la fiche et export limité aux éléments validés.</p><button class="button primary" type="button" data-view="import">Commencer par l'import <span>→</span></button></article><article class="panel"><h2>Les quatre étapes</h2><ol class="steps"><li><b>01</b><div><strong>Importer</strong><span>Prévisualiser un lot avant intégration.</span></div></li><li><b>02</b><div><strong>Rapprocher</strong><span>Examiner les doublons et les cas ambigus.</span></div></li><li><b>03</b><div><strong>Qualifier</strong><span>Contrôler l'activité, le contact et sa preuve.</span></div></li><li><b>04</b><div><strong>Exporter</strong><span>Ne retenir que les fiches validées.</span></div></li></ol></article></div>
+        <article class="panel principle"><div><span class="eyebrow">RÈGLE DE QUALITÉ</span><h2>Une adresse plausible n'est pas une boîte confirmée.</h2></div><p>Le contrôle du format et du domaine aide à trier les propositions. L'identité du décideur, la pertinence commerciale et l'opposition à la prospection exigent une revue humaine.</p></article>
+      </section>
+
+      <section class="page" id="import" aria-label="Importer un lot fictif">
+        <div class="section-head"><div><span class="eyebrow">ÉTAPE 01</span><h2>Prévisualiser un import</h2><p>Un lot d'exemple illustre la différence entre nouvelle fiche, doublon exact et rapprochement ambigu.</p></div><span class="step-tag">CSV de démonstration · 3 lignes</span></div>
+        <article class="panel"><div class="file-head"><span class="file-icon">CSV</span><div><strong>lot_exemple_fictif.csv</strong><small>Source simulée · aucune donnée téléversée</small></div><span class="file-ready">Prêt à prévisualiser</span></div><div class="toolbar"><button type="button" class="button secondary" id="preview-import">Prévisualiser le lot</button><button type="button" class="button primary" id="commit-import" disabled>Intégrer les propositions</button></div><p class="feedback" id="import-feedback" aria-live="polite">Cliquez sur « Prévisualiser le lot » pour examiner les trois lignes.</p></article>
+        <article class="panel" id="import-preview" hidden><h3>Résultat de l'aperçu</h3><div class="table-wrap"><table><thead><tr><th>Entreprise fictive</th><th>Identifiant démo</th><th>Ville</th><th>Rapprochement proposé</th></tr></thead><tbody id="preview-rows"></tbody></table></div></article>
+      </section>
+
+      <section class="page" id="match" aria-label="Rapprocher les suggestions">
+        <div class="section-head"><div><span class="eyebrow">ÉTAPE 02</span><h2>Examiner les rapprochements</h2><p>Le Studio suggère une correspondance. Une personne décide quoi reprendre.</p></div><span class="step-tag" id="match-count">0 suggestion</span></div>
+        <div id="suggestion-list" class="suggestion-list"></div>
+        <p class="empty" id="match-empty">Importez d'abord le lot fictif pour voir les propositions.</p>
+      </section>
+
+      <section class="page" id="review" aria-label="Qualifier un prospect">
+        <div class="section-head"><div><span class="eyebrow">ÉTAPE 03</span><h2>Contrôler et qualifier</h2><p>Les champs proposés ne valent pas validation automatique. La décision reste attribuée à un réviseur.</p></div><span class="step-tag">Revue humaine</span></div>
+        <div class="review-grid"><article class="panel"><label class="field-label" for="company-select">Entreprise fictive</label><select id="company-select"></select><div id="company-details" class="company-details"></div></article><form class="panel review-form" id="review-form"><h3>Points de contrôle</h3><label class="check"><input type="checkbox" id="check-activity"><span><strong>Activité pertinente</strong><small>Entreprise et service proposés contrôlés.</small></span></label><label class="check"><input type="checkbox" id="check-decision"><span><strong>Décideur confirmé</strong><small>Identité et fonction rapprochées de la fiche.</small></span></label><label class="check"><input type="checkbox" id="check-contact"><span><strong>Coordonnée contrôlée</strong><small>Source consultée et adresse attribuée au bon contact.</small></span></label><label class="check"><input type="checkbox" id="check-opposition"><span><strong>Opposition détectée</strong><small>Bloque la qualification commerciale.</small></span></label><label class="field-label" for="evidence">Note de vérification</label><textarea id="evidence" rows="3" maxlength="240" placeholder="Ex. : page Équipe consultée ; fonction confirmée."></textarea><button class="button primary" type="submit">Enregistrer la qualification</button><p class="feedback" id="review-feedback" role="status" aria-live="polite"></p></form></div>
+      </section>
+
+      <section class="page" id="export" aria-label="Livrable qualifié">
+        <div class="section-head"><div><span class="eyebrow">ÉTAPE 04</span><h2>Livrable de démonstration</h2><p>Seules les fiches ayant passé la revue humaine apparaissent ici.</p></div><button type="button" class="button primary" id="download" disabled>Télécharger le CSV fictif</button></div>
+        <article class="panel"><div class="table-wrap"><table><thead><tr><th>Entreprise fictive</th><th>Segment</th><th>Ville</th><th>Coordonnée de démo</th><th>Statut</th></tr></thead><tbody id="qualified-rows"></tbody></table></div><p id="export-empty" class="empty">Aucune fiche qualifiée. Validez une entreprise dans l'étape précédente.</p></article>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
