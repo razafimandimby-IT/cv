@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Démonstration interactive du parcours Atelier : brief, première maquette sans IA, affinage illustré et exports desktop et mobile.">
+  <meta name="theme-color" content="#153d32">
+  <title>Atelier · Démo interactive | Denis Razafimandimby</title>
+  <link rel="stylesheet" href="atelier.css">
+  <script src="atelier.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Aller au contenu</a>
+  <header class="topbar">
+    <a class="identity" href="../index.html#projets" aria-label="Retour aux projets du portfolio"><span class="identity-icon" aria-hidden="true">A</span><span><strong>Atelier</strong><small>Propositions visuelles</small></span></a>
+    <div class="top-actions"><span class="demo-pill"><span aria-hidden="true"></span> Démo publique</span><a class="back-link" href="../index.html#projets">← Retour au portfolio</a></div>
+  </header>
+
+  <main id="main">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-copy"><span class="eyebrow">PARCOURS INTERACTIF · EXEMPLE FICTIF</span><h1 id="page-title">D’un brief à des visuels prêts à présenter.</h1><p>Testez le premier niveau du studio : personnalisez un prospect fictif, composez une base sans IA, comparez une direction affinée et téléchargez les images desktop et mobile.</p></div>
+      <div class="intro-steps" aria-label="Étapes de la démonstration"><span><b>01</b> Brief & médias</span><span><b>02</b> Base sans IA</span><span><b>03</b> Affinage illustré</span><span><b>04</b> Images PNG</span></div>
+    </section>
+
+    <div class="disclosure" role="note"><span class="disclosure-icon" aria-hidden="true">i</span><p><strong>Ce que vous testez :</strong> une démonstration locale du parcours et du rendu de base. Le bouton d’affinage illustre une correction visuelle déterministe : il n’appelle aucun modèle. Aucune image ni donnée n’est envoyée à un serveur. L’orchestration Claude/GPT appartient au studio privé et nécessite une clé API distincte de leurs abonnements.</p></div>
+
+    <div class="workspace">
+      <section class="control-panel" aria-labelledby="control-title">
+        <div class="panel-heading"><span class="panel-index">01 / PRÉPARER</span><h2 id="control-title">Le brief du prospect</h2><p>Modifiez quelques éléments pour voir comment le premier aperçu se compose.</p></div>
+        <form id="brief-form" novalidate>
+          <div class="field-grid"><label>Entreprise fictive<input id="company" name="company" maxlength="45" value="Atelier Boréal" autocomplete="off" required></label><label>Métier<input id="trade" name="trade" maxlength="48" value="Menuiserie & agencement" autocomplete="off" required></label></div>
+          <div class="field-grid"><label>Localité<input id="city" name="city" maxlength="35" value="Genève" autocomplete="off"></label><label>Service principal<input id="service" name="service" maxlength="58" value="Agencements sur mesure" autocomplete="off"></label></div>
+          <label>Consigne pour un affinage ultérieur <small class="field-hint">La démo conserve cette note dans le brief ; elle ne l’interprète pas avec une IA.</small><textarea id="instruction" name="instruction" maxlength="260" rows="3">Valoriser le savoir-faire et les réalisations. Style chaleureux, sobre, avec un contact facile à trouver.</textarea></label>
+          <fieldset class="style-field"><legend>Direction graphique</legend><div class="style-options"><label class="style-option"><input type="radio" name="style" value="architectural" checked><span><b>Architectural</b><small>Élégant, aéré</small></span></label><label class="style-option"><input type="radio" name="style" value="chaleureux"><span><b>Chaleureux</b><small>Matière, proximité</small></span></label><label class="style-option"><input type="radio" name="style" value="contraste"><span><b>Contrasté</b><small>Impact, clarté</small></span></label></div></fieldset>
+          <div class="uploads"><h3>Captures et images <small>facultatif · sur cet appareil uniquement</small></h3><div class="upload-grid"><label class="upload-control"><span>Capture du site actuel</span><input id="capture" type="file" accept="image/png,image/jpeg,image/webp"><small id="capture-name">Aucun fichier ajouté</small></label><label class="upload-control"><span>Photo de l’entreprise</span><input id="photo" type="file" accept="image/png,image/jpeg,image/webp"><small id="photo-name">Aucun fichier ajouté</small></label><label class="upload-control"><span>Logo original</span><input id="logo" type="file" accept="image/png,image/jpeg,image/webp"><small id="logo-name">Aucun fichier ajouté</small></label></div><p class="upload-note">La capture sert de référence au brief ; la photo et le logo peuvent apparaître dans la maquette. Aucun fichier n’est conservé après fermeture de la page.</p></div>
+          <div class="primary-actions"><button class="button button-primary" type="submit" id="generate">Créer la base sans IA <span aria-hidden="true">→</span></button><button class="button button-quiet" type="button" id="reset">Réinitialiser l’exemple</button></div>
+        </form>
+      </section>
+
+      <section class="result-panel" aria-labelledby="result-title">
+        <div class="panel-heading result-heading"><div><span class="panel-index">02 / COMPARER</span><h2 id="result-title">La proposition visuelle</h2><p id="result-status" role="status">Exemple prêt à explorer. Modifiez le brief puis créez votre base.</p></div><span class="version-badge" id="version-badge">V1 · Base sans IA</span></div>
+        <div class="preview-toolbar"><div class="segmented" role="group" aria-label="Format d’aperçu"><button type="button" class="active" id="desktop-view" aria-pressed="true">Ordinateur</button><button type="button" id="mobile-view" aria-pressed="false">Mobile</button></div><span class="preview-note">Aperçu fictif, données à valider</span></div>
+        <div class="preview-frame" id="preview-frame"><div class="preview-window"><div class="window-bar"><span class="window-dots" aria-hidden="true">● ● ●</span><span id="window-title">Atelier Boréal · proposition visuelle</span></div><div class="canvas-scroller"><canvas id="site-canvas" width="1200" height="1850" role="img" aria-label="Aperçu de la proposition de site fictif"></canvas></div></div></div>
+        <div class="refinement"><div><span class="panel-index">03 / AFFINER</span><h3>Une autre direction, en un clic</h3><p>Cette correction de démonstration améliore contraste et hiérarchie. Dans le studio privé, un modèle API peut aussi reprendre vos consignes et proposer une nouvelle version.</p></div><button class="button button-secondary" type="button" id="refine">Simuler un affinage visuel</button></div>
+        <div class="delivery"><div><span class="panel-index">04 / LIVRER</span><h3>Images à envoyer au prospect</h3><p>Exportez la version visible. Vérifiez toujours les photos, les avis, les coordonnées et les faits avant un envoi réel.</p></div><div class="delivery-actions"><button class="button button-primary" type="button" id="download-desktop">Télécharger desktop PNG</button><button class="button button-outline" type="button" id="download-mobile">Télécharger mobile PNG</button></div></div>
+      </section>
+    </div>
+    <p class="footnote">Atelier est un studio privé plus complet que cette démo : versions, orchestration via API, contrôles et autres livrables sont disponibles dans le produit, selon les fonctionnalités activées. <a href="../index.html#projets">Voir le projet dans le portfolio →</a></p>
+  </main>
+  <footer>© 2026 Denis Razafimandimby · Démonstration fictive et autonome</footer>
+</body>
+</html>
