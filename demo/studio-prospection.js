@@ -28,6 +28,7 @@ function reset() {
   $('#preview-import').disabled = false;
   $('#import-feedback').textContent = 'Cliquez sur « Prévisualiser le lot » pour examiner les trois lignes.';
   $('#import-feedback').className = 'feedback';
+  $('#match-empty').textContent = 'Importez d’abord le lot fictif pour voir les propositions.';
   $('#review-form').reset();
   $('#review-feedback').textContent = '';
   renderAll();
