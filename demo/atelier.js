@@ -13,15 +13,16 @@
   const defaults = {company:'Atelier Boréal',trade:'Menuiserie & agencement',city:'Genève',service:'Agencements sur mesure',instruction:'Valoriser le savoir-faire et les réalisations. Style chaleureux, sobre, avec un contact facile à trouver.',style:'architectural'};
   const files = {capture:null,photo:null,logo:null};
   const images = {photo:null,logo:null};
-  const state = {...defaults,refined:false,format:'desktop'};
+  const demoImages = {hero:null,library:null,kitchen:null};
+  const state = {...defaults,refined:false,format:'desktop',hovered:null};
   const palettes = {
     architectural:{deep:'#142b29',accent:'#ba835f',light:'#f5f2ec',warm:'#e7d4be',mid:'#73877e'},
     chaleureux:{deep:'#352e29',accent:'#b97950',light:'#faf3e9',warm:'#e8c8a0',mid:'#9c7c65'},
     contraste:{deep:'#111e2c',accent:'#2f78e0',light:'#f2f6fa',warm:'#c4d4e5',mid:'#59738c'}
   };
 
-  function text(ctx,value,x,y,size,color,weight='400',maxWidth=Infinity,lineHeight=size*1.3,maxLines=10){
-    ctx.font=`${weight} ${size}px Inter, Arial, sans-serif`;
+  function text(ctx,value,x,y,size,color,weight='400',maxWidth=Infinity,lineHeight=size*1.3,maxLines=10,family='Inter, Arial, sans-serif'){
+    ctx.font=`${weight} ${size}px ${family}`;
     ctx.fillStyle=color;
     const words=String(value||'').split(/\s+/).filter(Boolean);
     let line='',shown=0;
@@ -39,15 +40,16 @@
   function rounded(ctx,x,y,w,h,r,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill();}
   function line(ctx,x1,y1,x2,y2,color,width=1){ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();}
   function poly(ctx,points,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.moveTo(points[0][0],points[0][1]);for(let i=1;i<points.length;i++)ctx.lineTo(points[i][0],points[i][1]);ctx.closePath();ctx.fill();}
-  function imageCover(ctx,img,x,y,w,h){
-    const scale=Math.max(w/img.width,h/img.height),iw=img.width*scale,ih=img.height*scale;
+  function imageCover(ctx,img,x,y,w,h,zoom=1){
+    const scale=Math.max(w/img.width,h/img.height)*zoom,iw=img.width*scale,ih=img.height*scale;
     ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();ctx.drawImage(img,x+(w-iw)/2,y+(h-ih)/2,iw,ih);ctx.restore();
   }
   function grain(ctx,x,y,w,h){
     ctx.save();ctx.globalAlpha=.055;for(let i=0;i<65;i++){const px=x+((i*233)%w),py=y+((i*97)%h);rect(ctx,px,py,2,2,'#17342c');}ctx.restore();
   }
-  function room(ctx,x,y,w,h,p){
-    if(images.photo){imageCover(ctx,images.photo,x,y,w,h);return;}
+  function room(ctx,x,y,w,h,p,hover=false){
+    const source=images.photo||demoImages.hero;
+    if(source){imageCover(ctx,source,x,y,w,h,hover?1.055:1);return;}
     const g=ctx.createLinearGradient(x,y,x+w,y+h);g.addColorStop(0,p.warm);g.addColorStop(.58,'#eee7dc');g.addColorStop(1,'#b1a18f');rect(ctx,x,y,w,h,g);
     poly(ctx,[[x,y],[x+w,y],[x+w*.76,y+h*.38],[x+w*.18,y+h*.38]],'#f1ecdf');
     poly(ctx,[[x,y+h],[x+w,y+h],[x+w*.76,y+h*.38],[x+w*.18,y+h*.38]],'#b79f83');
@@ -65,8 +67,10 @@
     ctx.fillStyle='#384d38';for(let i=0;i<7;i++){ctx.beginPath();ctx.ellipse(x+w*.92+i*5,y+h*.67-i*19,15,45,i*.35,0,Math.PI*2);ctx.fill();}
     rect(ctx,x+w*.90,y+h*.69,w*.07,h*.12,'#6b5a49');grain(ctx,x,y,w,h);
   }
-  function tile(ctx,x,y,w,h,n,p){
+  function tile(ctx,x,y,w,h,n,p,hover=false){
     rounded(ctx,x,y,w,h,10,'#d8d1c2');ctx.save();ctx.beginPath();ctx.roundRect(x,y,w,h,10);ctx.clip();
+    const photo=[demoImages.library,demoImages.kitchen,demoImages.hero][n%3];
+    if(photo){imageCover(ctx,photo,x,y,w,h,hover?1.075:1);ctx.restore();return;}
     const gs=[['#a89078','#e6dbc9'],['#8c9c91','#dce4da'],['#796c60','#d6c6b7']][n%3];const g=ctx.createLinearGradient(x,y,x+w,y+h);g.addColorStop(0,gs[0]);g.addColorStop(1,gs[1]);rect(ctx,x,y,w,h,g);
     if(n%3===0){for(let i=0;i<8;i++){rect(ctx,x+i*w/8,y,w/18,h,'#6f5d4b');}poly(ctx,[[x,y+h*.82],[x+w,y+h*.72],[x+w,y+h],[x,y+h]],'#b39576');}
     if(n%3===1){for(let i=0;i<5;i++){line(ctx,x+15+i*w/5,y,x+15+i*w/5,y+h,'#59685f',5);}line(ctx,x,y+h*.52,x+w,y+h*.52,'#59685f',4);}
@@ -79,48 +83,69 @@
     else{rounded(ctx,mobile?20:54,mobile?15:18,mobile?35:46,mobile?35:46,7,p.deep);text(ctx,'A',mobile?30:67,mobile?39:50,mobile?22:28,'#fff','700');}
     text(ctx,state.company,mobile?64:115,mobile?39:50,mobile?16:20,p.deep,'700',mobile?265:300,22,1);
     if(mobile){line(ctx,w-47,26,w-20,26,p.deep,2);line(ctx,w-47,37,w-20,37,p.deep,2);}
-    else{text(ctx,'Services       Réalisations       Avis       Contact',618,47,16,p.deep,'600');rounded(ctx,1010,20,146,43,21,p.deep);text(ctx,'Parlons projet  ↗',1030,47,14,'#fff','700');}
+    else{[['Services',615],['Réalisations',707],['Avis',832],['Contact',895]].forEach(([label,x])=>text(ctx,label,x,48,14,p.deep,'600'));line(ctx,615,58,670,58,p.accent,3);rounded(ctx,1015,19,148,45,22,p.deep);text(ctx,'Parlons projet  ↗',1032,48,14,'#fff','700');}
   }
-  function desktop(ctx,p){
-    const w=1200,h=1850;rect(ctx,0,0,w,h,p.light);nav(ctx,w,p,false);
-    rect(ctx,0,82,560,617,p.deep);ctx.save();ctx.globalAlpha=.08;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(510,151,210,0,7);ctx.fill();ctx.restore();
-    text(ctx,`${state.city.toUpperCase()}  /  ${state.trade.toUpperCase()}`,58,175,15,p.warm,'700',450);
-    const head=state.refined?`Des espaces conçus pour durer.`:`Votre projet prend forme ici.`;
-    text(ctx,head,58,248,57,'#fff','700',455,68,3);
-    text(ctx,state.refined?`L’expertise de ${state.company}, au service de vos espaces.`:`${state.service} par ${state.company}. Une proposition pensée autour de votre savoir-faire.`,58,450,21,'#e0e9e3','400',440,31,4);
-    rounded(ctx,58,575,235,57,28,p.accent);text(ctx,'Parlons de votre projet  →',79,611,16,'#fff','700');
-    room(ctx,560,82,640,617,p);
-    rect(ctx,0,699,1200,469,'#fff');text(ctx,'NOS SERVICES',58,772,15,p.accent,'700');text(ctx,'Le savoir-faire au cœur de chaque projet',58,827,38,p.deep,'700',1080);
+  function desktop(ctx,p,hover){
+    rect(ctx,0,0,1200,1850,p.light);nav(ctx,1200,p,false);
+    room(ctx,0,82,1200,617,p,hover==='hero');
+    const shade=ctx.createLinearGradient(0,82,800,82);shade.addColorStop(0,'rgba(6,21,20,.32)');shade.addColorStop(.66,'rgba(6,21,20,.06)');shade.addColorStop(1,'rgba(6,21,20,0)');rect(ctx,0,82,1200,617,shade);
+    ctx.save();ctx.beginPath();ctx.roundRect(36,124,596,526,20);ctx.clip();ctx.filter='blur(14px)';room(ctx,0,82,1200,617,p,false);ctx.filter='none';rounded(ctx,36,124,596,526,20,'rgba(9,29,26,.81)');ctx.strokeStyle='rgba(255,255,255,.34)';ctx.lineWidth=1.5;ctx.strokeRect(36.5,124.5,595,525);ctx.restore();
+    line(ctx,70,172,70,239,p.accent,4);
+    text(ctx,`${state.city.toUpperCase()}  ·  ${state.trade.toUpperCase()}`,91,183,14,p.warm,'700',487,19,2);
+    text(ctx,'L’ART DU SUR-MESURE',72,258,13,'#d4e1d7','700');
+    text(ctx,state.refined?'Le sur-mesure, pensé pour vivre.':'Des espaces faits pour vous.',70,state.refined?310:332,state.refined?54:58,'#fff','600',503,state.refined?57:67,3,'Georgia, serif');
+    text(ctx,state.refined?`L’expertise de ${state.company}, au service d’espaces durables.`:`${state.service} par ${state.company}. Un projet qui donne une place au détail.`,72,state.refined?495:481,20,'#e5eee8','400',480,30,3);
+    rounded(ctx,72,558,250,55,28,p.accent);text(ctx,'Parlons de votre projet  ↗',91,593,15,'#fff','700');
+    rounded(ctx,843,615,317,42,20,'rgba(14,35,30,.62)');text(ctx,'PHOTOS D’ILLUSTRATION · DÉMO',866,641,12,'#fff','700');
+
+    rect(ctx,0,699,1200,469,'#fff');text(ctx,'01 / NOS SERVICES',58,759,14,p.accent,'700');text(ctx,'La matière au service des idées.',58,815,41,p.deep,'600',1080,48,2,'Georgia, serif');line(ctx,58,845,1142,845,'#dde6df',1);
     const labels=[state.service,'Conception personnalisée','Pose & finitions'];
-    for(let i=0;i<3;i++){const x=58+i*371;tile(ctx,x,872,342,160,i,p);rounded(ctx,x,1007,342,116,12,'#f8f7f3');text(ctx,labels[i],x+19,1055,21,p.deep,'700',305,26,2);text(ctx,'Un exemple à compléter avec les données du client.',x+19,1086,13,'#67796f','400',305,18,2);}
-    rect(ctx,0,1168,1200,390,p.deep);text(ctx,'RÉALISATIONS',58,1237,15,p.warm,'700');text(ctx,'Des projets qui parlent d’eux-mêmes',58,1293,38,'#fff','700');
-    for(let i=0;i<3;i++){let x=58+i*371;tile(ctx,x,1332,342,131,i+1,p);text(ctx,`Projet exemple 0${i+1}`,x,1495,20,'#fff','700');text(ctx,'Photo et détail à confirmer',x,1520,14,'#c4d2c9');}
-    rect(ctx,0,1558,1200,165,'#f6f8f4');text(ctx,'AVIS CLIENTS',58,1610,14,p.accent,'700');text(ctx,'À ajouter après validation',58,1652,31,p.deep,'700');text(ctx,'Aucun avis fictif n’est présenté comme réel.',620,1650,18,'#607a69');
-    rect(ctx,0,1723,1200,127,'#fff');text(ctx,'Un projet ? Échangeons.',58,1777,32,p.deep,'700');text(ctx,'Coordonnées du prospect à renseigner',58,1810,15,'#6b8072');rounded(ctx,934,1750,208,50,25,p.deep);text(ctx,'Nous contacter  →',957,1782,16,'#fff','700');
-    text(ctx,'MAQUETTE DE DÉMONSTRATION · INFORMATIONS À VÉRIFIER',58,1834,10,'#829588','600');
+    for(let i=0;i<3;i++){const x=58+i*371;ctx.save();ctx.shadowColor='rgba(17,39,29,.12)';ctx.shadowBlur=18;ctx.shadowOffsetY=9;rounded(ctx,x,873,342,259,13,'#fff');ctx.restore();tile(ctx,x,873,342,159,i,p,hover===`service${i}`);rounded(ctx,x+18,891,104,29,14,'rgba(255,255,255,.83)');text(ctx,`SERVICE 0${i+1}`,x+31,910,10,p.deep,'700');text(ctx,labels[i],x+18,1060,21,p.deep,'700',305,26,2);text(ctx,'À préciser avec le client',x+18,1095,13,'#67796f');}
+
+    rect(ctx,0,1168,1200,410,p.deep);text(ctx,'02 / RÉALISATIONS',58,1227,14,p.warm,'700');text(ctx,'Le détail raconte chaque projet.',58,1281,40,'#fff','600',1080,47,2,'Georgia, serif');
+    for(let i=0;i<3;i++){const x=58+i*371;tile(ctx,x,1319,342,164,i+1,p,hover===`project${i}`);line(ctx,x,1496,x+342,1496,'rgba(255,255,255,.24)',1);text(ctx,`Projet exemple 0${i+1}`,x,1525,19,'#fff','700');text(ctx,'Photo illustrative · détails à confirmer',x,1550,12,'#c8d7cb');}
+
+    rect(ctx,0,1578,1200,138,'#f5f7f2');text(ctx,'03 / AVIS CLIENTS',58,1631,14,p.accent,'700');text(ctx,'La confiance se construit sur des faits.',58,1676,29,p.deep,'600',650,35,1,'Georgia, serif');text(ctx,'Les témoignages seront ajoutés après vérification.',774,1668,16,'#5f7669','400',360,22,2);
+    rect(ctx,0,1716,1200,134,p.deep);text(ctx,'Un projet ? Échangeons.',58,1776,36,'#fff','600',640,42,1,'Georgia, serif');text(ctx,'Coordonnées du prospect à renseigner',58,1810,15,'#c8d9cf');rounded(ctx,916,1747,226,53,26,p.accent);text(ctx,'Nous contacter  ↗',942,1782,16,'#fff','700');text(ctx,'MAQUETTE FICTIVE · VISUELS GÉNÉRÉS POUR LA DÉMO · FAITS À VÉRIFIER',58,1838,10,'#a9c2b2','600');
   }
-  function mobile(ctx,p){
-    const w=420,h=2600;rect(ctx,0,0,w,h,p.light);nav(ctx,w,p,true);room(ctx,0,66,420,355,p);
-    rect(ctx,0,421,420,413,p.deep);text(ctx,`${state.city.toUpperCase()} / ${state.trade.toUpperCase()}`,24,474,12,p.warm,'700',375);
-    text(ctx,state.refined?'Des espaces conçus pour durer.':'Votre projet prend forme ici.',24,541,41,'#fff','700',370,48,3);
-    text(ctx,`${state.service} par ${state.company}.`,24,681,19,'#e2eae4','400',370,27,3);
-    rounded(ctx,24,741,286,56,28,p.accent);text(ctx,'Parlons de votre projet  →',43,776,16,'#fff','700');
-    rect(ctx,0,834,420,686,'#fff');text(ctx,'NOS SERVICES',24,889,13,p.accent,'700');text(ctx,'Un savoir-faire sur mesure',24,930,32,p.deep,'700',355,38,2);
+  function mobile(ctx,p,hover){
+    rect(ctx,0,0,420,2600,p.light);nav(ctx,420,p,true);room(ctx,0,66,420,768,p,hover==='hero');
+    const shade=ctx.createLinearGradient(0,235,0,834);shade.addColorStop(0,'rgba(8,25,22,0)');shade.addColorStop(.42,'rgba(8,25,22,.75)');shade.addColorStop(1,'rgba(8,25,22,.96)');rect(ctx,0,235,420,599,shade);
+    text(ctx,`${state.city.toUpperCase()}  ·  ${state.trade.toUpperCase()}`,24,514,11,p.warm,'700',370,17,2);
+    text(ctx,state.refined?'Le sur-mesure, pensé pour vivre.':'Des espaces faits pour vous.',24,577,40,'#fff','600',372,47,3,'Georgia, serif');
+    text(ctx,`${state.service} par ${state.company}.`,24,713,17,'#e8f0e9','400',370,25,2);
+    rounded(ctx,24,763,286,55,27,p.accent);text(ctx,'Parlons de votre projet  ↗',43,798,16,'#fff','700');
+
+    rect(ctx,0,834,420,686,'#fff');text(ctx,'01 / NOS SERVICES',24,888,13,p.accent,'700');text(ctx,'Un savoir-faire sur mesure',24,921,31,p.deep,'600',370,36,2,'Georgia, serif');line(ctx,24,982,396,982,'#dce5dc',1);
     const names=[state.service,'Conception personnalisée','Pose & finitions','Conseil & suivi'];
-    for(let i=0;i<4;i++){const x=24+(i%2)*191,y=1000+Math.floor(i/2)*250;tile(ctx,x,y,181,135,i,p);rounded(ctx,x,y+121,181,119,10,'#f7f8f5');text(ctx,names[i],x+11,y+166,17,p.deep,'700',160,21,3);text(ctx,'À préciser avec le client',x+11,y+215,11,'#667b6d','400',160,15,2);}
-    rect(ctx,0,1520,420,594,p.deep);text(ctx,'RÉALISATIONS',24,1576,13,p.warm,'700');text(ctx,'Des projets à valoriser',24,1623,30,'#fff','700');
-    for(let i=0;i<2;i++){const y=1660+i*202;tile(ctx,24,y,372,137,i+1,p);rounded(ctx,24,y+112,372,76,10,'#fff');text(ctx,`Projet exemple 0${i+1}`,38,y+148,17,p.deep,'700');text(ctx,'Photo et détail à confirmer',38,y+171,12,'#698071');}
-    rect(ctx,0,2114,420,210,'#f5f8f3');text(ctx,'AVIS CLIENTS',24,2167,13,p.accent,'700');text(ctx,'À ajouter après validation',24,2211,26,p.deep,'700',370,31,2);text(ctx,'Ne présentez que des témoignages vérifiés.',24,2281,13,'#6a8072');
-    rect(ctx,0,2324,420,276,'#fff');text(ctx,'Un projet ?',24,2384,34,p.deep,'700');text(ctx,'Échangeons sur votre besoin.',24,2416,18,'#61796b');rounded(ctx,24,2453,300,57,28,p.deep);text(ctx,'Nous contacter  →',47,2488,17,'#fff','700');text(ctx,'Coordonnées à renseigner',24,2542,13,'#778d7c');text(ctx,'MAQUETTE FICTIVE · À VÉRIFIER',24,2581,10,'#92a393','600');
+    for(let i=0;i<4;i++){const x=24+(i%2)*191,y=1000+Math.floor(i/2)*250;rounded(ctx,x,y,181,240,10,'#f7f8f5');tile(ctx,x,y,181,135,i,p,hover===`service${i}`);rounded(ctx,x,y+121,181,119,10,'#f7f8f5');text(ctx,names[i],x+11,y+164,17,p.deep,'700',160,21,3);text(ctx,'À préciser avec le client',x+11,y+215,11,'#667b6d','400',160,15,2);}
+
+    rect(ctx,0,1520,420,594,p.deep);text(ctx,'02 / RÉALISATIONS',24,1574,13,p.warm,'700');text(ctx,'Des projets à valoriser',24,1622,30,'#fff','600',370,35,2,'Georgia, serif');
+    for(let i=0;i<2;i++){const y=1660+i*202;tile(ctx,24,y,372,137,i+1,p,hover===`project${i}`);rounded(ctx,24,y+112,372,76,10,'#fff');text(ctx,`Projet exemple 0${i+1}`,38,y+148,17,p.deep,'700');text(ctx,'Photo illustrative · détail à confirmer',38,y+171,12,'#698071');}
+
+    rect(ctx,0,2114,420,210,'#f5f8f3');text(ctx,'03 / AVIS CLIENTS',24,2167,13,p.accent,'700');text(ctx,'À ajouter après validation',24,2211,26,p.deep,'600',370,31,2,'Georgia, serif');text(ctx,'Ne présentez que des témoignages vérifiés.',24,2281,13,'#6a8072');
+    rect(ctx,0,2324,420,276,p.deep);text(ctx,'Un projet ?',24,2384,36,'#fff','600',360,42,1,'Georgia, serif');text(ctx,'Échangeons sur votre besoin.',24,2419,18,'#d2e1d7');rounded(ctx,24,2453,300,57,28,p.accent);text(ctx,'Nous contacter  ↗',47,2488,17,'#fff','700');text(ctx,'Coordonnées à renseigner',24,2542,13,'#b5cdbd');text(ctx,'MAQUETTE FICTIVE · PHOTOS D’ILLUSTRATION',24,2581,10,'#a4bba9','600');
   }
   function render(target=canvas,format=state.format){
     const isMobile=format==='mobile';target.width=isMobile?420:1200;target.height=isMobile?2600:1850;
     const ctx=target.getContext('2d');ctx.clearRect(0,0,target.width,target.height);
     const p=palettes[state.style]||palettes.architectural;
-    if(isMobile)mobile(ctx,p);else desktop(ctx,p);
+    const hover=target===canvas?state.hovered:null;
+    if(isMobile)mobile(ctx,p,hover);else desktop(ctx,p,hover);
     target.setAttribute('aria-label',`Aperçu ${isMobile?'mobile':'ordinateur'} de la maquette fictive ${state.company}`);
   }
-  function setFormat(format){state.format=format;frame.classList.toggle('mobile',format==='mobile');desktopButton.classList.toggle('active',format==='desktop');mobileButton.classList.toggle('active',format==='mobile');desktopButton.setAttribute('aria-pressed',String(format==='desktop'));mobileButton.setAttribute('aria-pressed',String(format==='mobile'));render();}
+  function setFormat(format){state.format=format;state.hovered=null;frame.classList.toggle('mobile',format==='mobile');desktopButton.classList.toggle('active',format==='desktop');mobileButton.classList.toggle('active',format==='mobile');desktopButton.setAttribute('aria-pressed',String(format==='desktop'));mobileButton.setAttribute('aria-pressed',String(format==='mobile'));render();}
+  function hoverRegion(x,y){
+    if(state.format==='desktop'){
+      if(x>=0&&x<=1200&&y>=82&&y<=699)return 'hero';
+      for(let i=0;i<3;i++){const left=58+i*371;if(x>=left&&x<=left+342&&y>=873&&y<=1032)return `service${i}`;if(x>=left&&x<=left+342&&y>=1319&&y<=1483)return `project${i}`;}
+    }else{
+      if(x>=0&&x<=420&&y>=66&&y<=834)return 'hero';
+      for(let i=0;i<4;i++){const left=24+(i%2)*191,top=1000+Math.floor(i/2)*250;if(x>=left&&x<=left+181&&y>=top&&y<=top+135)return `service${i}`;}
+      for(let i=0;i<2;i++){const top=1660+i*202;if(x>=24&&x<=396&&y>=top&&y<=top+137)return `project${i}`;}
+    }
+    return null;
+  }
   function readForm(){
     state.company=document.getElementById('company').value.trim();state.trade=document.getElementById('trade').value.trim();
     state.city=document.getElementById('city').value.trim()||'Votre région';state.service=document.getElementById('service').value.trim()||'Un service sur mesure';
@@ -163,5 +188,15 @@
   });
   document.getElementById('download-desktop').addEventListener('click',()=>download('desktop'));
   document.getElementById('download-mobile').addEventListener('click',()=>download('mobile'));
+  canvas.addEventListener('pointermove',event=>{
+    const bounds=canvas.getBoundingClientRect();
+    const x=(event.clientX-bounds.left)*canvas.width/bounds.width,y=(event.clientY-bounds.top)*canvas.height/bounds.height;
+    const region=hoverRegion(x,y);
+    if(region!==state.hovered){state.hovered=region;canvas.style.cursor=region?'zoom-in':'default';render();}
+  });
+  canvas.addEventListener('pointerleave',()=>{if(state.hovered){state.hovered=null;canvas.style.cursor='default';render();}});
+  for(const [kind,path] of Object.entries({hero:'assets/atelier-hero.webp',library:'assets/atelier-library.webp',kitchen:'assets/atelier-kitchen.webp'})){
+    const photo=new Image();photo.onload=()=>{demoImages[kind]=photo;render();};photo.src=path;
+  }
   render();
 })();
