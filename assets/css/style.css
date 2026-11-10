@@ -26,3 +26,5 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .case-study, .project-card { scroll-margin-top: 100px; }
 .secondary-project-heading { margin-top: clamp(56px, 7vw, 88px); margin-bottom: 24px; }
 .project-card .case-actions { margin-top: 18px; }
+.personal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.personal-grid article{border:1px solid var(--border);background:var(--surface);border-radius:var(--radius);padding:20px}.personal-grid p{margin:9px 0 0;color:var(--muted);font-size:13px}
+@media(max-width:720px){.personal-grid{grid-template-columns:1fr}}
