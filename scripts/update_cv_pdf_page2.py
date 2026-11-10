@@ -53,12 +53,13 @@ def link_cell(
     label: str,
     value: str,
     url: str,
+    value_size: float = 8.1,
 ) -> None:
     c.setFillColor(MUTED)
     c.setFont("CV-Bold", 7.1)
     c.drawString(x, y + 10, label.upper())
     c.setFillColor(GREEN)
-    c.setFont("CV-Regular", 8.1)
+    c.setFont("CV-Regular", value_size)
     c.drawString(x, y - 1, value)
     c.linkURL(url, (x, y - 4, x + width, y + 19), relative=0)
 
@@ -218,6 +219,11 @@ def make_page_two(width: float, height: float) -> BytesIO:
         ("Logiciels libres", 88),
         ("IA appliquée", 75),
         ("Partage de connaissances", 135),
+        ("Football", 60),
+        ("Basketball", 70),
+        ("Handball", 65),
+        ("Volley", 55),
+        ("Natation", 62),
     ]
     x = 58
     y = 253
@@ -228,20 +234,21 @@ def make_page_two(width: float, height: float) -> BytesIO:
         chip(c, x, y, chip_width, label)
         x += chip_width + 7
 
-    section_title(c, width, "CONTACT & LIENS", 201)
-    panel_x, panel_y, panel_w, panel_h = 51, 76, width - 102, 106
+    section_title(c, width, "CONTACT & LIENS", 181)
+    panel_x, panel_y, panel_w, panel_h = 51, 55, width - 102, 108
     c.setFillColor(SOFT)
     c.setStrokeColor(BORDER)
     c.roundRect(panel_x, panel_y, panel_w, panel_h, 7, fill=1, stroke=1)
-    c.line(panel_x + panel_w / 2, panel_y + 35, panel_x + panel_w / 2, panel_y + panel_h)
-    c.line(panel_x, panel_y + 35, panel_x + panel_w, panel_y + 35)
-    c.line(panel_x, panel_y + 70, panel_x + panel_w, panel_y + 70)
+    c.line(panel_x + panel_w / 2, panel_y + 81, panel_x + panel_w / 2, panel_y + panel_h)
+    c.line(panel_x, panel_y + 27, panel_x + panel_w, panel_y + 27)
+    c.line(panel_x, panel_y + 54, panel_x + panel_w, panel_y + 54)
+    c.line(panel_x, panel_y + 81, panel_x + panel_w, panel_y + 81)
 
     col_w = panel_w / 2
     link_cell(
         c,
         panel_x + 12,
-        panel_y + 77,
+        panel_y + 87,
         col_w - 24,
         "Email",
         "l.denis.razafimandimby@gmail.com",
@@ -250,38 +257,42 @@ def make_page_two(width: float, height: float) -> BytesIO:
     link_cell(
         c,
         panel_x + col_w + 12,
-        panel_y + 77,
+        panel_y + 87,
         col_w - 24,
         "GitHub",
-        "razafimandimby-IT",
         "https://github.com/razafimandimby-IT",
+        "https://github.com/razafimandimby-IT",
+        6.7,
     )
     link_cell(
         c,
         panel_x + 12,
-        panel_y + 42,
-        col_w - 24,
-        "Portfolio",
-        "GitHub Pages",
-        "https://razafimandimby-it.github.io/cv/",
-    )
-    link_cell(
-        c,
-        panel_x + col_w + 12,
-        panel_y + 42,
-        col_w - 24,
+        panel_y + 60,
+        panel_w - 24,
         "Vercel",
-        "Portfolio sur Vercel",
         "https://razafimandimby-cv.vercel.app/",
+        "https://razafimandimby-cv.vercel.app/",
+        7.2,
     )
     link_cell(
         c,
         panel_x + 12,
-        panel_y + 7,
+        panel_y + 33,
         panel_w - 24,
         "Cloudflare",
-        "Version finale Cloudflare",
-        "https://bfc6119c-razafimandimby-cv.l-denis-razafimandimby.workers.dev/",
+        "https://razafimandimby-cv.l-denis-razafimandimby.workers.dev/",
+        "https://razafimandimby-cv.l-denis-razafimandimby.workers.dev/",
+        6.4,
+    )
+    link_cell(
+        c,
+        panel_x + 12,
+        panel_y + 6,
+        panel_w - 24,
+        "Portfolio principal",
+        "https://razafimandimby-it.github.io/cv/",
+        "https://razafimandimby-it.github.io/cv/",
+        7.2,
     )
 
     c.setStrokeColor(BORDER)
